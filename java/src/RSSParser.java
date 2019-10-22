@@ -26,11 +26,11 @@ public class RSSParser {
 	public static void main(String[] args)
 	{
 		try {
-			Scanner sc =new Scanner(RSSParser.getInputStreamFromUri(new URI("https://www.google.fr")));
+			Scanner sct =new Scanner(RSSParser.getInputStreamFromUri(new URI("https://www.google.fr")));
 			
-			while (sc.hasNextLine())
+			while (sct.hasNextLine())
 			{
-				System.out.println(sc.nextLine());
+				System.out.println(sct.nextLine());
 				
 			}
 		}
