@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Notre site web de fou</title>
+        <title>Notre site web</title>
     </head>
     <body>
     
