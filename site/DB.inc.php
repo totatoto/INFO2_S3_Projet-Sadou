@@ -67,7 +67,7 @@ class DB {
       //	NB : si la requête n'est pas paramétrée alors ce paramètre doit valoir null.
       //	param3 : nom de la classe devant être utilisée pour créer les objets qui vont
       //	représenter les différents tuples.
-      //	NB : cette classe doit avoir des attributs qui portent le même que les attributs
+      //	NB : cette classe doit avoir des attributs qui portent le même nom que les attributs
       //	de la requête exécutée.
       //	ATTENTION : il doit y avoir autant de ? dans le texte de la requête
       //	que d'éléments dans le tableau passé en second paramètre.
