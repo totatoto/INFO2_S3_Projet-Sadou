@@ -21,4 +21,4 @@
 
 
 -- INSERT INTO ACCOUNT VALUES('user','userpwd');
-INSERT INTO ACCOUNT VALUES('admin','adminpwd');
+INSERT INTO RSS_ITEM VALUES(id,title,link,pub_date,importance);

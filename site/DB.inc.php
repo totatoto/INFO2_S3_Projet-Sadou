@@ -1,8 +1,6 @@
 <?php
 
-require 'client.inc.php';
-require 'produit.inc.php';
-require 'achat.inc.php';
+require 'rssItem.inc.php';
 
 class DB {
       private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
@@ -14,10 +12,10 @@ class DB {
       /************************************************************************/	
       private function __construct() {
       	      // Connexion à la base de données
-	      $connStr = 'pgsql:host=woody port=5432 dbname=ba160866';
+	      $connStr = 'pgsql:host=5.52.179.242 port=5432 dbname=info2_s3_projet_sadou';
 	      try {
 		  // Connexion à la base
-	      	  $this->connect = new PDO($connStr, 'ba160866', 'Adam1999');
+	      	  $this->connect = new PDO($connStr, 'pi', 'Martin123');
 		  // Configuration facultative de la connexion
 		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER); 
 		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION); 
@@ -116,50 +114,71 @@ class DB {
       }
 
       /*************************************************************************
-       * Fonctions qui peuvent être utilisées dans les scripts PHP
+       * Fonctions qui peuvent être utilisées dans les scripts PHP - 50 items au max - voir si on récupère par lien ou si on mix les flux etc
        *************************************************************************/
-      public function getClients() {
-      	    $requete = 'select * from pac_client';
-	    return $this->execQuery($requete,null,'Client');
-      } 
+      public function getRSSItem($link) {
+      	    $requete =   'SELECT * 
+                              FROM RSS_ITEM AS A 
+                              JOIN ITEM_OF_FLUX_RSS AS B 
+                              ON A.id = B.id_rss_item 
+                              ORDER BY A.importance 
+                              WHERE B.link = $link 
+                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)';
+	    return $this->execQuery($requete,null,'RSSItem');
+      }
+
+      public function getRSSItem($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
+                $requete =   'SELECT * 
+                              FROM RSS_ITEM AS A 
+                              JOIN ITEM_OF_FLUX_RSS AS B 
+                              ON A.id = B.id_rss_item 
+                              ORDER BY A.importance 
+                              WHERE B.link in $links /*à voir*/
+                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)';
+          return $this->execQuery($requete,null,'RSSItem');
+      }
+
+      // public function getClients() {
+      //           $requete = 'select * from pac_client';
+      //     return $this->execQuery($requete,null,'Client');
+      // } 
       
-      public function getProduits() {
-      	    $requete = 'select * from pac_produit';
-	    return $this->execQuery($requete,null,'Produit');
-      } 
+      // public function getProduits() {
+      //           $requete = 'select * from pac_produit';
+      //     return $this->execQuery($requete,null,'Produit');
+      // } 
       
-      public function getAchats() {
-      	    $requete = 'select * from pac_achat';
-	    return $this->execQuery($requete,null,'Achat');
-      }    
+      // public function getAchats() {
+      //           $requete = 'select * from pac_achat';
+      //     return $this->execQuery($requete,null,'Achat');
+      // }    
 
-      public function getClientsAdr($adr) {
-      	     $requete = 'select * from pac_client where adr = ?';
-	     return $this->execQuery($requete,array($adr),'Client');
-      }
+      // public function getClientsAdr($adr) {
+      //            $requete = 'select * from pac_client where adr = ?';
+      //      return $this->execQuery($requete,array($adr),'Client');
+      // }
 
-      public function getClient($idcli) {
-      	     $requete = 'select * from pac_client where ncli = ?';
-	     return $this->execQuery($requete,array($idcli),'Client');
-      }
+      // public function getClient($idcli) {
+      //            $requete = 'select * from pac_client where ncli = ?';
+      //      return $this->execQuery($requete,array($idcli),'Client');
+      // }
 
-      public function insertClient($idcli,$nom,$adr) {
-      	     $requete = 'insert into pac_client values(?,?,?)';
-	     $tparam = array($idcli,$nom,$adr);
-	     return $this->execMaj($requete,$tparam);
-      }
+      // public function insertClient($idcli,$nom,$adr) {
+      //            $requete = 'insert into pac_client values(?,?,?)';
+      //      $tparam = array($idcli,$nom,$adr);
+      //      return $this->execMaj($requete,$tparam);
+      // }
 
-      public function updateAdrClient($idcli,$adr) {
-      	     $requete = 'update pac_client set adr = ? where ncli = ?';
-	     $tparam = array($adr,$idcli);
-	     return $this->execMaj($requete,$tparam);
-      }
+      // public function updateAdrClient($idcli,$adr) {
+      //            $requete = 'update pac_client set adr = ? where ncli = ?';
+      //      $tparam = array($adr,$idcli);
+      //      return $this->execMaj($requete,$tparam);
+      // }
 
-      public function deleteClient($idcli) {
-      	     $requete = 'delete from pac_client where ncli = ?';
-	     $tparam = array($idcli);
-	     return $this->execMaj($requete,$tparam);
-      }
+      // public function deleteClient($idcli) {
+      //            $requete = 'delete from pac_client where ncli = ?';
+      //      $tparam = array($idcli);
+      //      return $this->execMaj($requete,$tparam);
 
 } //fin classe DB
 
