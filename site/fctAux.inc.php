@@ -28,6 +28,16 @@
 		return ( $login == "user" && $mdp == "userpwd" ) || ( $login == "admin" && $mdp == "adminpwd" );
 	}
 	
+	function parse($data)
+	{
+		$parser=xml_parser_create();
+		
+		xml_parse($parser,$data) or
+		die (sprintf("XML Error: %s at line %d",
+		xml_error_string(xml_get_error_code($parser)),
+		xml_get_current_line_number($parser)));
+	}
+	
 	function test_input($data)
 	{
 	   //on supprime les espaces, les sauts de ligne etc.
