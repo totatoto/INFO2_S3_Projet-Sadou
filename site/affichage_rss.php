@@ -10,10 +10,10 @@
 			<?php 
 			require 'DB.inc.php';
 
-			$db = DB->getInstance();
+			//$db = DB->getInstance();
 
-			echo $db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
-			//phpinfo();
+			//echo $db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
+			phpinfo();
 			?> -->
             <!-- Insert name or a logo -->
             <h1>CYBERNEWS</h1>
