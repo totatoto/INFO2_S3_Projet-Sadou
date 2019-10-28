@@ -1,6 +1,6 @@
 <?php
 	
-require 'DB.inv.php';
+require 'DB.inc.php';
 
 $db = DB->getInstance();
 
