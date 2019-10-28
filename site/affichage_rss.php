@@ -1,6 +1,5 @@
 <?php
-	echo "test";
-	require ("DB.inc.php");
+	include ("DB.inc.php");
 	include "fctAux.inc.php";
 
 	enTete();
