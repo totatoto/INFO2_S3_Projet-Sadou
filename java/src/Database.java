@@ -23,7 +23,7 @@ public class Database {
 		}
 
 		try {
-			connec = DriverManager.getConnection("jdbc:postgresql://5.50.179.242:5432/info2_s3_projet_sadou","pi","Martin123");
+			connec = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/info2_s3_projet_sadou","pi","Martin123");
 			psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 			psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
 			psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
