@@ -33,7 +33,6 @@
                               ORDER BY A.importance DESC, A.pub_date DESC
                               LIMIT 50';
 			echo "<h1>Consultation de la table Achat</h1>\n";
-			echo "test".$db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
 			try {
 				echo "<table>\n<tr>\n";
 				echo "<th>ncli</th>\n";
