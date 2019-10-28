@@ -1,9 +1,29 @@
-<?php 
+<?php
 	require ("DB.inc.php");
+	include "fctAux.inc.php";
 
-	$db = DB::getInstance();
+	enTete();
+	contenu();
 
-	foreach ($db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml") as $item)
+	pied();
+  
+  
+	function contenu()
+	{
+		$db = DB::getInstance();
+		if ($db == null)
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+		else
+		{
+
+			echo "<h1>Consultation de la table Achat</h1>\n";
+			try {
+				echo "<table>\n<tr>\n";
+				echo "<th>ncli</th>\n";
+				echo "<th>np</th>\n";
+				echo "<th>qa</th>\n";
+				echo "</tr>\n";
+				foreach ($db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml") as $item)
 				{
 					echo "<tr>\n";
 					echo "<td>".$item->getId()."</td>\n";
@@ -11,4 +31,12 @@
 					echo "<td>".$item->getLink()."</td>\n";
 					echo "</tr>\n";
 				}
+				echo "</table>";
+			} //fin try
+			catch (Exception $e) {
+				  echo $e->getMessage();
+			}  
+			$db->close();
+		}
+	}
 ?>
