@@ -1,0 +1,11 @@
+src\RSSController.java:7: error: cannot find symbol
+        List<FluxRSS> listFluxRss = db.getFluxRSS();
+        ^
+  symbol:   class List
+  location: class RSSController
+src\RSSController.java:17: error: cannot find symbol
+        List<RSSItem> listNewRssItem = RSSParser.getNewRssItems(fluxRss);
+        ^
+  symbol:   class List
+  location: class RSSController
+2 errors
