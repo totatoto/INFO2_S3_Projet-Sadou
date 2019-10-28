@@ -11,6 +11,8 @@ public class Database {
 	private PreparedStatement psSelectFluxRss;
 	private PreparedStatement psInsertFluxRssItem;
 	private PreparedStatement psInsertItemOfFluxRss;
+	
+	private int nbRequest;
 
 	private Database() {
 		try {
@@ -32,11 +34,18 @@ public class Database {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		this.nbRequest = 0;
 	}
 
 	public static Database getInstance() {
 		if(dbInstance==null){dbInstance=new Database();}
 		return dbInstance;
+	}
+	
+	private void requested()
+	{
+		this.nbRequest++;
 	}
 
 	private ArrayList<FluxRSS> getFluxRSSReq(String req) throws SQLException {
@@ -44,6 +53,8 @@ public class Database {
 		ArrayList<FluxRSS> listeFluxRss=new ArrayList<FluxRSS>();
 
 		ResultSet rsFluxRSS=selectRSS.executeQuery(req);
+		this.requested();
+		
 		while(rsFluxRSS.next()){
 			FluxRSS fluxRss = new FluxRSS(rsFluxRSS.getString("link"),rsFluxRSS.getInt("id_last_rss"));
 			listeFluxRss.add(fluxRss);
@@ -58,8 +69,11 @@ public class Database {
 
 	public RSSItem getRSSItem(int id) throws SQLException{
 		RSSItem rssItem = null;
+		
 		psSelectFluxRssItem.setInt(1,id);
 		ResultSet rsRSSItem=psSelectFluxRssItem.executeQuery();
+		this.requested();
+		
 		if(rsRSSItem.next())
 			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getInt("importance"));
 		rsRSSItem.close();
@@ -68,8 +82,11 @@ public class Database {
 
 	public FluxRSS getFluxRSS(String link) throws SQLException{
 		FluxRSS fluxRSS = null;
+		
 		psSelectFluxRss.setString(1,link);
 		ResultSet rsFluxRSS=psSelectFluxRss.executeQuery();
+		this.requested();
+		
 		if(rsFluxRSS.next())
 			fluxRSS = new FluxRSS(rsFluxRSS.getString("link"),rsFluxRSS.getInt("id_last_rss"));
 		rsFluxRSS.close();
@@ -81,6 +98,7 @@ public class Database {
 		this.psUpdateFluxRssLastItem.setInt(1,idLastRss);
 
 		this.psUpdateFluxRssLastItem.executeUpdate();
+		this.requested();
 	}
 
 	private void insertItemOfFluxRss(ItemOfFluxRss itemOfFluxRss) throws SQLException {
@@ -88,6 +106,7 @@ public class Database {
 		this.psInsertItemOfFluxRss.setInt(2,itemOfFluxRss.getIdRssItem());
 
 		this.psInsertItemOfFluxRss.executeUpdate();
+		this.requested();
 	}
 
 	public void insertFluxRSSItem(RSSItem rssItem, FluxRSS fluxRSS) throws SQLException
@@ -97,11 +116,14 @@ public class Database {
 		this.psInsertFluxRssItem.setTimestamp(3,rssItem.getPubDate());
 		this.psInsertFluxRssItem.setInt(4,rssItem.getImportance());
 		this.psInsertFluxRssItem.executeUpdate();
+		this.requested();
 
 		Statement selectLastId=connec.createStatement();
 		int lastId = -1;
 
 		ResultSet rsLastId=selectLastId.executeQuery("SELECT currval('rss_item_id_seq');");
+		this.requested();
+		
 		if(rsLastId.next())
 			lastId = rsLastId.getInt("currval");
 		rsLastId.close();
@@ -116,8 +138,14 @@ public class Database {
 		for (RSSItem rssItem : rssItems)
 			this.insertFluxRSSItem(rssItem, fluxRSS);
 	}
-
-	public static void main(String[] args) {
-
+	
+	public void resetNbRequest()
+	{
+		this.nbRequest = 0;
+	}
+	
+	public int getNbRequest()
+	{
+		return nbRequest;
 	}
 }

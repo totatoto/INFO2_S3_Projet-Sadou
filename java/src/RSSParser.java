@@ -156,7 +156,7 @@ public class RSSParser {
 		List<RSSItem> rssItems = null;
 		try{
 			rssItems = getRssItems(new URI(link));
-			RSSItem.sort(rssItems);
+			RSSItem.sort(rssItems, RSSItem.SORT_RECEDING);
 
 			Database db = Database.getInstance();
 			FluxRSS fluxRSS = db.getFluxRSS(link);
@@ -175,20 +175,24 @@ public class RSSParser {
 			}
 		} catch (SQLException e) {e.printStackTrace();}
 
+		RSSItem.sort(rssItems, RSSItem.SORT_RISING);
+		
 		return rssItems;
 	}
 
 	public static void main(String[] args)
 	{
 		try {
-			Database.getInstance();
-			System.out.println(getNewRssItems("http://feeds.feedburner.com/phoenixjp/CWoG?format=xml").size());
+			Database db = Database.getInstance();
+			//System.out.println(getNewRssItems("http://feeds.feedburner.com/phoenixjp/CWoG?format=xml").size());
 			//System.out.println(parseDocumentToRSSItemList(parseXMLInputStreamToDOM(RSSParser.getInputStreamFromUri(new URI("http://feeds.feedburner.com/phoenixjp/CWoG?format=xml")))).size());
 			//System.out.println(parseXMLInputStreamToDOM(RSSParser.getInputStreamFromUri(new URI("http://feeds.feedburner.com/phoenixjp/CWoG?format=xml"))).getChildNodes().item(2).getNodeName());
+			System.out.println(db.getRSSItem(383));
+			System.out.println(db.getRSSItem(982));
+			System.out.println(db.getRSSItem(383).equals(db.getRSSItem(982)));
 		}
-		catch (URISyntaxException e) {
+		catch (Exception e) {
 		   e.printStackTrace();
 		}
-		catch (Exception e) {}
 	}
 }

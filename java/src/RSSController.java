@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.sql.SQLException;
 import java.net.URISyntaxException;
 
@@ -12,24 +14,30 @@ public class RSSController
 
     private Thread runner;
 
-    public static void updateAllRss() throws SQLException, URISyntaxException
+    public static Map<FluxRSS,List<RSSItem>> updateAllRss() throws SQLException, URISyntaxException
     {
+		Map<FluxRSS,List<RSSItem>> mapUpdate = new HashMap<FluxRSS,List<RSSItem>>();
+		
         Database db = Database.getInstance();
 
         List<FluxRSS> listFluxRss = db.getFluxRSS();
 
         for (FluxRSS fluxRss : listFluxRss)
         {
-            RSSController.updateRss(fluxRss);
+            mapUpdate.put(fluxRss, RSSController.updateRss(fluxRss));
         }
+		
+		return mapUpdate;
     }
 
-    public static void updateRss(FluxRSS fluxRss) throws SQLException, URISyntaxException
+    public static List<RSSItem> updateRss(FluxRSS fluxRss) throws SQLException, URISyntaxException
     {
         List<RSSItem> listNewRssItem = RSSParser.getNewRssItems(fluxRss);
         RSSItem.calcImportance(listNewRssItem);
 
         Database.getInstance().insertFluxRSSItem(listNewRssItem, fluxRss);
+		
+		return listNewRssItem;
     }
 
     public RSSController(int timeBetweenTwoUpdate)
@@ -64,9 +72,13 @@ public class RSSController
         this.stop = true;
     }
 
-    public void updated()
+    public void updated(Map<FluxRSS,List<RSSItem>> updates)
     {
         System.out.println("updated");
+		for (FluxRSS fluxRss : updates.keySet())
+		{
+			System.out.println(fluxRss.getLink() + " : " + updates.get(fluxRss).size());
+		}
     }
 
     public void failure(Exception e)
@@ -110,8 +122,12 @@ class Runner extends Thread
     {
         try{
             do{
-                this.rssController.updateAllRss();
-                this.rssController.updated();
+				System.out.println("starting update");
+				Database.getInstance().resetNbRequest();
+                Map<FluxRSS,List<RSSItem>> updates = this.rssController.updateAllRss();
+                this.rssController.updated(updates);
+				System.out.println("number of request : " + Database.getInstance().getNbRequest());
+				
                 Thread.sleep(this.rssController.getTimeBetweenTwoUpdate());
             } while (!this.rssController.isStoped());
         } catch(Exception e) {this.rssController.failure(e);}

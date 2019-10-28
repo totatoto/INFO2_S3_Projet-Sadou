@@ -3,6 +3,10 @@ import java.util.List;
 import java.util.Comparator;
 
 public class RSSItem {
+	
+	public static final int SORT_RISING = 0;
+	public static final int SORT_RECEDING = 1;
+	
 	private int id;
 	private String title;
 	private String link;
@@ -17,9 +21,9 @@ public class RSSItem {
 		}
 	}
 	
-	public static void sort(List<RSSItem> listRssItem)
+	public static void sort(List<RSSItem> listRssItem, int type)
 	{
-		listRssItem.sort(new RSSItemComparator());
+		listRssItem.sort(new RSSItemComparator(type));
 	}
 	
 	public RSSItem (String title, String link, Timestamp pubDate)
@@ -64,12 +68,35 @@ public class RSSItem {
 	{
 		return this.getLink().equals(rssItem.getLink());
 	}
+	
+	public String toString()
+	{
+		String sRet = "";
+		sRet += "id : " + this.id + "\n";
+		sRet += "title : " + this.title + "\n";
+		sRet += "link : " + this.link + "\n";
+		sRet += "pubDate : " + this.pubDate + "\n";
+		sRet += "importance : " + this.importance + "\n";
+		
+		return sRet;
+	}
 }
 
 class RSSItemComparator implements Comparator<RSSItem> {
+	
+	private int type;
+	
+	RSSItemComparator(int type)
+	{
+		this.type = type;
+	}
+	
 	@Override
 	public int compare(RSSItem rssItem1, RSSItem rssItem2)
 	{
+		if (type == RSSItem.SORT_RISING)
+			return rssItem1.getPubDate().compareTo(rssItem2.getPubDate());
+		
 		return rssItem2.getPubDate().compareTo(rssItem1.getPubDate());
 	}
 }
