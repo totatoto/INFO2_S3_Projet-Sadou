@@ -16,7 +16,7 @@ class RSSItem {
       	 il y aura une erreur lorsqu'il sera appelé automatiquement par PDO 
        */    
       
-      public function __construct($i=-1,$t="",$l="",$p,$k=0) {
+      public function __construct($i=-1,$t="",$l="",$p=new DateTime(),$k=0) {
             $this->id = $i;
             $this->title = $t;
             $this->link = $l;
