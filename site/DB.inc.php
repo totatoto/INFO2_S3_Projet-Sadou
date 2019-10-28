@@ -117,7 +117,7 @@ class DB {
        * Fonctions qui peuvent être utilisées dans les scripts PHP - 50 items au max - voir si on récupère par lien ou si on mix les flux etc
        *************************************************************************/
       public function getRSSItem($link) {
-      	    $requete =   'SELECT * 
+      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance 
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
                               ON A.id = B.id_rss_item  
@@ -129,7 +129,7 @@ class DB {
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
-                $requete =   'SELECT * 
+                $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance 
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
                               ON A.id = B.id_rss_item 
