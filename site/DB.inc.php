@@ -32,19 +32,23 @@ class DB {
       //	NB2: c'est une methode de classe.
       /************************************************************************/
       public static function getInstance() {
-      	     if (is_null(self::$instance)) {
+		  echo "1";
+		 if (is_null(self::$instance)) {
  	     	try { 
 		      self::$instance = new DB(); 
- 		} 
-		catch (PDOException $e) {
-			echo $e;
- 		}
-            } //fin IF
+			} 
+			catch (PDOException $e) {
+				echo $e;
+			}
+        } //fin IF
+		echo "2";
  	    $obj = self::$instance;
 
+		echo "3";
 	    if (($obj->connect) == null) {
 	       self::$instance=null;
 	    }
+		echo "4";
 	    return self::$instance;
       } //fin getInstance	 
 
