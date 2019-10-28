@@ -15,7 +15,7 @@ class DB {
 	      $connStr = 'pgsql:host=127.0.0.1 port=5432 dbname=info2_s3_projet_sadou';
 	      try {
 		  // Connexion à la base
-	      	  $this->connect = new PDO($connStr, 'pi', 'martin123');
+	      	  $this->connect = new PDO($connStr, 'pi', 'Martin123');
 		  // Configuration facultative de la connexion
 		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER); 
 		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION); 
@@ -32,7 +32,6 @@ class DB {
       //	NB2: c'est une methode de classe.
       /************************************************************************/
       public static function getInstance() {
-		  echo "1";
 		 if (is_null(self::$instance)) {
  	     	try { 
 		      self::$instance = new DB(); 
@@ -41,14 +40,11 @@ class DB {
 				echo $e;
 			}
         } //fin IF
-		echo "2";
  	    $obj = self::$instance;
 
-		echo "3";
 	    if (($obj->connect) == null) {
 	       self::$instance=null;
 	    }
-		echo "4";
 	    return self::$instance;
       } //fin getInstance	 
 
