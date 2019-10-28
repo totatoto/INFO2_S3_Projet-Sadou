@@ -14,23 +14,6 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-			echo 'SELECT * 
-                              FROM RSS_ITEM AS A 
-                              JOIN ITEM_OF_FLUX_RSS AS B 
-                              ON A.id = B.id_rss_item  
-                              WHERE B.link_flux_rss = \''.$link.'\' 
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7) 
-                              ORDER BY A.importance DESC, A.pub_date DESC
-                              LIMIT 50';
-							  
-			echo 'SELECT * 
-                              FROM RSS_ITEM AS A 
-                              JOIN ITEM_OF_FLUX_RSS AS B 
-                              ON A.id = B.id_rss_item  
-                              WHERE B.link_flux_rss = '."'".$link."'".' 
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7) 
-                              ORDER BY A.importance DESC, A.pub_date DESC
-                              LIMIT 50';
 			echo "<h1>Consultation de la table Achat</h1>\n";
 			try {
 				echo "<table>\n<tr>\n";
