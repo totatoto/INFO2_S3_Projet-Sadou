@@ -1,10 +1,10 @@
 <?php
+	echo "test";
 	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
 	enTete();
 	contenu();
-	echo "test";
 	pied();
   
   
