@@ -2,7 +2,7 @@
 	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
-	require();
+	enTete();
 	contenu();
 	pied();
   
