@@ -127,7 +127,7 @@ class DB {
 	    return $this->execQuery($requete,null,'RSSItem');
       }
 
-      public function getRSSItem($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
+      public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
                 $requete =   'SELECT * 
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
