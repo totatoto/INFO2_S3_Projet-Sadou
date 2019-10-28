@@ -8,7 +8,7 @@
         <div>
 			<?php
 	
-			require 'DB.inc.php';
+			include 'DB.inc.php';
 
 			$db = DB->getInstance();
 
