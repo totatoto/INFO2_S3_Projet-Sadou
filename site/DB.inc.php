@@ -121,7 +121,7 @@ class DB {
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
                               ON A.id = B.id_rss_item  
-                              WHERE B.link = $link 
+                              WHERE B.link = '.$link.' 
                               AND A.pub_date >= (SELECT CURRENT_DATE - 7) 
                               ORDER BY A.importance DESC, A.pub_date DESC
                               LIMIT 50';
