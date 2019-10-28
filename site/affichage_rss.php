@@ -6,15 +6,14 @@
     </head>
     <body>
         <div>
-			<?php
-	
-			include 'DB.inc.php';
+			<?php phpinfo(); ?>
+			<!-- require 'DB.inc.php';
 
 			$db = DB->getInstance();
 
 			$db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
 
-			?>
+			?> -->
             <!-- Insert name or a logo -->
             <h1>CYBERNEWS</h1>
         </div>
