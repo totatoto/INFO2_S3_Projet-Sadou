@@ -120,23 +120,27 @@ class DB {
       	    $requete =   'SELECT * 
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
-                              ON A.id = B.id_rss_item 
-                              ORDER BY A.importance 
+                              ON A.id = B.id_rss_item  
                               WHERE B.link = $link 
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)';
+                              AND A.pub_date >= (SELECT CURRENT_DATE - 7) 
+                              ORDER BY A.importance DESC, A.pub_date DESC
+                              LIMIT 50;'
 	    return $this->execQuery($requete,null,'RSSItem');
       }
 
-      public function getRSSItem($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
+      public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
                 $requete =   'SELECT * 
                               FROM RSS_ITEM AS A 
                               JOIN ITEM_OF_FLUX_RSS AS B 
                               ON A.id = B.id_rss_item 
-                              ORDER BY A.importance 
                               WHERE B.link in $links /*à voir*/
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)';
+                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)
+                              ORDER BY A.importance DESC, A.pub_date DESC
+                              LIMIT 50;'
           return $this->execQuery($requete,null,'RSSItem');
       }
+
+
 
       // public function getClients() {
       //           $requete = 'select * from pac_client';
