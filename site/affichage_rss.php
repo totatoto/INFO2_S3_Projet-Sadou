@@ -1,8 +1,8 @@
 <?php
-	include ("DB.inc.php");
+	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
-	enTete();
+	require();
 	contenu();
 	pied();
   
