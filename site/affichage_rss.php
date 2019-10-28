@@ -4,7 +4,7 @@
 
 	enTete();
 	contenu();
-
+	echo "test";
 	pied();
   
   
