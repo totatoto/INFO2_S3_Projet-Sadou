@@ -5,6 +5,7 @@
         <title>Notre site web</title>
     </head>
     <body>
+        <?php phpinfo(); ?>
         <div>
             <!-- Insert name or a logo -->
             <h1>CYBERNEWS</h1>
