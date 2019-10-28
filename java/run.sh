@@ -1,2 +1,2 @@
 cd ./bin
-java -cp .:../libs RSSController
+java RSSController
