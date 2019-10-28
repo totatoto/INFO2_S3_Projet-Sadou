@@ -1,2 +1,2 @@
 cd ./bin
-java RSSController
+java RSSController -Djava.ext.dirs="./libs"
