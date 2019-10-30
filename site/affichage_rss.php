@@ -1,6 +1,7 @@
 <?php
 	require ("DB.inc.php");
 	include "fctAux.inc.php";
+	include('../lib/full/qrlib.php');
 
 	enTete();
 	contenu();
@@ -15,6 +16,10 @@
 		else
 		{
 			echo "<h1>Items RSS de la dernière semaine</h1>\n";
+
+    		// outputs image directly into browser, as PNG stream
+    		QRcode::png('PHP QR Code :)');
+
 			try {
 				echo "<table>\n<tr>\n";
 				echo "<th>id</th>\n";
