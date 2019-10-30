@@ -14,12 +14,14 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-			echo "<h1>Consultation de la table Achat</h1>\n";
+			echo "<h1>Items RSS de la dernière semaine</h1>\n";
 			try {
 				echo "<table>\n<tr>\n";
-				echo "<th>ncli</th>\n";
-				echo "<th>np</th>\n";
-				echo "<th>qa</th>\n";
+				echo "<th>id</th>\n";
+				echo "<th>title</th>\n";
+				echo "<th>link</th>\n";
+				echo "<th>pub_date</th>\n";
+				echo "<th>importance</th>\n";
 				echo "</tr>\n";
 				foreach ($db->getRSSItem("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml") as $item)
 				{
@@ -27,6 +29,8 @@
 					echo "<td>".$item->getId()."</td>\n";
 					echo "<td>".$item->getTitle()."</td>\n";
 					echo "<td>".$item->getLink()."</td>\n";
+					echo "<td>".$item->getPubDate()."</td>\n";
+					echo "<td>".$item->getImportance()."</td>\n";
 					echo "</tr>\n";
 				}
 				echo "</table>";
