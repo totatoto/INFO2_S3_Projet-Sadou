@@ -28,7 +28,7 @@
 					echo "<tr>\n";
 					echo "<td>".$item->getId()."</td>\n";
 					echo "<td>".$item->getTitle()."</td>\n";
-					echo "<td>".$item->getLink()."</td>\n";
+					echo "<td>".QRcode::png('$item->getLink()')."</td>\n";
 					echo "<td>".$item->getPubDate()."</td>\n";
 					echo "<td>".$item->getImportance()."</td>\n";
 					echo "</tr>\n";
