@@ -13,17 +13,5 @@
         <div>
             Des informations ici
         </div>
-        <div>
-            Des informations ici
-        </div>
-        <div>
-            Des informations ici
-        </div>
-        <div>
-            Des informations ici
-        </div>
-        <div>
-            Des informations ici
-        </div>
     </body>
 </html>
