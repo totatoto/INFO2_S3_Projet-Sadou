@@ -23,7 +23,7 @@
 				echo "<th>pub_date</th>\n";
 				echo "<th>importance</th>\n";
 				echo "</tr>\n";
-				foreach ($db->getRSSItems(("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml","http://feeds.feedburner.com/phoenixjp/")) as $item)
+				foreach ($db->getRSSItems("http://feeds.feedburner.com/phoenixjp/") as $item)
 				{
 					echo "<tr>\n";
 					echo "<td>".$item->getId()."</td>\n";
