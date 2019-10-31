@@ -3,9 +3,9 @@
 	include "fctAux.inc.php";
 
 	enTete();
-	<div>
+	echo "<div>";
 		contenu();
-	</div>
+	echo "</div>";
 	pied();
 
 
