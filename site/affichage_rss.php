@@ -4,12 +4,12 @@
 
 	enTete();
 	echo "<div>";
-		contenu();
+		contenu("http://feeds.feedburner.com/phoenixjp/");
 	echo "</div>";
 	pied();
 
 
-	function contenu()
+	function contenu($link)
 	{
 		$db = DB::getInstance();
 		if ($db == null)
@@ -23,7 +23,7 @@
 				echo "<th>link</th>\n";
 				echo "<th>pub_date</th>\n";
 				echo "</tr>\n";
-				foreach ($db->getRSSItem("http://feeds.feedburner.com/phoenixjp/") as $item)
+				foreach ($db->getRSSItem($link) as $item)
 				{
 					echo "<tr>\n";
 					echo "<td>".$item->getTitle()."</td>\n";
