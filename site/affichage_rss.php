@@ -18,7 +18,7 @@
 		{
 			echo "<h1>Items RSS de la dernière semaine</h1>\n";
 			try {
-				echo "<table  id="tableRSS"></table>";
+				echo '<table  id="tableRSS"></table>';
 
 				// \n<tr>\n";
 				// echo "<th>title</th>\n";
