@@ -35,7 +35,7 @@
 				// 	echo "</tr>\n";
 				// }
 
-				echo json_encode($db->getRSSItem($link))
+				echo json_encode($db->getRSSItem($link));
 			} //fin try
 			catch (Exception $e) {
 				  echo $e->getMessage();
