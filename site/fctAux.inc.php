@@ -9,7 +9,7 @@
 		if (!empty($css))
 			echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="'.$css.'" />';
 		if (!empty($js))
-			echo "\t\t".'<script type="text/javascript" src="'.$js.'"/>';
+			echo "\t\t".'<script type="text/javascript" src="'.$js.'"></script>';
 		echo "\t</head>\n";
 		echo "\t<body>\n";
 	}
