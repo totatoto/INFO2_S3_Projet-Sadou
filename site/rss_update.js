@@ -9,7 +9,7 @@ function f1()
     console.log("f1 appelee");
     var xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange",function(event) {f2(xhttp);});
-    xhttp.open("GET", "getRssItems.php", true);
+    xhttp.open("GET", "getRssItems.php?link=" + document.getElementById("tableItem").link, true);
     xhttp.send();
 }
 

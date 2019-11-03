@@ -2,7 +2,7 @@
 	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
-	enTete("affichage flux rss","rss.css","rss_update.js?link=https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
+	enTete("affichage flux rss","rss.css","rss_update.js");
 	echo "<div>";
 		contenu("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
 	echo "</div>";
@@ -18,7 +18,7 @@
 		{
 			echo "<h1>Items RSS de la dernière semaine</h1>\n";
 			try {
-				echo '<table  id="tableItem"></table>';
+				echo '<table link="https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" id="tableItem"></table>';
 
 				// \n<tr>\n";
 				// echo "<th>title</th>\n";
