@@ -17,7 +17,7 @@ function f2(req)
 {
      console.log("passage" + req.readyState + req.status);
     if (req.readyState == 4 && req.status == 200) {
-         console.log("retour reçu");
+         console.log("retour reçu" + req.responseText);
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          s = resultat.forEach(function(element) {
