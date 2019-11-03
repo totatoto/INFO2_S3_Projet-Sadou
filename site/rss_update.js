@@ -4,8 +4,6 @@ window.addEventListener("load", function() {
   f1();
 },false);
 
-window.addEventListener("load", initGestionEvents, false);
-
 function f1()
 {
     console.log("f1 appelee");
@@ -17,6 +15,7 @@ function f1()
 
 function f2()
 {
+     console.log("passage" + this.readyState);
     if (this.readyState == 4 && this.status == 200) {
          console.log("retour reçu");
          resultat = JSON.parse(this.responseText);
