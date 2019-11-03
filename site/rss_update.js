@@ -13,12 +13,12 @@ function f1()
     xhttp.send();
 }
 
-function f2()
+function f2(req)
 {
-     console.log("passage" + this.readyState);
-    if (this.readyState == 4 && this.status == 200) {
+     console.log("passage" + req.readyState);
+    if (req.readyState == 4 && req.status == 200) {
          console.log("retour reçu");
-         resultat = JSON.parse(this.responseText);
+         resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          s = resultat.forEach(function(element) {
              console.log(element);
