@@ -6,22 +6,30 @@ window.addEventListener("load", function() {
 
 function f1()
 {
-    console.log("f1 appelee :: " + "link=" + document.getElementById("tableItem").getAttribute("link"));
     var xhttp = new XMLHttpRequest();
-    xhttp.addEventListener("readystatechange",function(event) {f2(xhttp);});
+    xhttp.addEventListener("readystatechange",function(_event) {f2(xhttp);});
     xhttp.open("GET", "getRssItems.php?link=" + document.getElementById("tableItem").getAttribute("link"), true);
     xhttp.send();
 }
 
 function f2(req)
 {
-     console.log("passage" + req.readyState + req.status);
     if (req.readyState == 4 && req.status == 200) {
-         console.log("retour reçu" + req.responseText);
+
+        var s = "\n<tr>\n"
+        s += "<th>title</th>\n";
+        s += "<th>link</th>\n";
+        s += "<th>pub_date</th>\n";
+        s += "</tr>\n";
+
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          resultat.forEach(function(element) {
-             console.log(element);
+             s += "<tr>\n";
+             s += "<td>" + element["title"] + "</td>\n";
+             s += "<td>" + element["link"] + "</td>\n";
+             s += "<td>" + element["pub_date"] + "</td>\n";
+             s += "</tr>\n";
          });
 
         document.getElementById("tableItem").innerHTML = s;
