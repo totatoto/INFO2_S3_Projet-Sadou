@@ -16,7 +16,7 @@ function f2()
          resultat = JSON.parse(this.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          s = resultat.forEach(function(element) {
-             console.log(element);
+             print(element);
             })
 
         document.getElementById("tableItem").innerHTML = s;
