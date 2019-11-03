@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function f1()
 {
+    console.log("f1 appelee");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = f2();
     xhttp.open("GET", "5.50.179.242/sit/getRssItems.php", true);
@@ -13,6 +14,7 @@ function f1()
 function f2()
 {
     if (this.readyState == 4 && this.status == 200) {
+         console.log("retour reçu");
          resultat = JSON.parse(this.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          s = resultat.forEach(function(element) {
