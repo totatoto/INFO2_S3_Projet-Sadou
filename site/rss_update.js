@@ -1,7 +1,10 @@
 window.addEventListener("load", function() {
+  console.log("load fini");
   setInterval(f1,120000);
   f1();
 },false);
+
+window.addEventListener("load", initGestionEvents, false);
 
 function f1()
 {
