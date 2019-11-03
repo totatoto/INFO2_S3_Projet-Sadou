@@ -11,7 +11,7 @@ public class Database {
 	private PreparedStatement psSelectFluxRss;
 	private PreparedStatement psInsertFluxRssItem;
 	private PreparedStatement psInsertItemOfFluxRss;
-	
+
 	private int nbRequest;
 
 	private Database() {
@@ -29,12 +29,23 @@ public class Database {
 			psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
 			psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,importance) VALUES(?,?,?,?)");
 			psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
-
 		}
 		catch (SQLException e) {
-			e.printStackTrace();
+			try
+			{
+				connec = DriverManager.getConnection("jdbc:postgresql://5.50.179.242:5432/info2_s3_projet_sadou","pi","Martin123");
+				psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
+				psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
+				psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
+				psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,importance) VALUES(?,?,?,?)");
+				psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
+			}
+			catch (SQLException e2)
+			{
+				System.out.println("Impossible de se connecter à la base !");
+			}
 		}
-		
+
 		this.nbRequest = 0;
 	}
 
@@ -42,7 +53,7 @@ public class Database {
 		if(dbInstance==null){dbInstance=new Database();}
 		return dbInstance;
 	}
-	
+
 	private void requested()
 	{
 		this.nbRequest++;
@@ -54,7 +65,7 @@ public class Database {
 
 		ResultSet rsFluxRSS=selectRSS.executeQuery(req);
 		this.requested();
-		
+
 		while(rsFluxRSS.next()){
 			FluxRSS fluxRss = new FluxRSS(rsFluxRSS.getString("link"),rsFluxRSS.getInt("id_last_rss"));
 			listeFluxRss.add(fluxRss);
@@ -69,11 +80,11 @@ public class Database {
 
 	public RSSItem getRSSItem(int id) throws SQLException{
 		RSSItem rssItem = null;
-		
+
 		psSelectFluxRssItem.setInt(1,id);
 		ResultSet rsRSSItem=psSelectFluxRssItem.executeQuery();
 		this.requested();
-		
+
 		if(rsRSSItem.next())
 			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getInt("importance"));
 		rsRSSItem.close();
@@ -82,11 +93,11 @@ public class Database {
 
 	public FluxRSS getFluxRSS(String link) throws SQLException{
 		FluxRSS fluxRSS = null;
-		
+
 		psSelectFluxRss.setString(1,link);
 		ResultSet rsFluxRSS=psSelectFluxRss.executeQuery();
 		this.requested();
-		
+
 		if(rsFluxRSS.next())
 			fluxRSS = new FluxRSS(rsFluxRSS.getString("link"),rsFluxRSS.getInt("id_last_rss"));
 		rsFluxRSS.close();
@@ -123,7 +134,7 @@ public class Database {
 
 		ResultSet rsLastId=selectLastId.executeQuery("SELECT currval('rss_item_id_seq');");
 		this.requested();
-		
+
 		if(rsLastId.next())
 			lastId = rsLastId.getInt("currval");
 		rsLastId.close();
@@ -138,12 +149,12 @@ public class Database {
 		for (RSSItem rssItem : rssItems)
 			this.insertFluxRSSItem(rssItem, fluxRSS);
 	}
-	
+
 	public void resetNbRequest()
 	{
 		this.nbRequest = 0;
 	}
-	
+
 	public int getNbRequest()
 	{
 		return nbRequest;
