@@ -6,7 +6,7 @@ window.addEventListener("load", function() {
 
 function f1()
 {
-    console.log("f1 appelee");
+    console.log("f1 appelee :: " + "link=" + document.getElementById("tableItem").link);
     var xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange",function(event) {f2(xhttp);});
     xhttp.open("GET", "getRssItems.php?link=" + document.getElementById("tableItem").link, true);
