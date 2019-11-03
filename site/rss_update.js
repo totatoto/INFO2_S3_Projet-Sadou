@@ -1,7 +1,7 @@
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
   setInterval(f1,120000);
   f1();
-});
+},false);
 
 function f1()
 {
