@@ -3,19 +3,19 @@
 /*classe permettant de representer les tuples de la table RSS_ITEM */
 class RSSItem {
       /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
-      private $id;
-      private $title;
-      private $link;
-      private $pub_date;
-      private $importance;
+      public $id;
+      public $title;
+      public $link;
+      public $pub_date;
+      public $importance;
 
       /* Les méthodes qui commencent par __ sont des methodes magiques */
       /* Elles sont appelées automatiquement par php suite à certains événements. */
       /* Ici c'est l'appel à new sur la classe qui déclenche l'exécution de la méthode */
       /* des valeurs par défaut doivent être spécifiées pour les paramètres du constructeur sinon
-      	 il y aura une erreur lorsqu'il sera appelé automatiquement par PDO 
-       */    
-      
+      	 il y aura une erreur lorsqu'il sera appelé automatiquement par PDO
+       */
+
       public function __construct($i=-1,$t="",$l="",$p="",$k=0) {
             $this->id = $i;
             $this->title = $t;
@@ -29,7 +29,7 @@ class RSSItem {
       public function getLink() { return $this->link; }
       public function getPubDate() { return $this->pub_date; }
       public function getImportance() { return $this->importance; }
-      
+
 
       public function __toString() {
             $res = "id:".$this->id."\n";
