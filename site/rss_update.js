@@ -20,9 +20,9 @@ function f2(req)
          console.log("retour reçu" + req.responseText);
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
-         s = resultat.forEach(function(element) {
+         resultat.forEach(function(element) {
              console.log(element);
-            })
+         });
 
         document.getElementById("tableItem").innerHTML = s;
     }
