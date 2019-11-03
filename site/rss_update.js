@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   setInterval(f1,120000);
+  f1();
 });
 
 function f1()
