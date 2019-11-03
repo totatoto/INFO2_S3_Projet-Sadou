@@ -15,7 +15,7 @@ function f1()
 
 function f2(req)
 {
-     console.log("passage" + req.readyState);
+     console.log("passage" + req.readyState + req.status);
     if (req.readyState == 4 && req.status == 200) {
          console.log("retour reçu");
          resultat = JSON.parse(req.responseText);
