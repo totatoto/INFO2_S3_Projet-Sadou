@@ -1,5 +1,5 @@
 <?php
-	require ("DB.inc.php");
+	//require ("DB.inc.php");
 	include "fctAux.inc.php";
 
 	enTete($js="rss_update.js");
