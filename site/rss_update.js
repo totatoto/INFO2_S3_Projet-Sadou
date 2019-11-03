@@ -6,7 +6,7 @@ function f1()
 {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = f2();
-    xhttp.open("GET", "ajax_info.php", true);
+    xhttp.open("GET", "5.50.179.242/sit/getRssItems.php", true);
     xhttp.send();
 }
 
