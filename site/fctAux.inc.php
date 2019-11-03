@@ -1,5 +1,5 @@
 <?php
-	function enTete($title="Titre",$css=NULL)
+	function enTete($title="Titre",$css=NULL,$js=NULL)
 	{
 		echo "<!DOCTYPE html>\n";
 		echo "<html>\n";
@@ -8,36 +8,38 @@
 		echo "\t\t<meta charset=\"UTF-8\"/>\n";
 		if (!empty($css))
 			echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="$css" />';
+		if (!empty($js))
+			echo "\t\t".'<script type="text/javascript" src="$js"/>';
 		echo "\t</head>\n";
 		echo "\t<body>\n";
 	}
-	
+
 	function pied()
 	{
 		//echo "\n\t\t".'<hr>'."\n\n\t\t".'Merci de votre visite.'."\n";
 		echo "\t".'</body>'."\n".'</html>';
 	}
-	
+
 	function isLoginOK($login)
 	{
 		return $login == "user" || $login == "admin";
 	}
-	
+
 	function isMotDePasseOK ($login,$mdp)
 	{
 		return ( $login == "user" && $mdp == "userpwd" ) || ( $login == "admin" && $mdp == "adminpwd" );
 	}
-	
+
 	function parse($data)
 	{
 		$parser=xml_parser_create();
-		
+
 		xml_parse($parser,$data) or
 		die (sprintf("XML Error: %s at line %d",
 		xml_error_string(xml_get_error_code($parser)),
 		xml_get_current_line_number($parser)));
 	}
-	
+
 	function test_input($data)
 	{
 	   //on supprime les espaces, les sauts de ligne etc.
