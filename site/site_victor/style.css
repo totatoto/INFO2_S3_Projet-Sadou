@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'Quicksand-Regular';
+    src: url('Quicksand-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Quicksand-Bold';
+    src: url('Quicksand-Bold.otf');
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+form
+{
+    color: black;
+}
+
+
+body 
+{
+
+    background: url(landscape2.png) white no-repeat;    
+
+}
+
+
+h3
+{
+	color: black;
+}
+
+ul
+{
+
+    list-style-type: none;
+    position: absolute;
+    background-color: #004159;
+     width: 100%;
+     top: 0%;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     color: white;
+
+
+}
+
+li
+{
+    float: left;
+    margin-left: 20px;
+    font-family: 'Quicksand-Regular', Arial, Serif;
+    font-size: 20px;
+}
+
+nav
+{
+    display: inline-block;
+    width: 150px;
+    vertical-align: top;
+    position: absolute;
+
+}
+
+section
+{
+    display: inline-block;    
+    vertical-align: top;
+}
+
+footer
+{    
+    background-color: #004159;
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'Quicksand-Regular', Arial, Serif;
+    font-size: 15px;
+    color: white;
+
+}
+
+h1
+{
+    color: black;
+}
+
+.valider
+{
+
+}
+
+form
+{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
+
+.container {
+    border-radius: 10px;
+      position: absolute;
+      margin-top: 1%;
+      top: 55%;
+     left: 50%;
+     -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+th,
+td {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: 'Quicksand-Regular', Arial, Serif;
+
+}
+th {
+  text-align: left;
+}
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+tbody td {
+  position: relative;
+  color: #051450;
+  
+}
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
