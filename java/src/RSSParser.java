@@ -1,4 +1,5 @@
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URI;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -7,6 +8,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.HostnameVerifier;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,7 +43,28 @@ public class RSSParser {
 
 		try {
 			URL url = uri.toURL();
-			stream = url.openStream();
+			System.out.println("1");
+			URLConnection conn = url.openConnection();
+			System.out.println("2");
+
+			if (conn instanceof HttpsURLConnection) {
+				System.out.println("3");
+
+				HttpsURLConnection conn1 = (HttpsURLConnection) url.openConnection();
+				System.out.println("4");
+
+				conn1.setHostnameVerifier(new MyHostnameVerifier());
+				//conn1.setSSLSocketFactory(SSLSocketFactory sf)
+				System.out.println("5");	
+				System.out.println(conn1.getHostnameVerifier());
+
+				stream = conn1.getInputStream();
+				System.out.println("6");
+			}
+			else
+			{				
+				stream = url.openStream();
+			}
 		} catch (MalformedURLException e) {
 		   e.printStackTrace();
 		} catch (IOException e) {
