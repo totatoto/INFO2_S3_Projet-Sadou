@@ -17,7 +17,7 @@ public class RSSController
     public static Map<FluxRSS,List<RSSItem>> updateAllRss() throws SQLException, URISyntaxException
     {
 		Map<FluxRSS,List<RSSItem>> mapUpdate = new HashMap<FluxRSS,List<RSSItem>>();
-		
+
         Database db = Database.getInstance();
 
         List<FluxRSS> listFluxRss = db.getFluxRSS();
@@ -26,7 +26,7 @@ public class RSSController
         {
             mapUpdate.put(fluxRss, RSSController.updateRss(fluxRss));
         }
-		
+
 		return mapUpdate;
     }
 
@@ -36,7 +36,7 @@ public class RSSController
         RSSItem.calcImportance(listNewRssItem);
 
         Database.getInstance().insertFluxRSSItem(listNewRssItem, fluxRss);
-		
+
 		return listNewRssItem;
     }
 
@@ -124,10 +124,12 @@ class Runner extends Thread
             do{
 				System.out.println("starting update");
 				Database.getInstance().resetNbRequest();
+
                 Map<FluxRSS,List<RSSItem>> updates = this.rssController.updateAllRss();
+
                 this.rssController.updated(updates);
 				System.out.println("number of request : " + Database.getInstance().getNbRequest());
-				
+
                 Thread.sleep(this.rssController.getTimeBetweenTwoUpdate());
             } while (!this.rssController.isStoped());
         } catch(Exception e) {this.rssController.failure(e);}

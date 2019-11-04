@@ -3,6 +3,7 @@ import java.net.URLConnection;
 import java.net.URI;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.security.cert.X509Certificate;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
@@ -50,26 +54,46 @@ public class RSSParser {
 			if (conn instanceof HttpsURLConnection) {
 				System.out.println("3");
 
+				TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+		            public java.security.cert.X509Certificate[] getAcceptedIssuers() { return null; }
+		            public void checkClientTrusted(X509Certificate[] certs, String authType) { }
+		            public void checkServerTrusted(X509Certificate[] certs, String authType) { }
+
+		        } };
+
+				SSLContext sc = SSLContext.getInstance("SSL");
+		        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+				HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
+
 				HttpsURLConnection conn1 = (HttpsURLConnection) url.openConnection();
 				System.out.println("4");
 
-				conn1.setHostnameVerifier(new MyHostnameVerifier());
-				//conn1.setSSLSocketFactory(SSLSocketFactory sf)
-				System.out.println("5");	
 				System.out.println(conn1.getHostnameVerifier());
 
 				stream = conn1.getInputStream();
-				System.out.println("6");
+
+				/*
+				Scanner scan = new Scanner(stream);
+				while (scan.hasNext())
+				{
+					System.out.println(scan.nextLine());
+				}*/
+
+				System.out.println("5");
 			}
 			else
-			{				
+			{
 				stream = url.openStream();
 			}
 		} catch (MalformedURLException e) {
 		   e.printStackTrace();
 		} catch (IOException e) {
 		   e.printStackTrace();
-		}
+	   } catch (Exception e)
+	   {
+		   e.printStackTrace();
+	   }
 
 		return stream;
 	}
@@ -79,7 +103,8 @@ public class RSSParser {
 		Document document = null;
 
 		try {
-			document = RSSParser.builder.parse(is);
+			document = RSSParser.builder.parse(is); // TODO NULL ICI
+			System.out.println(document);
 		} catch(IOException e) {
 			e.printStackTrace();
 		} catch(SAXException e) {
@@ -200,7 +225,7 @@ public class RSSParser {
 		} catch (SQLException e) {e.printStackTrace();}
 
 		RSSItem.sort(rssItems, RSSItem.SORT_RISING);
-		
+
 		return rssItems;
 	}
 
