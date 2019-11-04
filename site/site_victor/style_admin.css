@@ -36,10 +36,7 @@ h1
 
 form
 {
-	color: black;
-    position: absolute;
-    top: 25%;
-    left: 25%;
+    position : center;
 }
 
 footer
