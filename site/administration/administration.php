@@ -8,7 +8,7 @@ $_SESSION['admin'] = true;
 	
 <!DOCTYPE html>
 <html>
-	<?php include("../site/site_victor/head.php"); ?>
+	<?php include("../site_victor/head.php"); ?>
 	<body>
 		<header>
             <div>
@@ -51,7 +51,7 @@ $_SESSION['admin'] = true;
 		
 		
 		
-		<?php include("../site/site_victor/footer.php"); ?>
+		<?php include("../site_victor/footer.php"); ?>
 	</body>
 </html>
 
