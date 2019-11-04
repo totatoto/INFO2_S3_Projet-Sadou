@@ -34,6 +34,14 @@ h1
 	color: #004159;
 }
 
+form
+{
+	color: black;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
 footer
 {    
     background-color: #004159;
