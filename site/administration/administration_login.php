@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <?php include("../site/site_victor/head.php"); ?>
+    <?php include("../site_victor/head.php"); ?>
 
     <body>
-        <?php include("../site/site_victor/header.php"); ?>
+        <?php include("../site_victor/header.php"); ?>
     
         <form method="post" action="administration.php">
             <p>
@@ -18,7 +18,7 @@
             </p>
         </form>
         
-        <?php include("../site/site_victor/footer.php"); ?>
+        <?php include("../site_victor/footer.php"); ?>
         
     </body>
 </html>
