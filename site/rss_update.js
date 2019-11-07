@@ -16,7 +16,7 @@ function f2(req)
 {
     if (req.readyState == 4 && req.status == 200) {
 
-        int i = 0
+        var i = 0;
         var s = "<div class="mySlides">\n";
 
          resultat = JSON.parse(req.responseText);
