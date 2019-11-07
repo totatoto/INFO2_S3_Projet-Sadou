@@ -7,9 +7,19 @@
 		echo "\t\t<title>$title</title>\n";
 		echo "\t\t<meta charset=\"UTF-8\"/>\n";
 		if (!empty($css))
-			echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="'.$css.'" />';
+			if (!gettype($css) == "array")
+				echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="'.$css.'" />';
+			else
+				foreach ($css as $itemcss)
+					echo "\t\t".'<script type="text/javascript" src="'.$itemcss.'"></script>';
+				
 		if (!empty($js))
-			echo "\t\t".'<script type="text/javascript" src="'.$js.'"></script>';
+			if (!gettype($js) == "array")
+				echo "\t\t".'<script type="text/javascript" src="'.$js.'"></script>';
+			else
+				foreach ($js as $itemjs)
+					echo "\t\t".'<script type="text/javascript" src="'.$itemjs.'"></script>';
+					
 		echo "\t</head>\n";
 		echo "\t<body>\n";
 	}
