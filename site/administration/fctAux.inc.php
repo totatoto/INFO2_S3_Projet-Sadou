@@ -25,7 +25,7 @@
 	{
 		$db = DB::getInstance();
 		if ($db == null)
-			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
 		else
 		{
 			$accounts = $db->getAccount($pseudo);
@@ -43,7 +43,7 @@
 		
 		$db = DB::getInstance();
 		if ($db == null)
-			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !:";
 		else
 		{
 			$accounts = $db->getAccount($pseudo);
