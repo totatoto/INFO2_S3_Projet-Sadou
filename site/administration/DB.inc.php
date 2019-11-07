@@ -143,10 +143,10 @@ class DB {
 
 
 	/***********************************************************************************************************************************PARTIE VICTOR***************/
-	public function getAccount($pseudo) {
-		$requete = 'SELECT A.id, A.pseudo, A.password, A.status
+	public function getAccount($username) {
+		$requete = 'SELECT A.id, A.username, A.password, A.status
 					FROM account AS A
-					WHERE A.pseudo = '."'".$pseudo."'";
+					WHERE A.username = '."'".$username."'";
 					
 		return $this->execQuery($requete,null,'Account');
 	}
