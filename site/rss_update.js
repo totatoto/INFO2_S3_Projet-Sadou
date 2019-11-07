@@ -16,22 +16,25 @@ function f2(req)
 {
     if (req.readyState == 4 && req.status == 200) {
 
-        var s = "\n<tr>\n"
-        s += "<th>title</th>\n";
-        s += "<th>link</th>\n";
-        s += "<th>pub_date</th>\n";
-        s += "</tr>\n";
+        int i = 0
+        var s = "<div class="mySlides">\n";
 
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          resultat.forEach(function(element) {
-             s += "<tr>\n";
-             s += "<td>" + element["title"] + "</td>\n";
-             s += "<td>" + element["link"] + "</td>\n";
-             s += "<td>" + element["pub_date"] + "</td>\n";
-             s += "</tr>\n";
+            if (i == 3)
+            {
+                s += "</div>\n\n<div class="mySlides">\n";
+                i=0;
+            }
+             s += "<p>";
+             s += element["title"];
+             s += "</p>\n";
+             i++;
          });
 
-        document.getElementById("tableItem").innerHTML = s;
+         s += "</div>\n\n";
+
+        document.getElementById("conteneurItem").innerHTML = s;
     }
 }

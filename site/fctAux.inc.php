@@ -1,11 +1,12 @@
 <?php
-	function enTete($title="Titre",$css=NULL,$js=NULL)
+	function enTete($title="Titre",$css=NULL,$js=NULL,$icon)
 	{
 		echo "<!DOCTYPE html>\n";
 		echo "<html>\n";
 		echo "\t<head>\n";
 		echo "\t\t<title>$title</title>\n";
-		echo "\t\t<meta charset=\"UTF-8\"/>\n";
+		echo "\t\t<meta charset=\"UTF-8\"/>\n"; 
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 		if (!empty($css))
 			if (!gettype($css) == "array")
 				echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="'.$css.'" />';
@@ -20,6 +21,8 @@
 				foreach ($js as $itemjs)
 					echo "\t\t".'<script type="text/javascript" src="'.$itemjs.'"></script>';
 					
+		if (!empty($icon))
+			echo "\t\t".'<link rel = "icon" href =  "'.$icon.'" type = "image/x-icon"/>';
 		echo "\t</head>\n";
 		echo "\t<body>\n";
 	}
