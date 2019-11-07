@@ -1,5 +1,5 @@
 var slideIndex = 0;
-showSlides();
+
 
 function showSlides() {
   var i;
@@ -13,3 +13,7 @@ function showSlides() {
   slides[slideIndex-1].style.opacity = "1";
   setTimeout(showSlides, 12000); // Change image every 2 seconds
 } 
+
+window.addEventListener("load", function() {
+  showSlides();
+},false);
