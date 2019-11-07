@@ -1,6 +1,6 @@
 <?php
 include("fctAux.inc.php");
-include("DB.inc.php");
+require("DB.inc.php");
 
 if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 {
