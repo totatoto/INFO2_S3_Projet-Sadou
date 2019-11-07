@@ -143,7 +143,7 @@ class DB {
 
 
 	/***********************************************************************************************************************************PARTIE VICTOR***************/
-	public fuction getAccount($pseudo) {
+	public function getAccount($pseudo) {
 		$requete = 'SELECT A.id, A.pseudo, A.password, A.status
 					FROM account AS A
 					WHERE A.pseudo = '."'".$pseudo."'";
