@@ -16,5 +16,6 @@ function showSlides() {
 } 
 
 window.addEventListener("load", function() {
+	console.log(document.getElementsByClassName("mySlides"));
   showSlides();
 },false);
