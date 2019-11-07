@@ -8,14 +8,14 @@
 		echo "\t\t<meta charset=\"UTF-8\"/>\n"; 
 		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 		if (!empty($css))
-			if (!gettype($css) == "array")
+			if (!is_array($css))
 				echo "\t\t".'<link rel="stylesheet" media="all" type="text/css" href="'.$css.'" />';
 			else
 				foreach ($css as $itemcss)
 					echo "\t\t".'<script type="text/javascript" src="'.$itemcss.'"></script>';
 				
 		if (!empty($js))
-			if (!gettype($js) == "array")
+			if (!is_array($js))
 				echo "\t\t".'<script type="text/javascript" src="'.$js.'"></script>';
 			else
 				foreach ($js as $itemjs)
