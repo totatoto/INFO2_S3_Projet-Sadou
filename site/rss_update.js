@@ -17,14 +17,14 @@ function f2(req)
     if (req.readyState == 4 && req.status == 200) {
 
         var i = 0;
-        var s = "<div class="mySlides">\n";
+        var s = "<div class=\"mySlides\">\n";
 
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          resultat.forEach(function(element) {
             if (i == 3)
             {
-                s += "</div>\n\n<div class="mySlides">\n";
+                s += "</div>\n\n<div class=\"mySlides\">\n";
                 i=0;
             }
              s += "<p>";
