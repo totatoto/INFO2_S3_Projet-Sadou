@@ -29,7 +29,7 @@
 		else
 		{
 			$accounts = $db->getAccount($pseudo);
-			if ($account)
+			if (isset($account))
 				return true;
 			$db->close();
 		}
@@ -38,6 +38,9 @@
 
 	function isAccountOK ($pseudo,$password)
 	{
+		if (! isPseudoOK)
+			return false;
+		
 		$db = DB::getInstance();
 		if ($db == null)
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
