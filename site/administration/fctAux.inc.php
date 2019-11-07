@@ -38,7 +38,7 @@
 
 	function isAccountOK ($pseudo,$password)
 	{
-		if (! isPseudoOK)
+		if (! isPseudoOK($pseudo))
 			return false;
 		
 		$db = DB::getInstance();
