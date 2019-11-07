@@ -1,5 +1,4 @@
 <?php
-include("DB.inc.php");
 	
 	function enTete($title="Titre",$css=NULL,$js=NULL)
 	{
