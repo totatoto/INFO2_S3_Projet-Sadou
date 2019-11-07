@@ -2,7 +2,7 @@
 	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
-	enTete("affichage flux rss","style.css",["rss_update.js","JS.js"],"images/vignette.png");
+	enTete("affichage flux rss","Style.css",["rss_update.js","JS.js"],"images/vignette.png");
 	contenu("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
 	pied();
 
