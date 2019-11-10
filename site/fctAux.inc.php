@@ -1,11 +1,12 @@
 <?php
+
 	function enTete($title="Titre",$css=NULL,$js=NULL,$icon)
 	{
 		echo "<!DOCTYPE html>\n";
 		echo "<html>\n";
 		echo "\t<head>\n";
 		echo "\t\t<title>$title</title>\n";
-		echo "\t\t<meta charset=\"UTF-8\"/>\n"; 
+		echo "\t\t<meta charset=\"UTF-8\"/>\n";
 		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 		if (!empty($css))
 			if (!is_array($css))
@@ -13,14 +14,14 @@
 			else
 				foreach ($css as $itemcss)
 					echo "\t\t".'<script type="text/javascript" src="'.$itemcss.'"></script>';
-				
+
 		if (!empty($js))
 			if (!is_array($js))
 				echo "\t\t".'<script type="text/javascript" src="'.$js.'"></script>';
 			else
 				foreach ($js as $itemjs)
 					echo "\t\t".'<script type="text/javascript" src="'.$itemjs.'"></script>';
-					
+
 		if (!empty($icon))
 			echo "\t\t".'<link rel = "icon" href =  "'.$icon.'" type = "image/x-icon"/>';
 		echo "\t</head>\n";
@@ -33,14 +34,39 @@
 		echo "\t".'</body>'."\n".'</html>';
 	}
 
-	function isLoginOK($login)
+	function isPseudoOK($pseudo)
 	{
-		return $login == "user" || $login == "admin";
+		$db = DB::getInstance();
+		if ($db == null)
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
+		else
+		{
+			$accounts = $db->getAccount($pseudo);
+			if (isset($account))
+				return true;
+			$db->close();
+		}
+		return false;
 	}
 
-	function isMotDePasseOK ($login,$mdp)
+	function isAccountOK ($pseudo,$password)
 	{
-		return ( $login == "user" && $mdp == "userpwd" ) || ( $login == "admin" && $mdp == "adminpwd" );
+		if (! isPseudoOK($pseudo))
+			return false;
+
+		$db = DB::getInstance();
+		if ($db == null)
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !:";
+		else
+		{
+			$accounts = $db->getAccount($pseudo);
+			foreach ($accounts as $account) {
+				if ($account->getPassword() == $password)
+					return true;
+			}
+			$db->close();
+		}
+		return false;
 	}
 
 	function parse($data)

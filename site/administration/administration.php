@@ -1,6 +1,6 @@
 <?php
-require("DB.inc.php");
-include("fctAux.inc.php");
+require("../DB.inc.php");
+include("../fctAux.inc.php");
 
 if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 {
@@ -10,7 +10,7 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 	$_SESSION['password_user'] = $_POST['password_user'];
 	$_SESSION['admin'] = true;
 ?>
-	
+
 	<!DOCTYPE html>
 	<html>
 		<?php include("../site_victor/head.php"); ?>
@@ -24,15 +24,15 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 					<?php echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s"); ?>
 				</div>
 			</header>
-			
-			
-			
+
+
+
 			</br></br></br>
 			<h1>&nbsp; Administration</h1>
 			</br></br></br>
-			
-			
-			
+
+
+
 			<div>
 				<span style="float: right; text-align: right;">
 				<input class="favorite styledgreen" type="button" value="Modify">
@@ -52,10 +52,10 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 				</span>
 				<p>&nbsp; Ceci est un Flux RSS 2</p>
 			</div>
-			
-			
-			
-			
+
+
+
+
 			<?php include("../site_victor/footer.php"); ?>
 		</body>
 	</html>
