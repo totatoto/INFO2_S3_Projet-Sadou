@@ -35,7 +35,6 @@ class DB {
       public static function getInstance() {
 		 if (is_null(self::$instance)) {
  	     	try {
-              echo "creation!";
 		      self::$instance = new DB();
 			}
 			catch (PDOException $e) {
@@ -45,7 +44,6 @@ class DB {
  	    $obj = self::$instance;
 
 	    if (($obj->connect) == null) {
-            echo "null";
 	       self::$instance=null;
 	    }
 	    return self::$instance;
@@ -147,7 +145,6 @@ class DB {
   		$requete = 'SELECT A.id, A.username, A.password, A.status
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
-        echo $requete;
 
   		return $this->execQuery($requete,null,'Account');
   	}
