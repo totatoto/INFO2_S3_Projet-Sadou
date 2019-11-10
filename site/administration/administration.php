@@ -63,7 +63,9 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 <?php
 }
 else
+{
 	echo "test";
 	echo isPseudoOK($_POST['pseudo_user']));
 	echo isAccountOk($_POST['pseudo_user'],$_POST['password_user']);
+}
 ?>
