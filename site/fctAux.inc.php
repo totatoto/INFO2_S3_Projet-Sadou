@@ -34,8 +34,9 @@
 		echo "\t".'</body>'."\n".'</html>';
 	}
 
-	function isPseudoOK($pseudo, $db)
+	function isPseudoOK($pseudo)
 	{
+		$db = DB::getInstance();
 		if ($db == null)
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
 		else
@@ -47,11 +48,12 @@
 		return false;
 	}
 
-	function isAccountOK ($pseudo,$password,$db)
+	function isAccountOK ($pseudo,$password)
 	{
 		if (! isPseudoOK($pseudo))
 			return false;
 
+		$db = DB::getInstance();
 		if ($db == null)
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !:";
 		else
