@@ -35,6 +35,7 @@ class DB {
       public static function getInstance() {
 		 if (is_null(self::$instance)) {
  	     	try {
+              echo "creation!";
 		      self::$instance = new DB();
 			}
 			catch (PDOException $e) {
