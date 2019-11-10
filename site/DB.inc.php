@@ -13,7 +13,7 @@ class DB {
       /************************************************************************/
       private function __construct() {
       	      // Connexion � la base de donn�es
-	      $connStr = 'pgsql:host=127.0.0.1 port=5432 dbname=info2_s3_projet_sadu';
+	      $connStr = 'pgsql:host=127.0.0.1 port=5432 dbname=info2_s3_projet_sadou';
 	      try {
 		  // Connexion � la base
 	      	  $this->connect = new PDO($connStr, 'pi', 'Martin123');
@@ -44,6 +44,7 @@ class DB {
  	    $obj = self::$instance;
 
 	    if (($obj->connect) == null) {
+            echo "null";
 	       self::$instance=null;
 	    }
 	    return self::$instance;
