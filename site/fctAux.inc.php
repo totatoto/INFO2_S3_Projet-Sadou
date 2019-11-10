@@ -43,7 +43,6 @@
 			$accounts = $db->getAccount($pseudo);
 			if (isset($account))
 				return true;
-			$db->close();
 		}
 		return false;
 	}
@@ -62,7 +61,6 @@
 				if ($account->getPassword() == $password)
 					return true;
 			}
-			$db->close();
 		}
 		return false;
 	}
