@@ -2,7 +2,7 @@
 require("../DB.inc.php");
 include("../fctAux.inc.php");
 
-if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
+if (isPseudoOK($_POST['pseudo_user'],DB::getInstance()) && isAccountOk($_POST['pseudo_user'],$_POST['password_user'],DB::getInstance()))
 {
 	session_start();
 
@@ -64,6 +64,6 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 }
 else
 	echo "test";
-	echo isPseudoOK($_POST['pseudo_user']);
-	echo isAccountOk($_POST['pseudo_user'],$_POST['password_user']);
+	echo isPseudoOK($_POST['pseudo_user'],DB::getInstance());
+	echo isAccountOk($_POST['pseudo_user'],$_POST['password_user'],DB::getInstance());
 ?>
