@@ -1,41 +1,42 @@
 <?php
 
 require 'rssItem.inc.php';
+require 'account.inc.php';
 
 class DB {
-      private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
-      private $connect=null; //connexion PDO à la base
+      private static $instance = null; //mï¿½morisation de l'instance de DB pour appliquer le pattern Singleton
+      private $connect=null; //connexion PDO ï¿½ la base
 
       /************************************************************************/
-      //	Constructeur gerant  la connexion à la base via PDO
+      //	Constructeur gerant  la connexion ï¿½ la base via PDO
       //	NB : il est non utilisable a l'exterieur de la classe DB
-      /************************************************************************/	
+      /************************************************************************/
       private function __construct() {
-      	      // Connexion à la base de données
+      	      // Connexion ï¿½ la base de donnï¿½es
 	      $connStr = 'pgsql:host=127.0.0.1 port=5432 dbname=info2_s3_projet_sadou';
 	      try {
-		  // Connexion à la base
+		  // Connexion ï¿½ la base
 	      	  $this->connect = new PDO($connStr, 'pi', 'Martin123');
 		  // Configuration facultative de la connexion
-		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER); 
-		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION); 
+		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
 	      }
 	      catch (PDOException $e) {
       	      	    echo "probleme de connexion :".$e->getMessage();
-		    return null;    
+		    return null;
 	      }
       }
 
       /************************************************************************/
       //	Methode permettant d'obtenir un objet instance de DB
-      //	NB : cet objet est unique pour l'exécution d'un même script PHP
+      //	NB : cet objet est unique pour l'exï¿½cution d'un mï¿½me script PHP
       //	NB2: c'est une methode de classe.
       /************************************************************************/
       public static function getInstance() {
 		 if (is_null(self::$instance)) {
- 	     	try { 
-		      self::$instance = new DB(); 
-			} 
+ 	     	try {
+		      self::$instance = new DB();
+			}
 			catch (PDOException $e) {
 				echo $e;
 			}
@@ -46,93 +47,93 @@ class DB {
 	       self::$instance=null;
 	    }
 	    return self::$instance;
-      } //fin getInstance	 
+      } //fin getInstance
 
       /************************************************************************/
-      //	Methode permettant de fermer la connexion a la base de données
+      //	Methode permettant de fermer la connexion a la base de donnï¿½es
       /************************************************************************/
       public function close() {
       	     $this->connect = null;
       }
 
       /************************************************************************/
-      //	Methode uniquement utilisable dans les méthodes de la class DB 
-      //	permettant d'exécuter n'importe quelle requête SQL
-      //	et renvoyant en résultat les tuples renvoyés par la requête
+      //	Methode uniquement utilisable dans les mï¿½thodes de la class DB
+      //	permettant d'exï¿½cuter n'importe quelle requï¿½te SQL
+      //	et renvoyant en rï¿½sultat les tuples renvoyï¿½s par la requï¿½te
       //	sous forme d'un tableau d'objets
-      //	param1 : texte de la requête à exécuter (éventuellement paramétrée)
-      //	param2 : tableau des valeurs permettant d'instancier les paramètres de la requête
-      //	NB : si la requête n'est pas paramétrée alors ce paramètre doit valoir null.
-      //	param3 : nom de la classe devant être utilisée pour créer les objets qui vont
-      //	représenter les différents tuples.
-      //	NB : cette classe doit avoir des attributs qui portent le même nom que les attributs
-      //	de la requête exécutée.
-      //	ATTENTION : il doit y avoir autant de ? dans le texte de la requête
-      //	que d'éléments dans le tableau passé en second paramètre.
-      //	NB : si la requête ne renvoie aucun tuple alors la fonction renvoie un tableau vide
+      //	param1 : texte de la requï¿½te ï¿½ exï¿½cuter (ï¿½ventuellement paramï¿½trï¿½e)
+      //	param2 : tableau des valeurs permettant d'instancier les paramï¿½tres de la requï¿½te
+      //	NB : si la requï¿½te n'est pas paramï¿½trï¿½e alors ce paramï¿½tre doit valoir null.
+      //	param3 : nom de la classe devant ï¿½tre utilisï¿½e pour crï¿½er les objets qui vont
+      //	reprï¿½senter les diffï¿½rents tuples.
+      //	NB : cette classe doit avoir des attributs qui portent le mï¿½me nom que les attributs
+      //	de la requï¿½te exï¿½cutï¿½e.
+      //	ATTENTION : il doit y avoir autant de ? dans le texte de la requï¿½te
+      //	que d'ï¿½lï¿½ments dans le tableau passï¿½ en second paramï¿½tre.
+      //	NB : si la requï¿½te ne renvoie aucun tuple alors la fonction renvoie un tableau vide
       /************************************************************************/
       private function execQuery($requete,$tparam,$nomClasse) {
-      	     //on prépare la requête
+      	     //on prï¿½pare la requï¿½te
 	     $stmt = $this->connect->prepare($requete);
-	     //on indique que l'on va récupére les tuples sous forme d'objets instance de Client
-	     $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, $nomClasse); 
-	     //on exécute la requête
+	     //on indique que l'on va rï¿½cupï¿½re les tuples sous forme d'objets instance de Client
+	     $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, $nomClasse);
+	     //on exï¿½cute la requï¿½te
 	     if ($tparam != null) {
 	     	$stmt->execute($tparam);
 	     }
 	     else {
 	     	$stmt->execute();
 	     }
-	     //récupération du résultat de la requête sous forme d'un tableau d'objets
+	     //rï¿½cupï¿½ration du rï¿½sultat de la requï¿½te sous forme d'un tableau d'objets
 	     $tab = array();
-	     $tuple = $stmt->fetch(); //on récupère le premier tuple sous forme d'objet
+	     $tuple = $stmt->fetch(); //on rï¿½cupï¿½re le premier tuple sous forme d'objet
 	     if ($tuple) {
-	     	//au moins un tuple a été renvoyé
+	     	//au moins un tuple a ï¿½tï¿½ renvoyï¿½
      	      	 while ($tuple != false) {
 		       $tab[]=$tuple; //on ajoute l'objet en fin de tableau
-      	    	       $tuple = $stmt->fetch(); //on récupère un tuple sous la forme
-						//d'un objet instance de la classe $nomClasse	       
-    		 } //fin du while	           	     
+      	    	       $tuple = $stmt->fetch(); //on rï¿½cupï¿½re un tuple sous la forme
+						//d'un objet instance de la classe $nomClasse
+    		 } //fin du while
              }
-	     return $tab;    
+	     return $tab;
       }
-  
+
        /************************************************************************/
-      //	Methode utilisable uniquement dans les méthodes de la classe DB
-      //	permettant d'exécuter n'importe quel ordre SQL (update, delete ou insert)
-      //	autre qu'une requête.
-      //	Résultat : nombre de tuples affectés par l'exécution de l'ordre SQL
-      //	param1 : texte de l'ordre SQL à exécuter (éventuellement paramétré)
-      //	param2 : tableau des valeurs permettant d'instancier les paramètres de l'ordre SQL
-      //	ATTENTION : il doit y avoir autant de ? dans le texte de la requête
-      //	que d'éléments dans le tableau passé en second paramètre.
+      //	Methode utilisable uniquement dans les mï¿½thodes de la classe DB
+      //	permettant d'exï¿½cuter n'importe quel ordre SQL (update, delete ou insert)
+      //	autre qu'une requï¿½te.
+      //	Rï¿½sultat : nombre de tuples affectï¿½s par l'exï¿½cution de l'ordre SQL
+      //	param1 : texte de l'ordre SQL ï¿½ exï¿½cuter (ï¿½ventuellement paramï¿½trï¿½)
+      //	param2 : tableau des valeurs permettant d'instancier les paramï¿½tres de l'ordre SQL
+      //	ATTENTION : il doit y avoir autant de ? dans le texte de la requï¿½te
+      //	que d'ï¿½lï¿½ments dans le tableau passï¿½ en second paramï¿½tre.
       /************************************************************************/
       private function execMaj($ordreSQL,$tparam) {
       	     $stmt = $this->connect->prepare($ordreSQL);
-	     $res = $stmt->execute($tparam); //execution de l'ordre SQL      	     
+	     $res = $stmt->execute($tparam); //execution de l'ordre SQL
 	     return $stmt->rowCount();
       }
 
       /*************************************************************************
-       * Fonctions qui peuvent être utilisées dans les scripts PHP - 50 items au max - voir si on récupère par lien ou si on mix les flux etc
+       * Fonctions qui peuvent ï¿½tre utilisï¿½es dans les scripts PHP - 50 items au max - voir si on rï¿½cupï¿½re par lien ou si on mix les flux etc
        *************************************************************************/
       public function getRSSItem($link) {
-      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance 
-                              FROM RSS_ITEM AS A 
-                              JOIN ITEM_OF_FLUX_RSS AS B 
-                              ON A.id = B.id_rss_item  
-                              WHERE B.link_flux_rss = '."'".$link."'".' 
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7) 
+      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance
+                              FROM RSS_ITEM AS A
+                              JOIN ITEM_OF_FLUX_RSS AS B
+                              ON A.id = B.id_rss_item
+                              WHERE B.link_flux_rss = '."'".$link."'".'
+                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)
                               ORDER BY A.importance DESC, A.pub_date DESC
                               LIMIT 50';
 	    return $this->execQuery($requete,null,'RSSItem');
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
-                $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance 
-                              FROM RSS_ITEM AS A 
-                              JOIN ITEM_OF_FLUX_RSS AS B 
-                              ON A.id = B.id_rss_item 
+                $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.importance
+                              FROM RSS_ITEM AS A
+                              JOIN ITEM_OF_FLUX_RSS AS B
+                              ON A.id = B.id_rss_item
                               WHERE B.link_flux_rss in '.$links.'
                               AND A.pub_date >= (SELECT CURRENT_DATE - 7)
                               ORDER BY A.importance DESC, A.pub_date DESC
@@ -140,22 +141,30 @@ class DB {
           return $this->execQuery($requete,null,'RSSItem');
       }
 
+      public function getAccount($username) {
+  		$requete = 'SELECT A.id, A.username, A.password, A.status
+  					FROM account AS A
+  					WHERE A.username = '."'".$username."'";
+
+  		return $this->execQuery($requete,null,'Account');
+  	}
+
 
 
       // public function getClients() {
       //           $requete = 'select * from pac_client';
       //     return $this->execQuery($requete,null,'Client');
-      // } 
-      
+      // }
+
       // public function getProduits() {
       //           $requete = 'select * from pac_produit';
       //     return $this->execQuery($requete,null,'Produit');
-      // } 
-      
+      // }
+
       // public function getAchats() {
       //           $requete = 'select * from pac_achat';
       //     return $this->execQuery($requete,null,'Achat');
-      // }    
+      // }
 
       // public function getClientsAdr($adr) {
       //            $requete = 'select * from pac_client where adr = ?';
