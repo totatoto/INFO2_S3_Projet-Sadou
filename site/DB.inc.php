@@ -146,10 +146,6 @@ class DB {
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
 
-        echo $requete;
-        echo sizeof($this->execQuery($requete,null,'Account'));
-        echo "fintest";
-
   		return $this->execQuery($requete,null,'Account');
   	}
 
