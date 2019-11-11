@@ -146,6 +146,8 @@ class DB {
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
 
+        echo $requete;
+
   		return $this->execQuery($requete,null,'Account');
   	}
 
