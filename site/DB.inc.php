@@ -148,6 +148,7 @@ class DB {
 
         echo $requete;
         echo size($this->execQuery($requete,null,'Account'));
+        echo "fintest";
 
   		return $this->execQuery($requete,null,'Account');
   	}
