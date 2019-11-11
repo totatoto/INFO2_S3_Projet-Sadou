@@ -16,6 +16,7 @@ else
 	echo "test2";
 }
 ?>
+<h1>test10</h1>
 <?php
 	echo "test3";
 ?>
