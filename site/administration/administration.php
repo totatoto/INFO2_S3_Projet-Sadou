@@ -11,11 +11,9 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 	$_SESSION['admin'] = true;
 	echo "test";
 }
-?>
-	<h1>test</h1>
-<?php
 else
 {
 	echo "test";
 }
 ?>
+	<h1>test</h1>
