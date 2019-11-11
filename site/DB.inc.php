@@ -147,7 +147,7 @@ class DB {
   					WHERE A.username = '."'".$username."'";
 
         echo $requete;
-        echo size($this->execQuery($requete,null,'Account'));
+        echo sizeof($this->execQuery($requete,null,'Account'));
         echo "fintest";
 
   		return $this->execQuery($requete,null,'Account');
