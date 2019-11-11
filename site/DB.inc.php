@@ -147,7 +147,7 @@ class DB {
   					WHERE A.username = '."'".$username."'";
 
         echo $requete;
-        echo $this->execQuery($requete,null,'Account');
+        echo isset($this->execQuery($requete,null,'Account'));
 
   		return $this->execQuery($requete,null,'Account');
   	}
