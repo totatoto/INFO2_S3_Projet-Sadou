@@ -1,6 +1,6 @@
 <?php
 require("../DB.inc.php");
-include("../fctAux.inc.php");
+require("../fctAux.inc.php");
 
 if (isPseudoOK($_POST['pseudo_user']))
 {
