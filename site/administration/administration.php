@@ -13,7 +13,7 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 }
 else
 {
-	echo "test";
+	echo "test2";
 }
 ?>
 	<h1>test</h1>
