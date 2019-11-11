@@ -42,7 +42,7 @@
 		else
 		{
 			$accounts = $db->getAccount($pseudo);
-			if (isset($account))
+			if (isset($accounts))
 				return true;
 		}
 		return false;
