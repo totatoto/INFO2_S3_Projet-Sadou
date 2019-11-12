@@ -10,19 +10,19 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 	$_SESSION['password_user'] = $_POST['password_user'];
 	$_SESSION['admin'] = true;
 }
-?>
+
 
 	<!DOCTYPE html>
 	<html>
-		<?php include("../site_victor/head.php"); ?>
+		include("../site_victor/head.php");
 		<body>
 			<header>
 				<div>
 					<span style="float: right; text-align: right;">
 					<input class="favorite styledwhite" type="button" value="Log Out">
-						<?php echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;"; ?>
+						echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
 					</span>
-					<?php echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s"); ?>
+					echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
 				</div>
 			</header>
 
@@ -57,11 +57,11 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 
 
 
-			<?php include("../site_victor/footer.php"); ?>
+			include("../site_victor/footer.php");
 		</body>
 	</html>
 
-<?php
+
 else
 {
 	echo "test";
