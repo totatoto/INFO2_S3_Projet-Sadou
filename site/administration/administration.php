@@ -12,8 +12,6 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 }
 
 
-	<!DOCTYPE html>
-	<html>
 		include("../site_victor/head.php");
 		<body>
 			<header>
@@ -59,7 +57,6 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 
 			include("../site_victor/footer.php");
 		</body>
-	</html>
 
 
 else
