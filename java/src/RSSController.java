@@ -125,7 +125,7 @@ class Runner extends Thread
 				System.out.println("starting update");
 				Database.getInstance().resetNbRequest();
 
-                Map<FluxRSS,List<RSSItem>> updates = RSSController.rssController.updateAllRss();
+                Map<FluxRSS,List<RSSItem>> updates = RSSController.updateAllRss();
 
                 this.rssController.updated(updates);
 				System.out.println("number of request : " + Database.getInstance().getNbRequest());
