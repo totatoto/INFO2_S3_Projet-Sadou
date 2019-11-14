@@ -36,7 +36,7 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 				$link = $fluxRss->getLink();
 				echo '<div id="'.$link.'">';
 					echo '<span style="float: right; text-align: right;">';
-					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify('.$link.')">';
+					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify('."'".$link."'".')">';
 					echo '&nbsp;&nbsp;&nbsp;';
 					echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete("'.$link.'")">';
 					echo '&nbsp;&nbsp;&nbsp;';
