@@ -2,7 +2,7 @@
 	require("../DB.inc.php");
 	require("../fctAux.inc.php");
 
-	enTete("affichage flux rss","Style.css",["rss_update.js","JS.js"],"images/vignette.png");
+	enTete("page administration","style_admin.css","administration.js","icon.bmp");
 	contenu();
 	pied();
 
@@ -25,16 +25,15 @@
 				$db = $db = DB::getInstance();
 
 					include("../site_victor/head.php");
-					echo '<body>';
-						echo '<header>';
-							echo '<div>';
-								echo '<span style="float: right; text-align: right;">';
-								echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut">';
-									echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
-								echo '</span>';
-								echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
-							echo '</div>';
-						echo '</header>';
+					echo '<header>';
+						echo '<div>';
+							echo '<span style="float: right; text-align: right;">';
+							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut">';
+								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
+							echo '</span>';
+							echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
+						echo '</div>';
+					echo '</header>';
 
 
 
@@ -57,12 +56,6 @@
 							echo '</div>';
 							echo '</br></br>';
 						}
-
-
-
-
-						include("../site_victor/footer.php");
-					echo '</body>';
 
 			}
 			else
