@@ -148,13 +148,14 @@ class DB {
   					WHERE A.username = '."'".$username."'";
 
   		return $this->execQuery($requete,null,'Account');
+	  }
 
-      public function getFluxRss() {
-  		$requete = 'SELECT A.link, A.id_last_rss
-  					FROM FLUX_RSS AS A';
+	public function getFluxRss() {
+		$requete = 'SELECT A.link, A.id_last_rss
+				    FROM FLUX_RSS AS A';
 
-  		return $this->execQuery($requete,null,'FluxRss');
-  	}
+		return $this->execQuery($requete,null,'FluxRss');
+	}
 
 
 
