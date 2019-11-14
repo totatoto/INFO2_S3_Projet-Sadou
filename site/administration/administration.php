@@ -10,14 +10,14 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 	$_SESSION['password_user'] = $_POST['password_user'];
 	$_SESSION['admin'] = true;
 
-
+	$db = $db = DB::getInstance();
 
 		include("../site_victor/head.php");
 		echo '<body>';
 			echo '<header>';
 				echo '<div>';
 					echo '<span style="float: right; text-align: right;">';
-					echo '<input class="favorite styledwhite" type="button" value="Log Out">';
+					echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut">';
 						echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
 					echo '</span>';
 					echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
@@ -31,26 +31,20 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 			echo '</br></br></br>';
 
 
-
-			echo '<div>';
-				echo '<span style="float: right; text-align: right;">';
-				echo '<input class="favorite styledgreen" type="button" value="Modify">';
-				echo '&nbsp;&nbsp;&nbsp;';
-				echo '<input class="favorite styledred" type="button" value="Delete">';
-				echo '&nbsp;&nbsp;&nbsp;';
-				echo '</span>';
-				echo '<p>&nbsp; Ceci est un Flux RSS 1</p>';
-			echo '</div>';
-			echo '</br></br>';
-			echo '<div>';
-				echo '<span style="float: right; text-align: right;">';
-				echo '<input class="favorite styledgreen" type="button" value="Modify">';
-				echo '&nbsp;&nbsp;&nbsp;';
-				echo '<input class="favorite styledred" type="button" value="Delete">';
-				echo '&nbsp;&nbsp;&nbsp;';
-				echo '</span>';
-				echo '<p>&nbsp; Ceci est un Flux RSS 2</p>';
-			echo '</div>';
+			foreach($db->getFluxRss() as $fluxRss)
+			{
+				$link = $fluxRss->getLink();
+				echo '<div>';
+					echo '<span style="float: right; text-align: right;">';
+					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify">';
+					echo '&nbsp;&nbsp;&nbsp;';
+					echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete">';
+					echo '&nbsp;&nbsp;&nbsp;';
+					echo '</span>';
+					echo '<p>&nbsp; '.$link.'</p>';
+				echo '</div>';
+				echo '</br></br>';
+			}
 
 
 
