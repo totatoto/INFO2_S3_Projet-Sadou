@@ -94,6 +94,9 @@ class RSSItemComparator implements Comparator<RSSItem> {
 	@Override
 	public int compare(RSSItem rssItem1, RSSItem rssItem2)
 	{
+		if (rssItem1 == null || rssItem2 == null)
+			return 0;
+		
 		if (type == RSSItem.SORT_RISING)
 			return rssItem1.getPubDate().compareTo(rssItem2.getPubDate());
 		

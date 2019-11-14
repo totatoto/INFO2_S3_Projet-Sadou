@@ -11,6 +11,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -33,10 +35,28 @@ public class RSSParser {
 	private static DocumentBuilderFactory factory;
 	private static DocumentBuilder builder;
 	
+	private static Map<String, List<String>> MAP_CORRESP;
+	
 	private static SimpleDateFormat PARSE_DATE_FORMAT;
 
 	static {
 		PARSE_DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
+		MAP_CORRESP = new HashMap<>();
+		
+		List<String> listRss = new ArrayList<>();
+		listRss.add("rss");
+		MAP_CORRESP.put("rss",listRss);
+		
+		List<String> listChannel = new ArrayList<>();
+		listChannel.add("channel");
+		listChannel.add("feed");
+		MAP_CORRESP.put("channel",listChannel);
+		
+		List<String> listItem = new ArrayList<>();
+		listItem.add("item");
+		listItem.add("entry");
+		MAP_CORRESP.put("item",listItem);
+		
 		
 		factory = DocumentBuilderFactory.newInstance();
 		try
@@ -115,28 +135,37 @@ public class RSSParser {
 		NodeList nodeList = document.getChildNodes();
 
 		int i = 0;
-		while (i < nodeList.getLength() && ! nodeList.item(i).getNodeName().equals("rss")) {i++;}
+		while (i < nodeList.getLength() && ! RSSParser.MAP_CORRESP.get("rss").contains(nodeList.item(i).getNodeName()) && ! RSSParser.MAP_CORRESP.get("channel").contains(nodeList.item(i).getNodeName())) {System.out.println(nodeList.item(i).getNodeName()); i++;}
 
+		Node channel = null;
 		if (i == nodeList.getLength())
 			throw new IndexOutOfBoundsException();
+		
+		if (RSSParser.MAP_CORRESP.get("rss").contains(nodeList.item(i).getNodeName()))
+		{
+			Node rss = nodeList.item(i);
+			NodeList nodeRss = rss.getChildNodes();
 
-		Node rss = nodeList.item(i);
-		NodeList nodeRss = rss.getChildNodes();
+			i = 0;
+			while (i < nodeRss.getLength() && ! RSSParser.MAP_CORRESP.get("channel").contains(nodeRss.item(i).getNodeName())) {i++;}
 
-		i = 0;
-		while (i < nodeRss.getLength() && ! nodeRss.item(i).getNodeName().equals("channel")) {i++;}
+			if (i == nodeRss.getLength())
+				throw new IndexOutOfBoundsException();
+			
+			channel = nodeRss.item(i);
+		}
+		else
+		{
+			channel = nodeList.item(i);
+		}
 
-		if (i == nodeRss.getLength())
-			throw new IndexOutOfBoundsException();
-
-		Node channel = nodeRss.item(i);
 		NodeList nodeChannel = channel.getChildNodes();
 
 
 		for (int a = 0; a < nodeChannel.getLength() ; a++)
 		{
 			Node currentNode = nodeChannel.item(a);
-			if (currentNode.getNodeName().equals("item"))
+			if (RSSParser.MAP_CORRESP.get("item").contains(currentNode.getNodeName()))
 			{
 				NodeList nodeListItem = currentNode.getChildNodes();
 
@@ -163,6 +192,7 @@ public class RSSParser {
 								title = itemInformation.getTextContent();
 							break;
 						case "dc:date" :
+						case "updated" :
 							if (pubDate == null)
 							{
 								String timestampString = itemInformation.getTextContent();
@@ -205,6 +235,7 @@ public class RSSParser {
 		List<RSSItem> rssItems = null;
 		try{
 			rssItems = getRssItems(new URI(link));
+			System.out.println(rssItems.get(10));
 			RSSItem.sort(rssItems, RSSItem.SORT_RECEDING);
 
 			Database db = Database.getInstance();

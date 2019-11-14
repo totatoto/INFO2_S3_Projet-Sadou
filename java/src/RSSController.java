@@ -85,6 +85,7 @@ public class RSSController
     {
         this.stop = true;
         System.out.println("failure : " + e.toString());
+		e.printStackTrace();
     }
 
     public boolean isStoped()
