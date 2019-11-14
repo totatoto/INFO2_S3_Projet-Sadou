@@ -34,14 +34,14 @@ if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POS
 			foreach($db->getFluxRss() as $fluxRss)
 			{
 				$link = $fluxRss->getLink();
-				echo '<div>';
+				echo '<div id="'.$link.'">';
 					echo '<span style="float: right; text-align: right;">';
-					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify">';
+					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify("'.$link.'")">';
 					echo '&nbsp;&nbsp;&nbsp;';
-					echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete">';
+					echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete("'.$link.'")">';
 					echo '&nbsp;&nbsp;&nbsp;';
 					echo '</span>';
-					echo '<p>&nbsp; '.$link.'</p>';
+					echo '<input type="text" value="'.$link.'"/>';
 				echo '</div>';
 				echo '</br></br>';
 			}
