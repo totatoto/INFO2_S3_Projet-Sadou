@@ -3,7 +3,7 @@
 	include "fctAux.inc.php";
 
 	enTete("affichage flux rss","Style.css",["rss_update.js","JS.js"],"images/vignette.png");
-	contenu(["https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml"]);
+	contenu("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml");
 	pied();
 
 
