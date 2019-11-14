@@ -34,30 +34,48 @@ public class RSSParser {
 
 	private static DocumentBuilderFactory factory;
 	private static DocumentBuilder builder;
-	
+
 	private static Map<String, List<String>> MAP_CORRESP;
-	
+
 	private static SimpleDateFormat PARSE_DATE_FORMAT;
 
 	static {
 		PARSE_DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
 		MAP_CORRESP = new HashMap<>();
-		
+
 		List<String> listRss = new ArrayList<>();
 		listRss.add("rss");
 		MAP_CORRESP.put("rss",listRss);
-		
+
 		List<String> listChannel = new ArrayList<>();
 		listChannel.add("channel");
 		listChannel.add("feed");
 		MAP_CORRESP.put("channel",listChannel);
-		
+
 		List<String> listItem = new ArrayList<>();
 		listItem.add("item");
 		listItem.add("entry");
 		MAP_CORRESP.put("item",listItem);
-		
-		
+
+		List<String> listLink = new ArrayList<>();
+		listLink.add("link");
+		listLink.add("feedburner:origLink");
+		MAP_CORRESP.put("link",listLink);
+
+		List<String> listTitle = new ArrayList<>();
+		listTitle.add("title");
+		MAP_CORRESP.put("title",listTitle);
+
+		List<String> listDate1 = new ArrayList<>();
+		listDate1.add("dc:date");
+		listDate1.add("updated");
+		MAP_CORRESP.put("date1",listDate1);
+
+		List<String> listDate2 = new ArrayList<>();
+		listDate2.add("pubDate");
+		MAP_CORRESP.put("date2",listDate2);
+
+
 		factory = DocumentBuilderFactory.newInstance();
 		try
 		{
@@ -135,12 +153,12 @@ public class RSSParser {
 		NodeList nodeList = document.getChildNodes();
 
 		int i = 0;
-		while (i < nodeList.getLength() && ! RSSParser.MAP_CORRESP.get("rss").contains(nodeList.item(i).getNodeName()) && ! RSSParser.MAP_CORRESP.get("channel").contains(nodeList.item(i).getNodeName())) {System.out.println(nodeList.item(i).getNodeName()); i++;}
+		while (i < nodeList.getLength() && ! RSSParser.MAP_CORRESP.get("rss").contains(nodeList.item(i).getNodeName()) && ! RSSParser.MAP_CORRESP.get("channel").contains(nodeList.item(i).getNodeName())) {i++;}
 
 		Node channel = null;
 		if (i == nodeList.getLength())
 			throw new IndexOutOfBoundsException();
-		
+
 		if (RSSParser.MAP_CORRESP.get("rss").contains(nodeList.item(i).getNodeName()))
 		{
 			Node rss = nodeList.item(i);
@@ -151,7 +169,7 @@ public class RSSParser {
 
 			if (i == nodeRss.getLength())
 				throw new IndexOutOfBoundsException();
-			
+
 			channel = nodeRss.item(i);
 		}
 		else
@@ -177,38 +195,32 @@ public class RSSParser {
 				{
 					Node itemInformation = nodeListItem.item(b);
 
-					switch (itemInformation.getNodeName())
-					{
-						case "feedburner:origLink" :
-							if (link == null)
-								link = itemInformation.getTextContent();
-							break;
-						case "link" :
-							if (link == null)
-								link = itemInformation.getTextContent();
-							break;
-						case "title" :
-							if (title == null)
-								title = itemInformation.getTextContent();
-							break;
-						case "dc:date" :
-						case "updated" :
-							if (pubDate == null)
+					String name = itemInformation.getNodeName();
+
+					if (RSSParser.MAP_CORRESP.get("link").contains(name))
+						if (link == null)
+							link = itemInformation.getTextContent();
+
+					if (RSSParser.MAP_CORRESP.get("title").contains(name))
+						if (title == null)
+							title = itemInformation.getTextContent();
+
+					if (RSSParser.MAP_CORRESP.get("date1").contains(name))
+						if (pubDate == null)
+						{
+							String timestampString = itemInformation.getTextContent();
+							timestampString = timestampString.replaceAll("T"," ").substring(0,19);
+							pubDate = Timestamp.valueOf(timestampString);
+						}
+
+					if (RSSParser.MAP_CORRESP.get("date2").contains(name))
+						if (pubDate == null)
+						{
+							try
 							{
-								String timestampString = itemInformation.getTextContent();
-								timestampString = timestampString.replaceAll("T"," ").substring(0,19);
-								pubDate = Timestamp.valueOf(timestampString);
-							}
-							break;
-						case "pubDate" :
-							if (pubDate == null)
-							{
-								try
-								{
-									pubDate = new Timestamp(PARSE_DATE_FORMAT.parse(itemInformation.getTextContent()).getTime());
-								} catch (ParseException e) { e.printStackTrace();}
-							}
-					}
+								pubDate = new Timestamp(PARSE_DATE_FORMAT.parse(itemInformation.getTextContent()).getTime());
+							} catch (ParseException e) { e.printStackTrace();}
+						}
 
 				}
 
@@ -235,7 +247,6 @@ public class RSSParser {
 		List<RSSItem> rssItems = null;
 		try{
 			rssItems = getRssItems(new URI(link));
-			System.out.println(rssItems.get(10));
 			RSSItem.sort(rssItems, RSSItem.SORT_RECEDING);
 
 			Database db = Database.getInstance();
@@ -255,7 +266,7 @@ public class RSSParser {
 			}
 		} catch (SQLException e) {e.printStackTrace();}
 
-		
+
 		RSSItem.sort(rssItems, RSSItem.SORT_RISING);
 
 		return rssItems;

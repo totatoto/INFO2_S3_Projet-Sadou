@@ -7,10 +7,11 @@ import java.net.URISyntaxException;
 public class RSSController
 {
     public static final int TIME_BETWEEN_TWO_UPDATE = 120000; // 2 minutes
+    public static final int NB_UPDATE = -1;
 
     private int timeBetweenTwoUpdate;
 
-    private boolean stop;
+    private int stop;
 
     private Thread runner;
 
@@ -43,7 +44,7 @@ public class RSSController
     public RSSController(int timeBetweenTwoUpdate)
     {
         this.timeBetweenTwoUpdate = timeBetweenTwoUpdate;
-        this.stop = false;
+        this.stop = -1;
         this.runner = null;
     }
 
@@ -58,10 +59,15 @@ public class RSSController
 
     public boolean start()
     {
+        return this.start(-1);
+    }
+
+    public boolean start(int nbTour)
+    {
         if (this.runner == null)
             return false;
 
-        this.stop = false;
+        this.stop = nbTour;
         this.runner.start();
 
         return true;
@@ -69,7 +75,7 @@ public class RSSController
 
     public void stop()
     {
-        this.stop = true;
+        this.stop = 0;
     }
 
     public void updated(Map<FluxRSS,List<RSSItem>> updates)
@@ -77,20 +83,23 @@ public class RSSController
         System.out.println("updated");
 		for (FluxRSS fluxRss : updates.keySet())
 		{
-			System.out.println(fluxRss.getLink() + " : " + updates.get(fluxRss).size());
+			System.out.println("\t" + fluxRss.getLink() + " : " + updates.get(fluxRss).size());
 		}
+
+        if (this.stop > 0)
+            this.stop--;
     }
 
     public void failure(Exception e)
     {
-        this.stop = true;
+        this.stop();
         System.out.println("failure : " + e.toString());
 		e.printStackTrace();
     }
 
     public boolean isStoped()
     {
-        return this.stop;
+        return this.stop == 0;
     }
 
     public int getTimeBetweenTwoUpdate()
@@ -102,9 +111,26 @@ public class RSSController
 
     public static void main(String[] args)
     {
-        RSSController controller = new RSSController(RSSController.TIME_BETWEEN_TWO_UPDATE);
+        int nbUpdate = RSSController.NB_UPDATE;
+        int timeBetweenTwoUpdate = RSSController.TIME_BETWEEN_TWO_UPDATE;
+        if (args.length > 0 && args[0].matches("[0-9]+"))
+        {
+            try
+            {
+                nbUpdate = Integer.parseInt(args[0]);
+            } catch (Exception e) {e.printStackTrace();}
+        }
+        if (args.length > 1 && args[1].matches("[0-9]+"))
+        {
+            try
+            {
+                timeBetweenTwoUpdate = Integer.parseInt(args[1]);
+            } catch (Exception e) {e.printStackTrace();}
+        }
+
+        RSSController controller = new RSSController(timeBetweenTwoUpdate);
         controller.init();
-        controller.start();
+        controller.start(nbUpdate);
     }
 }
 
@@ -122,7 +148,7 @@ class Runner extends Thread
     public void run()
     {
         try{
-            do{
+            while (!this.rssController.isStoped()){
 				System.out.println("starting update");
 				Database.getInstance().resetNbRequest();
 
@@ -131,8 +157,9 @@ class Runner extends Thread
                 this.rssController.updated(updates);
 				System.out.println("number of request : " + Database.getInstance().getNbRequest());
 
-                Thread.sleep(this.rssController.getTimeBetweenTwoUpdate());
-            } while (!this.rssController.isStoped());
+                if (!this.rssController.isStoped())
+                    Thread.sleep(this.rssController.getTimeBetweenTwoUpdate());
+            }
         } catch(Exception e) {this.rssController.failure(e);}
     }
 }
