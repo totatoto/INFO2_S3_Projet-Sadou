@@ -1,4 +1,4 @@
-modify($link)
+function modify($link)
 {
-	document.findById($link)
+	console.log(document.getElementById($link))
 }
