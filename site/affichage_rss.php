@@ -14,6 +14,13 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
+<<<<<<< HEAD
+=======
+			$string_links = ''
+			foreach ($link as &$single_link) {
+    			$string_links = $string_links + $single_link;
+			}
+>>>>>>> 64d9280a26bdb135436be8a525b2affc09e39597
     		echo '<div class="slideshow-container" link="'.$string_links.'" id="conteneurItem">';
 			//echo "<h1>Items RSS de la dernière semaine</h1>\n";
 			//try {
