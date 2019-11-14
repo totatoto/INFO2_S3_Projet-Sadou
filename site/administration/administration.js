@@ -8,7 +8,7 @@ function modify(link)
 		let input = inputs[i];
 		if (input.getAttribute("type") == "text" && input.value)
 		{
-			newLink = input.getAttribute("value");
+			newLink = input.value;
 		}
 	};
 
