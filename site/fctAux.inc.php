@@ -31,9 +31,9 @@
 	function pied()
 	{
 		//echo "\n\t\t".'<hr>'."\n\n\t\t".'Merci de votre visite.'."\n";
-		echo '<footer>'
-            echo '<p class = "copyright"> © 2019 Adam BERNOUY - Benjamin LE CUNFF - Victor POITOU - Martin THOMINIAUX </p>'
-        echo '</footer>'
+		echo '<footer>';
+            echo '<p class = "copyright"> © 2019 Adam BERNOUY - Benjamin LE CUNFF - Victor POITOU - Martin THOMINIAUX </p>';
+        echo '</footer>';
 		echo "\t".'</body>'."\n".'</html>';
 	}
 
