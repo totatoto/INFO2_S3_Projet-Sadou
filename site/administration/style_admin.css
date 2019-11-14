@@ -36,9 +36,7 @@ h1
 
 form
 {
-    position: absolute;
-	top: 35%;
-	left: 35%;
+    position : center;
 }
 
 footer
