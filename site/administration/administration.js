@@ -6,7 +6,7 @@ function modify(link)
 	for (var i = 0; i < inputs.length; i++)
 	{
 		let input = inputs[i];
-		if (input.getAttribute("type") == "text" && input.hasAttribute("value"))
+		if (input.getAttribute("type") == "text" && input.value)
 		{
 			newLink = input.getAttribute("value");
 		}
