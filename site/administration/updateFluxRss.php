@@ -34,7 +34,7 @@
 			{
 				//if ($_POST['oldLink'] != $_POST['newLink'])
 				echo "MMM";
-				echo getTheFluxRss($_GET['newLink']);
+				echo $_GET['newLink'];
 				echo "LOL".getTheFluxRss($_GET['newLink']);
 				//updateFluxRss($_POST['oldLink'],$_POST['newLink']);
 			}
