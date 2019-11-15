@@ -100,7 +100,7 @@
 	}
 
 	echo "1";
-	echo $_SESSION['pseudo_user']
+	echo isset($_SESSION)
 	echo "2";
 	session_start();
 	echo "3";
