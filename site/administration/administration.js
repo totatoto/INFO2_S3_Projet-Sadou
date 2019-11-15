@@ -103,3 +103,21 @@ function resultDeleteRequest(req, link)
 		}
 	}
 }
+
+
+// LogOut button
+
+function logOut()
+{
+	xhttp.addEventListener("readystatechange",function(_event) {resultLogOutRequest(xhttp);});
+	xhttp.open("GET", "../disconnect.php", true);
+	xhttp.send();
+}
+
+function resultLogOutRequest(req)
+{
+	if (req.readyState == 4 && req.status == 200) {
+	{
+		document.location.href = administration_login.php;
+	}
+}
