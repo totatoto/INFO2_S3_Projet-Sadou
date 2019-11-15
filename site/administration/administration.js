@@ -15,7 +15,7 @@ function modify(oldLink)
 	if (oldLink && newLink)
 	{
 		var xhttp = new XMLHttpRequest();
-		xhttp.addEventListener("readystatechange",function(_event) {resultRequest(xhttp);});
+		xhttp.addEventListener("readystatechange",function(_event) {resultUpdateRequest(xhttp, oldLink, newLink);});
 		xhttp.open("GET", "updateFluxRss.php?oldLink=" + oldLink + "&newLink=" + newLink, true);
 		xhttp.send();
 	}
@@ -30,15 +30,23 @@ function updateIHM()
 
 }
 
-function resultRequest(req)
+function resultUpdateRequest(req, oldLink, newLink)
 {
 	if (req.readyState == 4 && req.status == 200) {
-		if (req.responseText == "Done")
+		if (req.responseText == "done")
 		{
-			updateIHM();
+			document.getElementById(newLink).setAttribute("id",newLink);
 		}
 		else
 		{
+			for (var i = 0; i < inputs.length; i++)
+			{
+				let input = inputs[i];
+				if (input.getAttribute("type") == "text" && input.value)
+				{
+					input.setValue(oldLink);
+				}
+			};
 			console.log("erreurRequête");
 		}
 	}
