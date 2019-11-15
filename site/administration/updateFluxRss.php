@@ -21,7 +21,7 @@
 					$_SESSION['password_user'] = $_POST['password_user'];
 					$_SESSION['admin'] = true;
 				}
-
+			echo "test";
     		if (isConnected(true))
 			{
 				//if ($_POST['oldLink'] != $_POST['newLink'])
