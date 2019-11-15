@@ -14,14 +14,21 @@
 		{
     		if (isConnected(true))
 			{
-				if (sizeof($db->getTheFluxRss($_GET['newLink'])) == 0)
+				if (isset($_GET['oldLink'] && $_GET['newLink'] ))
 				{
-					echo "erreur";
+					if (sizeof($db->getTheFluxRss($_GET['newLink'])) == 0)
+					{
+						echo "erreur";
+					}
+					else
+					{
+						updateFluxRss($_GET['oldLink'],$_GET['newLink']);
+						echo "done";
+					}
 				}
 				else
 				{
-					updateFluxRss($_POST['oldLink'],$_POST['newLink']);
-					echo "done";
+					echo "erreur2";
 				}
 			}
 		}
