@@ -14,7 +14,7 @@
 		{
     		if (isConnected(true))
 			{
-				if (isset($db->getTheFluxRss($_GET['newLink'])))
+				if (sizeof($db->getTheFluxRss($_GET['newLink'])) == 0)
 				{
 					echo "erreur";
 				}
