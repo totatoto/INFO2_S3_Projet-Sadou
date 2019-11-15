@@ -224,7 +224,7 @@ public class RSSParser {
 
 				}
 				
-				while(title.startsWith(" ") || title.startsWith("\t")) {title = title.substring(1);}
+				while(title.startsWith(" ") || title.startsWith("\t") || title.startsWith("\n")) {title = title.substring(1);}
 
 				listRssItem.add(new RSSItem(title, link, pubDate));
 
