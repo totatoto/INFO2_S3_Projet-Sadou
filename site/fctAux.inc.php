@@ -107,6 +107,6 @@
 			$_SESSION['password_user'] = $_POST['password_user'];
 			foreach (DB::getInstance()->getAccount($_SESSION['pseudo_user']) as $account)
 				if ($account->getPassword() == $_SESSION['password_user'])
-					$_SESSION['admin'] = $account->getStatus();
+					$_SESSION['admin'] = $account->getStatus()=="ADMIN";
 		}
 ?>
