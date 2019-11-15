@@ -99,8 +99,13 @@
 	   return $data;
 	}
 
+	echo "1";
+	echo $_SESSION['pseudo_user']
+	echo "2";
 	session_start();
-	echo "la";
+	echo "3";
+	echo $_SESSION['pseudo_user']
+	echo "4";
 	if (!isConnected(false))
 		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 		{
