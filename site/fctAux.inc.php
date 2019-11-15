@@ -73,7 +73,7 @@
 	function isConnected($admin)
 	{
 		if ($admin == true)
-			return isset($_SESSION['admin']) && $_SESSION['admin'] == true;
+			return isset($_SESSION['admin']) && ($_SESSION['admin'] == true);
 
 		return isset($_SESSION['admin']);
 	}
@@ -103,6 +103,7 @@
 	if (!isConnected(false))
 		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 		{
+			echo "ici";
 			$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
 			$_SESSION['password_user'] = $_POST['password_user'];
 			$_SESSION['admin'] = true;
