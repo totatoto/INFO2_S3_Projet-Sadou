@@ -40,9 +40,9 @@
 							$link = $fluxRss->getLink();
 							echo '<div id="'.$link.'">';
 								echo '<span style="float: right; text-align: right;">';
-								echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modify('."'".$link."'".')">';
+								echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
 								echo '&nbsp;&nbsp;&nbsp;';
-								echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete('."'".$link."'".')">';
+								echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
 								echo '&nbsp;&nbsp;&nbsp;';
 								echo '</span>';
 								echo '<input type="text" value="'.$link.'"/>';

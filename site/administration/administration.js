@@ -1,6 +1,6 @@
 // Modify buttons
 
-function modify(oldLink)
+function modifyLink(oldLink)
 {
 	let inputs = document.getElementById(oldLink).getElementsByTagName("input");
 
@@ -44,11 +44,11 @@ function resultUpdateRequest(req, oldLink, newLink)
 
 					if (input.getAttribute("type") == "button" && input.value == "Modify")
 					{
-						input.setAttribute("onclick","modify(" + "'" + newLink + "'" + ")");
+						input.setAttribute("onclick","modifyLink(" + "'" + newLink + "'" + ")");
 					}
 					else
 					{
-						input.setAttribute("onclick","delete(" + "'" + newLink + "'" + ")");
+						input.setAttribute("onclick","deleteLink(" + "'" + newLink + "'" + ")");
 					}
 				}
 			};
@@ -72,7 +72,7 @@ function resultUpdateRequest(req, oldLink, newLink)
 
 // Delete buttons
 
-function delete(link)
+function deleteLink(link)
 {
 	let linkElem = document.getElementById(link);
 
