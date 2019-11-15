@@ -35,7 +35,7 @@
 				//if ($_POST['oldLink'] != $_POST['newLink'])
 				echo "MMM";
 				echo $_GET['newLink'];
-				echo "LOL".$db->getTheFluxRss($_GET['newLink'])->__toString();
+				echo "LOL".$db->getTheFluxRss($_GET['newLink']);
 				echo "PPP";
 				//updateFluxRss($_POST['oldLink'],$_POST['newLink']);
 			}

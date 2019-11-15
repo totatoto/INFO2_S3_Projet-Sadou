@@ -159,7 +159,8 @@ class DB {
 
     public function getTheFluxRss($link) {
 		$requete = 'SELECT A.link, A.id_last_rss
-				    FROM FLUX_RSS AS A WHERE A.link='."'".$link."'";
+				    FROM FLUX_RSS AS A
+                    WHERE A.link = '."'".$link."'";
 
 		return $this->execQuery($requete,null,'FluxRss');
 	}
