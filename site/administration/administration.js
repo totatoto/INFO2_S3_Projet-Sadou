@@ -74,8 +74,6 @@ function resultUpdateRequest(req, oldLink, newLink)
 
 function deleteLink(link)
 {
-	let linkElem = document.getElementById(link);
-
 	if (link)
 	{
 		let xhttp = new XMLHttpRequest();
@@ -109,6 +107,7 @@ function resultDeleteRequest(req, link)
 
 function logOut()
 {
+	let xhttp = new XMLHttpRequest();
 	xhttp.addEventListener("readystatechange",function(_event) {resultLogOutRequest(xhttp);});
 	xhttp.open("GET", "../disconnect.php", true);
 	xhttp.send();
