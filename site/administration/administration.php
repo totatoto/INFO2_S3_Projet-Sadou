@@ -47,7 +47,7 @@
 									echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
 									echo '&nbsp;&nbsp;&nbsp;';
 									echo '</span>';
-									echo '<input type="text" value="'.$link.'"/>';
+									echo '<input type="text" class="inputRSS" value="'.$link.'"/>';
 								}
 								else
 								{

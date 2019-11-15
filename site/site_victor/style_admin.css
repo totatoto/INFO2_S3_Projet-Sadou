@@ -40,7 +40,7 @@ form
 }
 
 footer
-{    
+{
     background-color: #004159;
     display: block;
     position: absolute;
@@ -51,6 +51,10 @@ footer
     font-family: 'Quicksand-Regular', Arial, Serif;
     font-size: 15px;
     color: white;
+}
+
+.inputRSS {
+    width: 30%;
 }
 
 /*----------------------------------------------------------------*/
