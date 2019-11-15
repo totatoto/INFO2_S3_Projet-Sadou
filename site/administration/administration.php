@@ -9,6 +9,10 @@
 
 	function contenu()
 	{
+
+	    echo "test";
+	    echo $_SESSION["pseudo_user"];
+	    echo "fin";
 		$db = DB::getInstance();
 		if ($db == null)
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
