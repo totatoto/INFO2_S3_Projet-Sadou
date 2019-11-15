@@ -48,7 +48,6 @@ function resultUpdateRequest(req, oldLink, newLink)
 					input.setAttribute("onclick","modify(" + "'" + newLink + "'" + ")");
 				}
 			};
-			con
 		}
 		else
 		{
