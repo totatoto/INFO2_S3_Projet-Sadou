@@ -16,7 +16,7 @@
 			{
 				if (isset($_GET['oldLink']) && isset($_GET['newLink']))
 				{
-					if (sizeof($db->getTheFluxRss($_GET['newLink'])) == 0)
+					if (sizeof($db->getTheFluxRss($_GET['newLink'])) != 0 || sizeof($db->getTheFluxRss($_GET['oldLink'])) == 0)
 					{
 						echo "erreur";
 					}
