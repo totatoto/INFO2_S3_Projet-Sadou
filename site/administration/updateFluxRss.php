@@ -18,7 +18,7 @@
 				{
 					if (sizeof($db->getTheFluxRss($_GET['newLink'])) != 0 || sizeof($db->getTheFluxRss($_GET['oldLink'])) == 0)
 					{
-						echo "erreur";
+						echo "newLink or oldLink not valide";
 					}
 					else
 					{
@@ -26,9 +26,33 @@
 						echo "done";
 					}
 				}
+				else if (isset($_GET['deleteLink']))
+				{
+					if (sizeof($db->getTheFluxRss($_GET['deleteLink'])) != 0)
+					{
+						$db->deleteFluxRss($_GET['deleteLink']);
+						echo "done";
+					}
+					else
+					{
+						echo "link to delete not valide";
+					}
+				}
+				else if (isset($_GET['insertLink']))
+				{
+					if (sizeof($db->getTheFluxRss($_GET['insertLink'])) != 0)
+					{
+						echo "link to insert not valide";
+					}
+					else
+					{
+						$db->insertFluxRss($_GET['insertLink']);
+						echo "done";
+					}
+				}
 				else
 				{
-					echo "erreur2";
+					echo "not parametre";
 				}
 			}
 		}

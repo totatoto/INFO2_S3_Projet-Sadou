@@ -172,6 +172,18 @@ class DB {
         return $this->execMaj($requete,$tparam);
     }
 
+    public function deleteFluxRss($link) {
+         $requete = 'delete from FLUX_RSS where link = ?';
+         $tparam = array($link);
+         return $this->execMaj($requete,$tparam);
+     }
+
+     public function insertFluxRss($link) {
+          $requete = 'insert into FLUX_RSS(link) values(?)';
+          $tparam = array($link);
+          return $this->execMaj($requete,$tparam);
+     }
+
 
 
       // public function getClients() {
