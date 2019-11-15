@@ -89,7 +89,7 @@ function deleteLink(link)
 	}
 }
 
-function resultUpdateRequest(req, link)
+function resultDeleteRequest(req, link)
 {
 	if (req.readyState == 4 && req.status == 200) {
 		if (req.responseText == "done")
