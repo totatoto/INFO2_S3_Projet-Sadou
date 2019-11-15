@@ -36,6 +36,7 @@
 				echo "MMM";
 				echo $_GET['newLink'];
 				echo "LOL".getTheFluxRss($_GET['newLink'])->__toString();
+				echo "PPP";
 				//updateFluxRss($_POST['oldLink'],$_POST['newLink']);
 			}
 		}
