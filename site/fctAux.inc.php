@@ -103,11 +103,10 @@
 	if (!isConnected(false))
 		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 		{
-			echo "ici";
 			$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
 			$_SESSION['password_user'] = $_POST['password_user'];
-			foreach (DB::getInstance()->getAccount($_SESSION['pseudo_user']) as account)
-				if (account->getPassword() == $_SESSION['password_user'])
-					$_SESSION['admin'] = account->getStatus();
+			foreach (DB::getInstance()->getAccount($_SESSION['pseudo_user']) as $account)
+				if ($account->getPassword() == $_SESSION['password_user'])
+					$_SESSION['admin'] = $account->getStatus();
 		}
 ?>
