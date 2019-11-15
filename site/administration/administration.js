@@ -1,3 +1,5 @@
+// Modify buttons
+
 function modify(oldLink)
 {
 	let inputs = document.getElementById(oldLink).getElementsByTagName("input");
@@ -23,11 +25,6 @@ function modify(oldLink)
 	{
 		console.log("erreur param");
 	}
-}
-
-function updateIHM()
-{
-
 }
 
 function resultUpdateRequest(req, oldLink, newLink)
@@ -67,6 +64,41 @@ function resultUpdateRequest(req, oldLink, newLink)
 					input.setValue(oldLink);
 				}
 			};
+			console.log("erreurRequête");
+		}
+	}
+}
+
+
+// Delete buttons
+
+function delete(link)
+{
+	let linkElem = document.getElementById(link);
+
+	if (link)
+	{
+		let xhttp = new XMLHttpRequest();
+		xhttp.addEventListener("readystatechange",function(_event) {resultDeleteRequest(xhttp, link);});
+		xhttp.open("GET", "updateFluxRss.php?deleteLink=" + link, true);
+		xhttp.send();
+	}
+	else
+	{
+		console.log("erreur param");
+	}
+}
+
+function resultUpdateRequest(req, link)
+{
+	if (req.readyState == 4 && req.status == 200) {
+		if (req.responseText == "done")
+		{
+			let div = document.getElementById(link);
+			div.remove();
+		}
+		else
+		{
 			console.log("erreurRequête");
 		}
 	}
