@@ -33,6 +33,7 @@
     		if (isConnected(true))
 			{
 				//if ($_POST['oldLink'] != $_POST['newLink'])
+				echo "MMM";
 				echo "LOL".getTheFluxRss($_GET['newLink']);
 				//updateFluxRss($_POST['oldLink'],$_POST['newLink']);
 			}
