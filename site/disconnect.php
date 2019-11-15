@@ -6,5 +6,7 @@
     $_SESSION = array();
     //clear session from disk
     session_destroy();
+    echo "test";
     echo $_SESSION["pseudo_user"];
+    echo "fin";
 ?>
