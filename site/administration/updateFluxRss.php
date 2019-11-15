@@ -14,7 +14,7 @@
 		{
     		if (isConnected(true))
 			{
-				if (isset($_GET['oldLink'] && $_GET['newLink'] ))
+				if (isset($_GET['oldLink']) && isset($_GET['newLink']))
 				{
 					if (sizeof($db->getTheFluxRss($_GET['newLink'])) == 0)
 					{
