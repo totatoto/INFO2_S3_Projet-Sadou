@@ -14,11 +14,10 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
+			session_start();
 			if (!isConnected(true))
 				if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 				{
-					session_start();
-
 					$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
 					$_SESSION['password_user'] = $_POST['password_user'];
 					$_SESSION['admin'] = true;
