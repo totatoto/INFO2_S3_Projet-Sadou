@@ -73,7 +73,7 @@
 	function isConnected($admin)
 	{
 		if ($admin == true)
-			return isset($_SESSION['pseudo_user']) && isset($_SESSION['password_user']) && isset($_SESSION['admin']) && $_SESSION['admin'] == true);
+			return isset($_SESSION['pseudo_user']) && isset($_SESSION['password_user']) && isset($_SESSION['admin']) && $_SESSION['admin'] == true;
 
 		return isset($_SESSION['pseudo_user']) && isset($_SESSION['password_user']) && isset($_SESSION['admin']);
 	}
