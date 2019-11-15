@@ -1,4 +1,4 @@
-function modify(link)
+function modify(oldLink)
 {
 	let inputs = document.getElementById(link).getElementsByTagName("input");
 
@@ -12,5 +12,34 @@ function modify(link)
 		}
 	};
 
-	console.log(newLink);
+	if (oldLink && newLink)
+	{
+		var xhttp = new XMLHttpRequest();
+		xhttp.addEventListener("readystatechange",function(_event) {resultRequest(xhttp);});
+		xhttp.open("GET", "updateFluxRss.php?oldLink=" + oldLink + "&newLink=" + newLink, true);
+		xhttp.send();
+	}
+	else
+	{
+		console.log("erreur param");
+	}
+}
+
+function updateIHM()
+{
+
+}
+
+function resultRequest(req)
+{
+	if (req.readyState == 4 && req.status == 200) {
+		if (req.responseText == "Done")
+		{
+			updateIHM();
+		}
+		else
+		{
+			console.log("erreurRequête");
+		}
+	}
 }
