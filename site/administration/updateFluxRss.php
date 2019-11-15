@@ -22,7 +22,7 @@
 					}
 					else
 					{
-						updateFluxRss($_GET['oldLink'],$_GET['newLink']);
+						db->updateFluxRss($_GET['oldLink'],$_GET['newLink']);
 						echo "done";
 					}
 				}
