@@ -86,7 +86,7 @@ public class Database {
 		this.requested();
 
 		if(rsRSSItem.next())
-			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getInt("importance"));
+			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getString("description"),rsRSSItem.getInt("importance"));
 		rsRSSItem.close();
 		return rssItem;
 	}
@@ -125,7 +125,8 @@ public class Database {
 		this.psInsertFluxRssItem.setString(1,rssItem.getTitle());
 		this.psInsertFluxRssItem.setString(2,rssItem.getLink());
 		this.psInsertFluxRssItem.setTimestamp(3,rssItem.getPubDate());
-		this.psInsertFluxRssItem.setInt(4,rssItem.getImportance());
+		this.psInsertFluxRssItem.setString(4,rssItem.getDescription());
+		this.psInsertFluxRssItem.setInt(5,rssItem.getImportance());
 		this.psInsertFluxRssItem.executeUpdate();
 		this.requested();
 

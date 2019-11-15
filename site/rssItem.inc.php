@@ -7,6 +7,7 @@ class RSSItem {
       public $title;
       public $link;
       public $pub_date;
+      public $description;
       public $importance;
 
       /* Les méthodes qui commencent par __ sont des methodes magiques */
@@ -16,11 +17,12 @@ class RSSItem {
       	 il y aura une erreur lorsqu'il sera appelé automatiquement par PDO
        */
 
-      public function __construct($i=-1,$t="",$l="",$p="",$k=0) {
+      public function __construct($i=-1,$t="",$l="",$p="",$m="",$k=0) {
             $this->id = $i;
             $this->title = $t;
             $this->link = $l;
             $this->pub_date = $p;
+			$this->description = $m;
             $this->importance = $k;
       }
 
@@ -28,6 +30,7 @@ class RSSItem {
       public function getTitle() { return $this->title; }
       public function getLink() { return $this->link; }
       public function getPubDate() { return $this->pub_date; }
+      public function getDescription() { return $this->description; }
       public function getImportance() { return $this->importance; }
 
 
@@ -36,6 +39,7 @@ class RSSItem {
             $res = $res ."titre:".$this->title."\n";
             $res = $res ."lien de l'article:".$this->link."\n";
             $res = $res ."date de publication:".$this->pub_date."\n";
+            $res = $res ."description:".$this->description."\n";
             $res = $res ."importance:".$this->importance."\n";
             $res = $res ."<br/>";
             return $res;

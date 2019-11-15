@@ -6,6 +6,7 @@ CREATE TABLE RSS_ITEM (
 	title VARCHAR NOT NULL,
 	link VARCHAR NOT NULL,
 	pub_date TIMESTAMP,
+	description VARCHAR,
 	importance INTEGER NOT NULL DEFAULT 0
 );
 

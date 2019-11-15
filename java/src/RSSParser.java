@@ -75,6 +75,11 @@ public class RSSParser {
 		listDate2.add("pubDate");
 		MAP_CORRESP.put("date2",listDate2);
 
+		List<String> listDescription = new ArrayList<>();
+		listDescription.add("description");
+		listDescription.add("summary");
+		MAP_CORRESP.put("description",listDescription);
+
 
 		factory = DocumentBuilderFactory.newInstance();
 		try
@@ -190,6 +195,7 @@ public class RSSParser {
 				String title = null;
 				String link = null;
 				Timestamp pubDate = null;
+				String description = null;
 
 				for (int b = 0; b < nodeListItem.getLength() ; b++)
 				{
@@ -226,11 +232,16 @@ public class RSSParser {
 							} catch (ParseException e) { e.printStackTrace();}
 						}
 
+					if (RSSParser.MAP_CORRESP.get("description").contains(name))
+						if (description == null)
+							description = itemInformation.getTextContent();
+
 				}
 				
 				title = title.trim();
+				description = description.trim();
 				
-				listRssItem.add(new RSSItem(title, link, pubDate));
+				listRssItem.add(new RSSItem(title, link, pubDate,description));
 
 			}
 		}

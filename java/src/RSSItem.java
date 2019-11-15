@@ -11,6 +11,7 @@ public class RSSItem {
 	private String title;
 	private String link;
 	private Timestamp pubDate;
+	private String description;
 	private int importance;
 	
 	public static void calcImportance(List<RSSItem> listRssItem)
@@ -26,16 +27,17 @@ public class RSSItem {
 		listRssItem.sort(new RSSItemComparator(type));
 	}
 	
-	public RSSItem (String title, String link, Timestamp pubDate)
+	public RSSItem (String title, String link, Timestamp pubDate, String description)
 	{
-		this(-1, title, link, pubDate, -1);
+		this(-1, title, link, pubDate, description, -1);
 	}
 	
-	public RSSItem (int id, String title, String link, Timestamp pubDate, int importance) {
+	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, int importance) {
 		this.id = id;
 		this.title = title;
 		this.link = link;
 		this.pubDate = pubDate;
+		this.description = description;
 		this.importance = importance;
 	}
 	
@@ -59,6 +61,11 @@ public class RSSItem {
 		return this.pubDate;
 	}
 	
+	public String getDescription()
+	{
+		return this.description;
+	}
+	
 	public int getImportance()
 	{
 		return this.importance;
@@ -76,6 +83,7 @@ public class RSSItem {
 		sRet += "title : " + this.title + "\n";
 		sRet += "link : " + this.link + "\n";
 		sRet += "pubDate : " + this.pubDate + "\n";
+		sRet += "description : " + this.description + "\n";
 		sRet += "importance : " + this.importance + "\n";
 		
 		return sRet;
