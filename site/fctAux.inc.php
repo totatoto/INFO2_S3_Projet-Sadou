@@ -100,6 +100,7 @@
 	}
 
 	session_start();
+	echo "la";
 	if (!isConnected(false))
 		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 		{
