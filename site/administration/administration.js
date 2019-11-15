@@ -1,6 +1,5 @@
 function modify(oldLink)
 {
-	console.log(this);
 	let inputs = document.getElementById(oldLink).getElementsByTagName("input");
 
 	let newLink = null;
@@ -39,7 +38,7 @@ function resultUpdateRequest(req, oldLink, newLink)
 			let div = document.getElementById(oldLink)
 			div.setAttribute("id",newLink);
 
-			let inputs = div.getElementsByTagName("input");
+			let inputs = div.getElementsByTagName("span")[0].getElementsByTagName("input");
 			for (let i = 0; i < inputs.length; i++)
 			{
 				let input = inputs[i];
