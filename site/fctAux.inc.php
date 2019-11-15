@@ -73,9 +73,9 @@
 	function isConnected($admin)
 	{
 		if ($admin == true)
-			return isset($_SESSION['pseudo_user']) && isset($_SESSION['password_user']) && isset($_SESSION['admin']) && $_SESSION['admin'] == true;
+			return isset($_SESSION['admin']) && $_SESSION['admin'] == true;
 
-		return isset($_SESSION['pseudo_user']) && isset($_SESSION['password_user']) && isset($_SESSION['admin']);
+		return isset($_SESSION['admin']);
 	}
 
 	function parse($data)
@@ -98,4 +98,13 @@
 	   $data = htmlentities($data);
 	   return $data;
 	}
+
+	session_start();
+	if (!isConnected(true))
+		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
+		{
+			$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
+			$_SESSION['password_user'] = $_POST['password_user'];
+			$_SESSION['admin'] = true;
+		}
 ?>
