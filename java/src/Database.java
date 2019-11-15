@@ -27,7 +27,7 @@ public class Database {
 			psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 			psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
 			psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-			psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,importance) VALUES(?,?,?,?)");
+			psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(?,?,?,?,?)");
 			psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 		}
 		catch (SQLException e) {
@@ -37,7 +37,7 @@ public class Database {
 				psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 				psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
 				psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-				psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,importance) VALUES(?,?,?,?)");
+				psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(?,?,?,?,?)");
 				psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 			}
 			catch (SQLException e2)

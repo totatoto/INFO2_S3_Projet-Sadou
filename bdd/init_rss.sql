@@ -22,3 +22,7 @@
 
 -- INSERT INTO ACCOUNT VALUES('user','userpwd');
 INSERT INTO RSS_ITEM VALUES(id,title,link,pub_date,importance);
+INSERT INTO public.flux_rss(link) VALUES ('https://www.zdnet.fr/blogs/cybervigilance/rss/');
+INSERT INTO public.flux_rss(link) VALUES ('https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml');
+INSERT INTO public.flux_rss(link) VALUES ('https://www.lesnumeriques.com/rss.xml');
+INSERT INTO public.flux_rss(link) VALUES ('https://www.cert.ssi.gouv.fr/feed/');
