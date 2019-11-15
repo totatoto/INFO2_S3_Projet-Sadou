@@ -61,7 +61,7 @@ function resultUpdateRequest(req, oldLink, newLink)
 				let input = inputs[i];
 				if (input.getAttribute("type") == "text" && input.value)
 				{
-					input.setValue(oldLink);
+					input.value = oldLink;
 				}
 			};
 			console.log("erreurRequête");
