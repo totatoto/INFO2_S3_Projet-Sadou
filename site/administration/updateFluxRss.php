@@ -12,32 +12,17 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-			echo "test";
-			echo $_SESSION['pseudo_user'];
-			echo $_SESSION['password_user'];
-			echo $_SESSION['admin'];
-			echo "aaa";
-			echo isConnected(true);
-			echo "b";
-			echo isConnected(false);
-			echo "c";
     		if (isConnected(true))
 			{
-				echo "d";
-			}
-    		if (isConnected(false))
-			{
-				echo "e";
-			}
-
-    		if (isConnected(true))
-			{
-				//if ($_POST['oldLink'] != $_POST['newLink'])
-				echo "MMM";
-				echo $_GET['newLink'];
-				echo "LOL".$db->getTheFluxRss($_GET['newLink']);
-				echo "PPP";
-				//updateFluxRss($_POST['oldLink'],$_POST['newLink']);
+				if (isset($db->getTheFluxRss($_GET['newLink'])))
+				{
+					echo "erreur";
+				}
+				else
+				{
+					updateFluxRss($_POST['oldLink'],$_POST['newLink']);
+					echo "done";
+				}
 			}
 		}
 	}
