@@ -4,7 +4,7 @@ function modify(oldLink)
 	let inputs = document.getElementById(oldLink).getElementsByTagName("input");
 
 	let newLink = null;
-	for (var i = 0; i < inputs.length; i++)
+	for (let i = 0; i < inputs.length; i++)
 	{
 		let input = inputs[i];
 		if (input.getAttribute("type") == "text" && input.value)
@@ -15,7 +15,7 @@ function modify(oldLink)
 
 	if (oldLink && newLink)
 	{
-		var xhttp = new XMLHttpRequest();
+		let xhttp = new XMLHttpRequest();
 		xhttp.addEventListener("readystatechange",function(_event) {resultUpdateRequest(xhttp, oldLink, newLink);});
 		xhttp.open("GET", "updateFluxRss.php?oldLink=" + oldLink + "&newLink=" + newLink, true);
 		xhttp.send();
@@ -36,11 +36,24 @@ function resultUpdateRequest(req, oldLink, newLink)
 	if (req.readyState == 4 && req.status == 200) {
 		if (req.responseText == "done")
 		{
-			document.getElementById(oldLink).setAttribute("id",newLink);
+			let div = document.getElementById(oldLink)
+			div.setAttribute("id",newLink);
+
+			let inputs = div.getElementsByTagName("input");
+			for (let i = 0; i < inputs.length; i++)
+			{
+				let input = inputs[i];
+				if (input.getAttribute("type") == "button" && input.value == "modify")
+				{
+					input.setAttribute("onclick","modify(" + "'" + newLink + "'" + ")");
+				}
+			};
+			con
 		}
 		else
 		{
-			for (var i = 0; i < inputs.length; i++)
+			let inputs = document.getElementById(oldLink).getElementsByTagName("input");
+			for (let i = 0; i < inputs.length; i++)
 			{
 				let input = inputs[i];
 				if (input.getAttribute("type") == "text" && input.value)
