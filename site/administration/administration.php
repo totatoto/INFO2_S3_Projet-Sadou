@@ -14,7 +14,7 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-    		if (isConnected(true))
+    		if (isConnected(false))
 			{
 
 					include("../site_victor/head.php");
@@ -31,7 +31,7 @@
 
 
 						echo '</br></br></br>';
-						echo '<h1>&nbsp; Administration</h1>';
+						echo '<h1>&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</h1>';
 						echo '</br></br></br>';
 
 
@@ -39,13 +39,20 @@
 						{
 							$link = $fluxRss->getLink();
 							echo '<div id="'.$link.'">';
-								echo '<span style="float: right; text-align: right;">';
-								echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
-								echo '&nbsp;&nbsp;&nbsp;';
-								echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
-								echo '&nbsp;&nbsp;&nbsp;';
-								echo '</span>';
-								echo '<input type="text" value="'.$link.'"/>';
+								if ((isConnected(true))
+								{
+									echo '<span style="float: right; text-align: right;">';
+									echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
+									echo '&nbsp;&nbsp;&nbsp;';
+									echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
+									echo '&nbsp;&nbsp;&nbsp;';
+									echo '</span>';
+									echo '<input type="text" value="'.$link.'"/>';
+								}
+								else
+								{
+									echo '<p>'.$link.'</p>';
+								}
 							echo '</div>';
 							echo '</br></br>';
 						}
