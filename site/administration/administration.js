@@ -42,9 +42,17 @@ function resultUpdateRequest(req, oldLink, newLink)
 			for (let i = 0; i < inputs.length; i++)
 			{
 				let input = inputs[i];
-				if (input.getAttribute("type") == "button" && input.value == "modify")
+				if (input.getAttribute("type") == "button")
 				{
-					input.setAttribute("onclick","modify(" + "'" + newLink + "'" + ")");
+
+					if (input.getAttribute("type") == "button" && input.value == "Modify")
+					{
+						input.setAttribute("onclick","modify(" + "'" + newLink + "'" + ")");
+					}
+					else
+					{
+						input.setAttribute("onclick","delete(" + "'" + newLink + "'" + ")");
+					}
 				}
 			};
 		}
