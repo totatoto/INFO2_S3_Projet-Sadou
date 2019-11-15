@@ -35,7 +35,7 @@ function resultUpdateRequest(req, oldLink, newLink)
 	if (req.readyState == 4 && req.status == 200) {
 		if (req.responseText == "done")
 		{
-			document.getElementById(newLink).setAttribute("id",newLink);
+			document.getElementById(oldLink).setAttribute("id",newLink);
 		}
 		else
 		{
