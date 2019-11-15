@@ -1,6 +1,6 @@
 function modify(oldLink)
 {
-	let inputs = document.getElementById(link).getElementsByTagName("input");
+	let inputs = document.getElementById(oldLink).getElementsByTagName("input");
 
 	let newLink = null;
 	for (var i = 0; i < inputs.length; i++)

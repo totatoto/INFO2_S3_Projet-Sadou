@@ -45,7 +45,6 @@
 								echo '<input class="favorite styledred" type="button" value="Delete" onclick="delete('."'".$link."'".')">';
 								echo '&nbsp;&nbsp;&nbsp;';
 								echo '</span>';
-								echo '<a href="updateFluxRss.php">lien</a>';
 								echo '<input type="text" value="'.$link.'"/>';
 							echo '</div>';
 							echo '</br></br>';
