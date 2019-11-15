@@ -39,7 +39,7 @@
 						{
 							$link = $fluxRss->getLink();
 							echo '<div id="'.$link.'">';
-								if ((isConnected(true))
+								if (isConnected(true))
 								{
 									echo '<span style="float: right; text-align: right;">';
 									echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
