@@ -30,6 +30,14 @@
 			echo "b";
 			echo isConnected(false);
 			echo "c";
+    		if (isConnected(true))
+			{
+				echo "d";
+			}
+    		if (isConnected(false))
+			{
+				echo "e";
+			}
 
     		if (isConnected(true))
 			{
