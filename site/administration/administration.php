@@ -27,8 +27,6 @@
     		if (isConnected(true))
 			{
 
-				$db = $db = DB::getInstance();
-
 					include("../site_victor/head.php");
 					echo '<header>';
 						echo '<div>';

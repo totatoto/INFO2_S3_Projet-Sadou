@@ -157,6 +157,20 @@ class DB {
 		return $this->execQuery($requete,null,'FluxRss');
 	}
 
+    public function getTheFluxRss($link) {
+		$requete = 'SELECT A.link, A.id_last_rss
+				    FROM FLUX_RSS AS A WHERE A.link='."'".$link."'";
+
+		return $this->execQuery($requete,null,'FluxRss');
+	}
+
+
+    public function updateFluxRss($oldLink,$newLink) {
+        $requete = 'update FLUX_RSS set link = ? where link = ?';
+        $tparam = array($newLink,$oldLink);
+        return $this->execMaj($requete,$tparam);
+    }
+
 
 
       // public function getClients() {
