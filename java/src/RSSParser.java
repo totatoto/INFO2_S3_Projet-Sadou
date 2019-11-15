@@ -199,7 +199,11 @@ public class RSSParser {
 
 					if (RSSParser.MAP_CORRESP.get("link").contains(name))
 						if (link == null)
+						{
 							link = itemInformation.getTextContent();
+							if (link.equals("") && itemInformation.hasAttributes())
+								link = itemInformation.getAttributes().getNamedItem("href").getTextContent();
+						}
 
 					if (RSSParser.MAP_CORRESP.get("title").contains(name))
 						if (title == null)
