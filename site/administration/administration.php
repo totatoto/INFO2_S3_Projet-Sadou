@@ -9,10 +9,6 @@
 
 	function contenu()
 	{
-
-	    echo "test";
-	    echo $_SESSION["pseudo_user"];
-	    echo "fin";
 		$db = DB::getInstance();
 		if ($db == null)
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
@@ -54,12 +50,6 @@
 							echo '</br></br>';
 						}
 
-			}
-			else
-			{
-				echo "test";
-				echo isPseudoOK($_POST['pseudo_user']);
-				echo isAccountOk($_POST['pseudo_user'],$_POST['password_user']);
 			}
 		}
 	}
