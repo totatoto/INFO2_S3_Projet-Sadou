@@ -26,6 +26,10 @@
 			echo $_SESSION['password_user'];
 			echo $_SESSION['admin'];
 			echo "aaa";
+			echo isConnected(true);
+			echo "b";
+			echo isConnected(false);
+			echo "c";
 
     		if (isConnected(true))
 			{
