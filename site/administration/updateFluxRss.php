@@ -22,6 +22,10 @@
 					$_SESSION['admin'] = true;
 				}
 			echo "test";
+			echo $_SESSION['pseudo_user'];
+			echo $_SESSION['password_user'];
+			echo $_SESSION['admin'];
+
     		if (isConnected(true))
 			{
 				//if ($_POST['oldLink'] != $_POST['newLink'])
