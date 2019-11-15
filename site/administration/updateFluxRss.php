@@ -25,6 +25,7 @@
 			echo $_SESSION['pseudo_user'];
 			echo $_SESSION['password_user'];
 			echo $_SESSION['admin'];
+			echo "aaa";
 
     		if (isConnected(true))
 			{
