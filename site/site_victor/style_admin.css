@@ -46,8 +46,7 @@ form {
 
 #formulaire input {
     padding: 0 auto;
-    position: absolute; /* postulat de départ */
-    left: 0;
+    position: left;
 }
 
 footer
