@@ -44,11 +44,11 @@ form {
   border: 1px solid #004159;
 }
 
-p {
+form p {
   text-align: right;
   clear: both;
 }
-p span {
+form p span {
   float: left;
   margin-right: 10px;
 }
