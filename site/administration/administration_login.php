@@ -6,9 +6,9 @@
         <?php include("../site_victor/header.php"); ?>
 
 		</br></br>
-
-        <form method="post" action="administration.php">
-            <p>
+        <div class="formulaire">
+            <form method="post" action="administration.php">
+                <h1>CONNEXION</h1>
                 PSEUDO
                 </t>
                 <input type="text" name="pseudo_user"  />
@@ -17,9 +17,8 @@
                 <input type="password" name="password_user"  />
                 </br></br>
                 <input type="submit" value="Send" />
-            </p>
-        </form>
-
+            </form>
+        </div>
         <?php include("../site_victor/footer.php"); ?>
 
     </body>
