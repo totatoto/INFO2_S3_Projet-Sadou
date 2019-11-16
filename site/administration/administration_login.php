@@ -4,10 +4,10 @@
 
     <body>
         <?php include("../site_victor/header.php"); ?>
-    
+
 		</br></br>
-		
-        <form method="post" action="administration.php">
+
+        <form class="centre" method="post" action="administration.php">
             <p>
                 PSEUDO
                 </t>
@@ -19,8 +19,8 @@
                 <input type="submit" value="Send" />
             </p>
         </form>
-        
+
         <?php include("../site_victor/footer.php"); ?>
-        
+
     </body>
 </html>

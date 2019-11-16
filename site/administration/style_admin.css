@@ -40,7 +40,7 @@ form
 }
 
 footer
-{    
+{
     background-color: #004159;
     display: block;
     position: absolute;
@@ -135,3 +135,9 @@ footer
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 /*----------------------------------------------------------------*/
+
+.centre {
+  position: absolute; /* postulat de départ */
+  top: 50%; left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
