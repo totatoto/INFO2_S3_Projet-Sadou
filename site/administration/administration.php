@@ -41,7 +41,7 @@
 							echo '<div id="'.$link.'" class="divLinks">';
 								if (isConnected(true))
 								{
-									echo '<span style="float: right; text-align: right;">';
+									echo '<span style="float: left; text-align: left;">';
 									echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
 									echo '&nbsp;&nbsp;&nbsp;';
 									echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
