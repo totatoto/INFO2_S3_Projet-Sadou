@@ -40,10 +40,6 @@ form {
   transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
 }
 
-.max_box {
-    box-sizing: border-box;
-}
-
 footer
 {
     background-color: #004159;

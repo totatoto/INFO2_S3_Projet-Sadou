@@ -11,12 +11,12 @@
             <p>
                 PSEUDO
                 </t>
-                <input class="max_box" type="text" name="pseudo_user"  />
+                <input type="text" name="pseudo_user"  />
                 </br>
                 PASSWORD
-                <input class="max_box" type="password" name="password_user"  />
+                <input type="password" name="password_user"  />
                 </br></br>
-                <input class="max_box" type="submit" value="Send" />
+                <input type="submit" value="Send" />
             </p>
         </form>
 
