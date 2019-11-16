@@ -143,7 +143,7 @@ function resultInsertRequest(req, link, newLinkInput)
 		{
 			let divCurrentLinks = document.getElementById("divCurrentLinks");
 
-			let newDivHtml = '<div id="' + link + '">';
+			let newDivHtml = '<div id="' + link + '" class="divLinks">';
 			newDivHtml += '<span style="float: right; text-align: right;">';
 			newDivHtml += '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink(' + "'" + link + "'" + ')">';
 			newDivHtml += '&nbsp;&nbsp;&nbsp;';
