@@ -44,10 +44,12 @@ form {
   border: 1px solid #004159;
 }
 
-#formulaire input {
-    padding: 0 auto;
-    position: absolute;
-    right: 0;
+p {
+  text-align: right;
+  clear: both;
+}
+p span {
+  float: left;
 }
 
 footer

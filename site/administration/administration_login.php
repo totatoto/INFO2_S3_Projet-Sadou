@@ -10,11 +10,15 @@
             <form method="post" action="administration.php">
                 <h1>CONNEXION</h1>
                 </br>
-                PSEUDO
-                <input type="text" name="pseudo_user"  />
+                <p>
+                    <span>PSEUDO</span>
+                    <input type="text" name="pseudo_user"  />
+                </p>
                 </br>
-                PASSWORD
-                <input type="password" name="password_user"  />
+                <p>
+                    <span>PASSWORD</span>
+                    <input type="password" name="password_user"  />
+                </p>
                 </br></br>
                 <input type="submit" value="Send" />
             </form>
