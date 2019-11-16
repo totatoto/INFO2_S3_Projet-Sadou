@@ -57,6 +57,15 @@ input {
     border: 1px solid #004159;
 }
 
+.send_button {
+    width: 30%;
+    border: 0px;
+    border-color: white;
+    position: absolute; /* postulat de départ */
+    top: 50%; left: 50%; /* à 50%/50% du parent référent */
+    transform: translate(0, -50%); /* décalage de 50% de sa propre taille */
+}
+
 footer
 {
     background-color: #004159;
