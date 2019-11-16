@@ -20,7 +20,7 @@
                         <input type="password" name="password_user"  />
                     </p>
                 </br>
-                <input class="send_button" type="submit" value="Send" />
+                <input id="send_button" type="submit" value="Send" />
             </form>
 
         <?php include("../site_victor/footer.php"); ?>

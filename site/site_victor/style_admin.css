@@ -57,6 +57,12 @@ input {
     border: 1px solid #004159;
 }
 
+#send_button {
+    border: 0px;
+    background-color: #004159;
+    text-decoration-color: white;
+}
+
 footer
 {
     background-color: #004159;
