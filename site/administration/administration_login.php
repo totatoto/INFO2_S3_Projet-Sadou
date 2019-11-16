@@ -7,16 +7,16 @@
 
 		</br></br>
 
-        <form class="centre" method="post" action="administration.php">
+        <form method="post" action="administration.php">
             <p>
                 PSEUDO
                 </t>
-                <input type="text" name="pseudo_user"  />
+                <input class="max_box" type="text" name="pseudo_user"  />
                 </br>
                 PASSWORD
-                <input type="password" name="password_user"  />
+                <input class="max_box" type="password" name="password_user"  />
                 </br></br>
-                <input type="submit" value="Send" />
+                <input class="max_box" type="submit" value="Send" />
             </p>
         </form>
 
