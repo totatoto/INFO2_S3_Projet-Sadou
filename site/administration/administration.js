@@ -152,7 +152,6 @@ function resultInsertRequest(req, link, newLinkInput)
 			newDivHtml += '</span>';
 			newDivHtml += '<input type="text" class="inputRSS" value="' + link + '"/>';
 			newDivHtml += '</div>';
-			newDivHtml += '</br></br>';
 
 			divCurrentLinks.insertAdjacentHTML('beforeend', newDivHtml);
 			newLinkInput.value = "";
