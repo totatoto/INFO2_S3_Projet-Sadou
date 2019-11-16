@@ -47,11 +47,14 @@ form {
 p {
   text-align: right;
   clear: both;
-  border: 1px solid #004159;
 }
 p span {
   float: left;
   margin-right: 10px;
+}
+
+input {
+    border: 1px solid #004159;
 }
 
 footer
