@@ -38,7 +38,7 @@
 						foreach($db->getFluxRss() as $fluxRss)
 						{
 							$link = $fluxRss->getLink();
-							echo '<div id="'.$link.'">';
+							echo '<div id="'.$link.'" class="divLinks">';
 								if (isConnected(true))
 								{
 									echo '<span style="float: right; text-align: right;">';
@@ -54,7 +54,6 @@
 									echo '<p>'.$link.'</p>';
 								}
 							echo '</div>';
-							echo '</br></br>';
 						}
 						echo '</div>';
 

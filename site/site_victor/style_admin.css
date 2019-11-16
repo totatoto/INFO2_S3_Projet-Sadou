@@ -53,6 +53,10 @@ footer
     color: white;
 }
 
+.divLinks  {
+    padding-bottom: 20px;
+}
+
 .inputRSS {
     width: 30%;
 }
