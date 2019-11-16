@@ -57,7 +57,7 @@ input {
     border: 1px solid #004159;
 }
 
-.send_button {
+#send_button {
     width: 30%;
     border: 0px;
     border-color: #004159;
