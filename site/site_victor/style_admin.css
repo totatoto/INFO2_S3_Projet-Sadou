@@ -59,8 +59,8 @@ input {
 
 #send_button {
     border: 0px;
-    background-color: #004159;
-    text-decoration-color: white;
+    background: white;
+    color : #004159;
 }
 
 footer
