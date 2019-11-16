@@ -127,7 +127,7 @@ function insertLink()
 	{
 		let xhttp = new XMLHttpRequest();
 		xhttp.addEventListener("readystatechange",function(_event) {resultInsertRequest(xhttp, newLink, newLinkInput);});
-		xhttp.open("GET", "updateFluxRss.php?insertLink=" + link, true);
+		xhttp.open("GET", "updateFluxRss.php?insertLink=" + newLink, true);
 		xhttp.send();
 	}
 	else
