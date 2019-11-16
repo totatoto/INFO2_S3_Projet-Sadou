@@ -46,7 +46,8 @@ form {
 
 #formulaire input {
     padding: 0 auto;
-    position: left;
+    position: absolute;
+    right: 0;
 }
 
 footer
