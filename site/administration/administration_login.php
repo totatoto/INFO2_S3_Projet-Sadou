@@ -10,7 +10,6 @@
             <form method="post" action="administration.php">
                 <h1>CONNEXION</h1>
                 </br>
-                <div class="login_content">
                     <p>
                         <span>PSEUDO</span>
                         <input type="text" name="pseudo_user"  />
@@ -20,7 +19,6 @@
                         <span>PASSWORD</span>
                         <input type="password" name="password_user"  />
                     </p>
-                </div>
                 </br>
                 <input class="send_button" type="submit" value="Send" />
             </form>
