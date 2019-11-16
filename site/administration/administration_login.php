@@ -9,6 +9,7 @@
         <div class="formulaire">
             <form method="post" action="administration.php">
                 <h1>CONNEXION</h1>
+                </br>
                 PSEUDO
                 </t>
                 <input type="text" name="pseudo_user"  />

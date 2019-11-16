@@ -32,6 +32,9 @@ header
 h1
 {
 	color: #004159;
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
 }
 
 form {
