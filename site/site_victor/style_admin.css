@@ -65,7 +65,7 @@ input {
     position: absolute;
     left: 50%;
     transform: translate(-50%,0);
-    width: parent;
+    width: 50%;
 }
 
 footer
