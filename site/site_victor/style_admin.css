@@ -61,6 +61,7 @@ input {
     border: 0px;
     background: white;
     color : #004159;
+    border: 1px solid #004159;
     position: absolute;
     left: 50%;
 }
