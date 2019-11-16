@@ -44,16 +44,16 @@ form {
   border: 1px solid #004159;
 }
 
-#login_content p {
+p.login_content {
   text-align: right;
   clear: both;
 }
-#login_content p span {
+p span.login_content {
   float: left;
   margin-right: 10px;
 }
 
-#login_content input {
+input.login_content {
     border: 1px solid #004159;
 }
 
