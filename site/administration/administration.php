@@ -34,7 +34,7 @@
 						echo '<h1>&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</h1>';
 						echo '</br></br></br>';
 
-
+						echo '<div id="divCurrentLinks">';
 						foreach($db->getFluxRss() as $fluxRss)
 						{
 							$link = $fluxRss->getLink();
@@ -55,6 +55,18 @@
 								}
 							echo '</div>';
 							echo '</br></br>';
+						}
+						echo '</div>';
+
+						if (isConnected(true))
+						{
+							echo '<div id="insertLink">';
+							echo '<span style="float: right; text-align: right;">';
+							echo '<input class="favorite styledgreen" type="button" value="insert" onclick="insertLink()">';
+							echo '&nbsp;&nbsp;&nbsp;';
+							echo '</span>';
+							echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
+							echo '</div>';
 						}
 
 			}

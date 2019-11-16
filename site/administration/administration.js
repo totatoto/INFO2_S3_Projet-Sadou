@@ -103,6 +103,68 @@ function resultDeleteRequest(req, link)
 }
 
 
+// Insert buttons
+
+function insertLink()
+{
+	let divInsert = document.getElementById("insertLink");
+	let inputs = divInsert.getElementsByTagName("input");
+
+	let newLink = null;
+	let newLinkInput = null;
+
+	for (let i = 0; i < inputs.length; i++)
+	{
+		let input = inputs[i];
+		if (input.getAttribute("type") == "text" && input.value)
+		{
+			newLink = input.value;
+			newLinkInput = input;
+		}
+	};
+
+	if (newLink)
+	{
+		let xhttp = new XMLHttpRequest();
+		xhttp.addEventListener("readystatechange",function(_event) {resultInsertRequest(xhttp, newLink, newLinkInput);});
+		xhttp.open("GET", "updateFluxRss.php?insertLink=" + link, true);
+		xhttp.send();
+	}
+	else
+	{
+		console.log("erreur param");
+	}
+}
+
+function resultInsertRequest(req, link, newLinkInput)
+{
+	if (req.readyState == 4 && req.status == 200) {
+		if (req.responseText == "done")
+		{
+			let divCurrentLinks = document.getElementById("divCurrentLinks");
+
+			let newDivHtml = '<div id="' + link + '">';
+			newDivHtml += '<span style="float: right; text-align: right;">';
+			newDivHtml += '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink(' + "'" + link + "'" + ')">';
+			newDivHtml += '&nbsp;&nbsp;&nbsp;';
+			newDivHtml += '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink(' + "'" + link + "'" + ')">';
+			newDivHtml += '&nbsp;&nbsp;&nbsp;';
+			newDivHtml += '</span>';
+			newDivHtml += '<input type="text" class="inputRSS" value="' + link + '"/>';
+			newDivHtml += '</div>';
+			newDivHtml += '</br></br>';
+
+			divCurrentLinks.insertAdjacentHTML('beforeend', newDivHtml);
+			newLinkInput.value = "";
+		}
+		else
+		{
+			console.log("erreurRequête");
+		}
+	}
+}
+
+
 // LogOut button
 
 function logOut()
