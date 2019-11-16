@@ -64,6 +64,7 @@ input {
     border: 1px solid #004159;
     position: absolute;
     left: 50%;
+    transform: translate(-50%,0);
     width: 100%;
 }
 
