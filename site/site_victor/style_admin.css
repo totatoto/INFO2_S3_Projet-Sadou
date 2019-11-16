@@ -47,7 +47,7 @@ form {
 p {
   text-align: right;
   clear: both;
-  width:0 auto;
+  border: 1px solid #004159;
 }
 p span {
   float: left;
