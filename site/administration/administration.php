@@ -2,7 +2,7 @@
 	require("../DB.inc.php");
 	require("../fctAux.inc.php");
 
-	enTete("page administration","style_admin.css","administration.js","icon.bmp");
+	enTete("page administration","styles/style_admin.css","administration.js","styles/icon.bmp");
 	contenu();
 	pied();
 
