@@ -93,8 +93,8 @@ footer
 
 .divCurrentLinks {
     overflow: scroll;
-    height: inherit;
-    width: inherit;
+    height: 30%;
+    width: 100%;
 }
 
 .divLinks  {
