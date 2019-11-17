@@ -6,9 +6,8 @@
         <?php include("../site_victor/header.php"); ?>
 
 		</br>
-        </br></br></br>
-		<p class="titre">
-			<FONT size="8">Page Administration</FONT>
+        </br></br></br></br>
+		<p class="titre"><FONT size="8">Page Administration</FONT></p>
 			
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
