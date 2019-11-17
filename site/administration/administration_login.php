@@ -7,9 +7,9 @@
 
 		</br>
         </br></br></br>
-		<div>
-			<FONT class="titre" size="8">Page Administration</FONT>
-		</div>
+		<p class="titre">
+			<FONT size="8">Page Administration</FONT>
+			
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
             </br>
