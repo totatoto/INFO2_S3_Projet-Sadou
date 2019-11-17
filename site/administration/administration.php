@@ -19,7 +19,7 @@
 
 					include("head.php");
 					echo '<header>';
-						echo '<div style="overflow:auto;">';
+						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';
 							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
 								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
@@ -34,7 +34,7 @@
 						echo '<p class="titre">&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 						echo '</br></br></br>';
 
-						echo '<div id="divCurrentLinks" style="overflow:auto; height: 30%;">';
+						echo '<div id="divCurrentLinks" style="overflow:scroll; height: 30%;">';
 						foreach($db->getFluxRss() as $fluxRss)
 						{
 							$link = $fluxRss->getLink();
