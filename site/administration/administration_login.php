@@ -6,9 +6,8 @@
         <?php include("styles/header.php"); ?>
 
 		</br>
-        </br></br></br></br>
 		<p class="titre"><strong>Page Administration</strong></p>
-			
+
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
             </br>
