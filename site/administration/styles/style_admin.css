@@ -95,11 +95,11 @@ html {
 }
 
 #titre {
-    padding: 30px;
+    margin: 30px;
 }
 
 #divCurrentLinks {
-    padding: 20px;
+    margin: 20px;
     overflow-x: hidden;
     overflow-y: scroll;
     height: 300px;
@@ -108,7 +108,7 @@ html {
 }
 
 .insertLink {
-    padding: 20px;
+    margin: 20px;
 }
 
 .divLinks  {
