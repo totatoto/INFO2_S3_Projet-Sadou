@@ -30,8 +30,8 @@
 
 
 
-						echo '</br></br></br>';
-						echo '<h1>&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</h1>';
+						echo '</br></br></br></br>';
+						echo '<p class="titre">&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 						echo '</br></br></br>';
 
 						echo '<div id="divCurrentLinks">';
