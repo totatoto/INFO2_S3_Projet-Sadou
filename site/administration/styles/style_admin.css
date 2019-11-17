@@ -91,6 +91,12 @@ footer
     color: white;
 }
 
+.divCurrentLinks {
+    overflow: scroll;
+    height: inherit;
+    width: inherit;
+}
+
 .divLinks  {
     padding-bottom: 40px;
 }
