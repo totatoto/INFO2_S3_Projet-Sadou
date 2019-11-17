@@ -34,7 +34,7 @@
 						echo '<p class="titre">&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 						echo '</br></br></br>';
 
-						echo '<div id="divCurrentLinks style="overflow-x: hidden; overflow-y: scroll; height: 30%">';
+						echo '<div id="divCurrentLinks style="overflow-x: hidden; overflow-y: scroll; height: 300px">';
 						foreach($db->getFluxRss() as $fluxRss)
 						{
 							$link = $fluxRss->getLink();
