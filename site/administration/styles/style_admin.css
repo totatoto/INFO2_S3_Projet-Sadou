@@ -90,9 +90,11 @@ footer {
     color: white;
 }
 
+/*
 html {
     overflow :hidden;
 }
+*/
 
 #divCurrentLinks {
     overflow-x: hidden;
