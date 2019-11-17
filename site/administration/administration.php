@@ -61,7 +61,7 @@
 						{
 							echo '<div id="insertLink">';
 							echo '<span style="float: right; text-align: right;">';
-							echo '<input class="favorite styledgreen" type="button" value="insert" onclick="insertLink()">';
+							echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
 							echo '&nbsp;&nbsp;&nbsp;';
 							echo '</span>';
 							echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
