@@ -90,18 +90,6 @@ footer {
     color: white;
 }
 
-body, html {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.divCurrentLinks {
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 30%;
-    width: 100%;
-}
-
 .divLinks  {
     padding-bottom: 40px;
 }
