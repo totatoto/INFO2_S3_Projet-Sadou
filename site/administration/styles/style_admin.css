@@ -77,8 +77,11 @@ input {
     width: 50%;
 }
 
-footer
-{
+body {
+    position: relative;
+}
+
+footer {
     background-color: #004159;
     display: block;
     position: absolute;
