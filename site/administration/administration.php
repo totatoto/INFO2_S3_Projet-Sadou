@@ -17,7 +17,7 @@
     		if (isConnected(false))
 			{
 
-					include("../site_victor/head.php");
+					include("includes/head.php");
 					echo '<header>';
 						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';

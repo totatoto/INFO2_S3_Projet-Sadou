@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <?php include("../site_victor/head.php"); ?>
+    <?php include("includes/head.php"); ?>
 
     <body>
-        <?php include("../site_victor/header.php"); ?>
+        <?php include("includes/header.php"); ?>
 
 		</br>
         </br></br></br></br>
@@ -25,7 +25,7 @@
             <input id="send_button" type="submit" value="Send" />
         </form>
 
-        <?php include("../site_victor/footer.php"); ?>
+        <?php include("includes/footer.php"); ?>
 
     </body>
 </html>
