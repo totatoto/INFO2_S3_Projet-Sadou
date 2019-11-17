@@ -9,7 +9,7 @@
 		<p class="titre"><strong>Page Administration</strong></p>
 
         <form method="post" action="administration.php">
-            <h1 class="titre">CONNEXION</h1>
+            <h1 id="connexion">CONNEXION</h1>
             </br>
                 <p>
                     <span>PSEUDO</span>
