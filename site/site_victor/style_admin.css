@@ -33,7 +33,8 @@ header
 {
 	color: #004159;
 	font-family: 'Quicksand-Regular', Arial, Serif;
-    text-align: right;
+	position: absolute;
+    text-align: center;
 }
 
 
