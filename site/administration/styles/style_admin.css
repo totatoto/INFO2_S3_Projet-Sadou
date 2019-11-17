@@ -97,6 +97,7 @@ html {
 #divCurrentLinks {
     overflow-x: hidden;
     overflow-y: scroll;
+    height: 30%;
 }
 
 .divLinks  {
