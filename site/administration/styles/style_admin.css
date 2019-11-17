@@ -77,10 +77,6 @@ input {
     width: 50%;
 }
 
-body {
-    position: relative;
-}
-
 footer {
     background-color: #004159;
     display: block;
