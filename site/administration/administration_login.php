@@ -6,7 +6,7 @@
         <?php include("../site_victor/header.php"); ?>
 
 		</br>
-        </br>
+        </br></br></br>
 		<h2>Page Administration</h2>
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
