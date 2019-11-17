@@ -4,7 +4,7 @@
         <header>
             <ul class = "bandesup">
                 <?php
-                echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
+                echo "&nbsp;&nbsp;" . date("d/m/Y");
                 ?>
             </ul>
         </header>
