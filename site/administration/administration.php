@@ -30,7 +30,7 @@
 
 						echo '<p class="titre"> '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 
-						echo '<p>'."Flux RSS integres".'</p>'
+						// echo '<p>'."Flux RSS integres".'</p>'
 
 						echo '<div id="divCurrentLinks">';
 						foreach($db->getFluxRss() as $fluxRss)
@@ -55,7 +55,7 @@
 						}
 						echo '</div>';
 
-						echo '<p>'."Ajouter un flux RSS".'</p>'
+						// echo '<p>'."Ajouter un flux RSS".'</p>'
 
 						if (isConnected(true))
 						{
