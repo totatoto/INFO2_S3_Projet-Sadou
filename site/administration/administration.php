@@ -19,7 +19,7 @@
 
 					include("head.php");
 					echo '<header>';
-						echo '<div>';
+						echo '<div id="bandeau">';
 							echo '<span style="float: right; text-align: right;">';
 							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
 								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
