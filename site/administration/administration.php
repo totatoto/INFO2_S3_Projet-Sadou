@@ -28,7 +28,7 @@
 						echo '</div>';
 					echo '</header>';
 
-						echo '<p class="titre">&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
+						echo '<p class="titre"> '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 
 						echo '<div id="divCurrentLinks">';
 						foreach($db->getFluxRss() as $fluxRss)
