@@ -7,7 +7,7 @@
 
 		</br>
         </br></br></br></br>
-		<ul class="titre">Page Administration</ul>
+		<p class="titre"><FONT size="8">Page Administration</FONT></p>
 			
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
