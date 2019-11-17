@@ -34,7 +34,6 @@
 						echo '<p class="titre">&nbsp; '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 						echo '</br></br></br>';
 
-						echo '<div id="rss_wrapper" style="overflow: auto">';
 						echo '<div id="divCurrentLinks">';
 						foreach($db->getFluxRss() as $fluxRss)
 						{
@@ -56,7 +55,6 @@
 								}
 							echo '</div>';
 						}
-						echo '</div>';
 						echo '</div>';
 
 						if (isConnected(true))
