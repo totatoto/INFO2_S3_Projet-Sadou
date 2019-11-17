@@ -90,16 +90,14 @@ footer {
     color: white;
 }
 
-/*
 html {
     overflow :hidden;
 }
-*/
 
 #divCurrentLinks {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: auto;
+    height: 500px;
 }
 
 .divLinks  {
