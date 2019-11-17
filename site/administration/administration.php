@@ -18,7 +18,7 @@
 			{
 
 					include("head.php");
-					echo '<header id="bandeau">';
+					echo '<header id="bandesup">';
 						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';
 							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
