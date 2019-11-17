@@ -42,7 +42,6 @@ h1
 {
 	color: #004159;
     text-align: center;
-    transform: translate(0, -50%);
 }
 
 form {
@@ -95,8 +94,8 @@ html {
 }
 
 #titre {
-    margin: 30px;
-    transform: translate(0, 50%);
+    margin-top: 30px;
+    margin-bottom: 30px
 }
 
 #divCurrentLinks {
