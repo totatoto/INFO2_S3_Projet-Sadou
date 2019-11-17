@@ -26,6 +26,7 @@ header
 	font-family: 'Quicksand-Regular', Arial, Serif;
     font-size: 15px;
     color: white;
+    display: block;
 }
 
 
@@ -100,12 +101,12 @@ html {
     overflow-x: hidden;
     overflow-y: scroll;
     height: 300px;
-    border: 2px solid #004159;
+    border-: 1px solid #004159;
 }
 
 #insertLink {
     margin: 20px;
-    border: 2px solid #004159;
+    border: 1px solid #004159;
 }
 
 .divLinks  {
