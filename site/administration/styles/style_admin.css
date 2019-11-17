@@ -35,6 +35,8 @@ header
 {
 	color: #004159;
 	font-family: 'Quicksand-Regular', Arial, Serif;
+    text-align: center;
+	font-size: 65px;
     margin-top: 30px;
     margin-bottom: 30px;
     text-decoration: Bold;
@@ -42,13 +44,13 @@ header
 
 
 h1 {
+	color: #004159;
     text-align: center;
-    font-size: 65px;
 }
 
 h2 {
-    text-align: right;
-    font-size: 45px;
+    	color: #004159;
+        text-align: center;
 }
 
 form {
