@@ -7,9 +7,9 @@
 
 		</br>
         </br></br></br>
-		<span>
+		<div>
 			<p class="titre">Page Administration</p>
-		</span>
+		</div>
         <form method="post" action="administration.php">
             <h1>CONNEXION</h1>
             </br>
