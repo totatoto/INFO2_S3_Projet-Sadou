@@ -43,14 +43,10 @@ header
 }
 
 
-h1 {
+h1
+{
 	color: #004159;
     text-align: center;
-}
-
-h2 {
-    	color: #004159;
-        text-align: center;
 }
 
 form {
