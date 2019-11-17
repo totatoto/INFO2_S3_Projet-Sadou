@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <?php include("includes/head.php"); ?>
+    <?php include("styles/head.php"); ?>
 
     <body>
-        <?php include("includes/header.php"); ?>
+        <?php include("styles/header.php"); ?>
 
 		</br>
         </br></br></br></br>
@@ -25,7 +25,7 @@
             <input id="send_button" type="submit" value="Send" />
         </form>
 
-        <?php include("includes/footer.php"); ?>
+        <?php include("styles/footer.php"); ?>
 
     </body>
 </html>
