@@ -17,7 +17,7 @@
     		if (isConnected(false))
 			{
 
-					include("includes/head.php");
+					include("head.php");
 					echo '<header>';
 						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';
