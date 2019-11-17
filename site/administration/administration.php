@@ -24,7 +24,7 @@
 							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
 								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
 							echo '</span>';
-							echo "&nbsp;&nbsp;" . date("d/m/Y - h:i:s");
+							echo "&nbsp;&nbsp;" . date("d/m/Y");
 						echo '</div>';
 					echo '</header>';
 
