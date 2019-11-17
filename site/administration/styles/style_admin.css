@@ -90,6 +90,11 @@ footer {
     color: white;
 }
 
+.divCurrentLinks {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .divLinks  {
     padding-bottom: 40px;
 }
