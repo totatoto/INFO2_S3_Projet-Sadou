@@ -9,6 +9,6 @@
 		if (isset($_GET["link"]))
 			echo json_encode($db->getRSSItem($_GET["link"]));
 		else
-			echo json_encode($db->getRSSItems($_GET["links"]));
+			echo json_encode($db->getRSSItems(explode(",",$_GET["links"])));
     }
 ?>
