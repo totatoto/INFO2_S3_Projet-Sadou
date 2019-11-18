@@ -146,7 +146,7 @@ class DB {
 						  
 			foreach ($links as $link)
 			{
-				$requete += "'".$links."'";
+				$requete += "'".$link."'";
 			}
 						  
 			$requete +=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
