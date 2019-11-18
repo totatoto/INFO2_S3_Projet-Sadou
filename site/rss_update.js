@@ -30,6 +30,9 @@ function f2(req)
              s += "<p>";
              s += element["title"];
              s += "</p>\n";
+             s += "<p>";
+             s += element["description"];
+             s += "</p>\n";
              i++;
          });
 
