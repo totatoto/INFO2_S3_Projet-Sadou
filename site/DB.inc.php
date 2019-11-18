@@ -119,6 +119,8 @@ class DB {
        * Fonctions qui peuvent �tre utilis�es dans les scripts PHP - 50 items au max - voir si on r�cup�re par lien ou si on mix les flux etc
        *************************************************************************/
       public function getRSSItem($link) {
+			$link = pg_escape_string($link);
+		  
       	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
                               FROM RSS_ITEM AS A
                               JOIN ITEM_OF_FLUX_RSS AS B
@@ -131,6 +133,8 @@ class DB {
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
+			$links = pg_escape_string($links);
+			
                 $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
                               FROM RSS_ITEM AS A
                               JOIN ITEM_OF_FLUX_RSS AS B
@@ -143,6 +147,8 @@ class DB {
       }
 
       public function getAccount($username) {
+			$username = pg_escape_string($username);
+			
   		$requete = 'SELECT A.id, A.username, A.password, A.status
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
@@ -158,6 +164,8 @@ class DB {
 	}
 
     public function getTheFluxRss($link) {
+		$link = pg_escape_string($link);
+			
 		$requete = 'SELECT A.link, A.id_last_rss
 				    FROM FLUX_RSS AS A
                     WHERE A.link = '."'".$link."'";
@@ -173,6 +181,8 @@ class DB {
     }
 
     public function deleteFluxRss($link) {
+		$link = pg_escape_string($link);
+		
          $requete = 'delete from FLUX_RSS where link = ?';
          $tparam = array($link);
          return $this->execMaj($requete,$tparam);
