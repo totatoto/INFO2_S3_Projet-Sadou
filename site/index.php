@@ -13,7 +13,7 @@ echo '<html>';
        echo '</div>';
        echo '<div>';
             echo 'Des informations ici';
-			echo test_input($_GET['test']);
+			echo pg_escape_string(test_input($_GET['test']));
         echo '</div>';
     echo '</body>';
 echo '</html>';
