@@ -133,10 +133,10 @@ class DB {
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
-			for ($i=0 ; $i < sizeof($links) ; $i++)
+			/*for ($i=0 ; $i < sizeof($links) ; $i++)
 			{
 				$links[$i] = pg_escape_string($links[$i]);
-			}
+			}*/
 			
 			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
 						  FROM RSS_ITEM AS A
