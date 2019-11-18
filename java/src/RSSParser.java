@@ -239,7 +239,9 @@ public class RSSParser {
 				}
 				
 				title = title.trim();
-				description = description.trim();
+				
+				if (description != null)
+					description = description.trim();
 				
 				listRssItem.add(new RSSItem(title, link, pubDate,description));
 
