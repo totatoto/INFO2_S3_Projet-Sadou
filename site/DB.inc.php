@@ -153,6 +153,8 @@ class DB {
 			$requete +=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
+						  
+		  error_log ($requete);
           return $this->execQuery($requete,null,'RSSItem');
       }
 
