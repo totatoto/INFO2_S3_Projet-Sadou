@@ -133,16 +133,25 @@ class DB {
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
-			$links = pg_escape_string($links);
+			for ($i=0 ; $i < sizeof($links) ; $i++)
+			{
+				$links[$i] = pg_escape_string($links[$i]);
+			}
 			
-                $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
-                              FROM RSS_ITEM AS A
-                              JOIN ITEM_OF_FLUX_RSS AS B
-                              ON A.id = B.id_rss_item
-                              WHERE B.link_flux_rss in '.$links.'
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)
-                              ORDER BY A.importance DESC, A.pub_date DESC
-                              LIMIT 50';
+			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
+						  FROM RSS_ITEM AS A
+						  JOIN ITEM_OF_FLUX_RSS AS B
+						  ON A.id = B.id_rss_item
+						  WHERE B.link_flux_rss in (';
+						  
+			foreach ($links as $link)
+			{
+				$requete += "'".$links."'";
+			}
+						  
+			$requete +=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
+						  ORDER BY A.importance DESC, A.pub_date DESC
+						  LIMIT 50';
           return $this->execQuery($requete,null,'RSSItem');
       }
 

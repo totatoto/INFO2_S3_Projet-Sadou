@@ -8,7 +8,10 @@ function f1()
 {
     var xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange",function(_event) {f2(xhttp);});
-    xhttp.open("GET", "getRssItems.php?link=" + document.getElementById("conteneurItem").getAttribute("link"), true);
+	if (document.getElementById("conteneurItem").getAttribute("link"))
+		xhttp.open("GET", "getRssItems.php?link=" + document.getElementById("conteneurItem").getAttribute("link"), true);
+	else
+		xhttp.open("GET", "getRssItems.php?links=" + document.getElementById("conteneurItem").getAttribute("links"), true);
     xhttp.send();
 }
 
