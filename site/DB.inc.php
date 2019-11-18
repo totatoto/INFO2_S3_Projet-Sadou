@@ -146,11 +146,11 @@ class DB {
 						  
 			foreach ($links as $link)
 			{
-				$requete += "'".$link."',";
+				$requete .= "'".$link."',";
 			}
 			$requete = substr($requete,0,-1);
 						  
-			$requete +=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
+			$requete .=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
