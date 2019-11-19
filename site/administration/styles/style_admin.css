@@ -109,6 +109,8 @@ input {
     overflow-y: auto;
     height: 50%;
     width: 75%;
+    position: absolute;
+    left: 50%;
     border: 1px solid #004159;
 }
 
