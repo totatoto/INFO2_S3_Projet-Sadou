@@ -8,13 +8,13 @@ function showSlides() {
   {
 	  for (i = 0; i < slides.length; i++) {
 		slides[i].style.opacity = "0";
-		  slides[i].style.transition ="opacity 3s 1s  ease-in-out"; 
+		  slides[i].style.transition ="opacity 3s 1s  ease-in-out";
 	  }
 	  slideIndex++;
 	  if (slideIndex > slides.length) {slideIndex = 1}
 	  console.log(slideIndex);
 	  slides[slideIndex-1].style.opacity = "1";
-		setTimeout(showSlides, 12000); // Change image every 2 seconds
+		setTimeout(showSlides, 20000); // Change image every 2 seconds
   }
   else
 	  setTimeout(showSlides, 1000);
