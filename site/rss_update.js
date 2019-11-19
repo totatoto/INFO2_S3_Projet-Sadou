@@ -30,7 +30,7 @@ function f2(req)
                 s += "</div>\n\n<div class=\"mySlides\">\n";
                 i=0;
             }
-             s += "<p>;
+             s += "<p>\n";
              s += element["title"];
              s += "</p>\n";
              s += "<p>";
