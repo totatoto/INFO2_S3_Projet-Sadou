@@ -111,6 +111,7 @@ input {
     width: 75%;
     position: absolute;
     left: 50%;
+    transform: translate(-50%,0);
     border: 1px solid #004159;
 }
 
