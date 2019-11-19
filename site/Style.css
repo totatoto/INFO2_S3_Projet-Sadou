@@ -37,7 +37,7 @@ h2{
   font-weight: 300;
   font-family: Audiowide;
   text-shadow: 0px 0px 4px #12000a;
-  animation: fadeInText 17s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+  animation: fadeInText 10s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
 }
 
 #svgWrap_1,
@@ -192,5 +192,5 @@ div{
   font-family: Audiowide;
   font-size: 25px;
   /* text-shadow: 0px 0px 4px #ff005d; */
-  animation: fadeInText 3s ease-in 3.5s forwards, flicker4 15s linear 21s infinite, hueRotate 0s ease-in-out 3s infinite;
+  animation: fadeInText 3s ease-in 3.5s forwards, flicker4 25s linear 21s infinite, hueRotate 0s ease-in-out 3s infinite;
 }
