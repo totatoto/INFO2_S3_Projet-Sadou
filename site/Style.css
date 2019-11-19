@@ -190,13 +190,13 @@ div{
   padding-top: 80px;
   color: #3267EB;
   font-family: Audiowide;
-  font-size: 25px;
+  font-size: 30pt;
   /* text-shadow: 0px 0px 4px #ff005d; */
   animation: fadeInText 3s ease-in 3.5s forwards, flicker4 25s linear 21s infinite, hueRotate 0s ease-in-out 3s infinite;
 }
 
 #RSSTitle {
-    font-size: 50pt;
+    font-size: 60pt;
 }
 
 #RSSDesc {
