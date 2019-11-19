@@ -105,8 +105,8 @@ input {
 #divCurrentLinks {
     margin: 20px;
     overflow-x: hidden;
-    overflow-y: scroll;
-    height: 300px;
+    overflow-y: auto;
+    height: 50%;
     border: 1px solid #004159;
 }
 
