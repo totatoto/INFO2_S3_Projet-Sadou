@@ -31,7 +31,7 @@ function f2(req)
                 i=0;
             }
              s += '<p class="RSSTitle">\n' + element["title"] + "</p>\n";
-             s += '<p class="RSSDesc">\n' + element["description"] + "</p>\n";
+             s += element["description"];
              i++;
          });
 
