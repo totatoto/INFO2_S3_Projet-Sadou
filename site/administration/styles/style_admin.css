@@ -104,14 +104,26 @@ input {
 
 #divCurrentLinks {
     margin: 20px;
+    padding: 10px;
     overflow-x: hidden;
     overflow-y: auto;
     height: 50%;
+    width: 75%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    bottom : 30%;
     border: 1px solid #004159;
 }
 
 #insertLink {
     margin: 20px;
+    width: 75%;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,0);
+
 }
 
 .divLinks  {
