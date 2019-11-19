@@ -13,7 +13,7 @@ div{
   height: 100%;
   width: 100%;
   margin: 0px;
-  /* background: radial-gradient(circle, #240015 0%, #12000b 100%); */
+  background: radial-gradient(circle, #240015 0%, #12000b 100%);
   overflow: hidden;
 }
 
@@ -37,7 +37,7 @@ h2{
   font-weight: 300;
   font-family: Audiowide;
   text-shadow: 0px 0px 4px #12000a;
-  animation: fadeInText 10s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+  animation: fadeInText 3s ease-in 1s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
 }
 
 #svgWrap_1,
@@ -51,64 +51,64 @@ h2{
   transform: translate(-50%, -50%);
 }
 
-#svgWrap_1,
+/* #svgWrap_1,
 #svgWrap_2,
 div{
-  animation: hueRotate 20s ease-in-out 3s infinite;
-}
+  animation: hueRotate 6s ease-in-out 3s infinite;
+} */
 
-#id1_1,
+/* #id1_1,
 #id2_1,
 #id3_1{
   stroke: #ff005d;
   stroke-width: 3px;
   fill: transparent;
   filter: url(#glow);
-}
+} */
 
-#id1_2,
+/* #id1_2,
 #id2_2,
 #id3_2{
-  stroke: #ff005d;
+  stroke: #12000a;
   stroke-width: 3px;
   fill: transparent;
   filter: url(#glow);
-}
+} */
 
-#id3_1{
+/* #id3_1{
   stroke-dasharray: 940px;
   stroke-dashoffset: -940px;
   animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
-}
+} */
 
-#id2_1{
+/* #id2_1{
   stroke-dasharray: 735px;
   stroke-dashoffset: -735px;
   animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
-}
+} */
 
-#id1_1{
+/* #id1_1{
   stroke-dasharray: 940px;
   stroke-dashoffset: -940px;
   animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
-}
+} */
 
-@keyframes drawLine1 {
+/* @keyframes drawLine1 {
   0%  {stroke-dashoffset: -940px;}
   100%{stroke-dashoffset: 0px;}
-}
+} */
 
-@keyframes drawLine2 {
+/* @keyframes drawLine2 {
   0%  {stroke-dashoffset: -735px;}
   100%{stroke-dashoffset: 0px;}
-}
+} */
 
-@keyframes drawLine3 {
+/* @keyframes drawLine3 {
   0%  {stroke-dashoffset: -940px;}
   100%{stroke-dashoffset: 0px;}
-}
+} */
 
-@keyframes flicker1{
+/* @keyframes flicker1{
   0%  {stroke: #ff005d;}
   1%  {stroke: transparent;}
   3%  {stroke: transparent;}
@@ -118,18 +118,18 @@ div{
   13% {stroke: transparent;}
   14% {stroke: #ff005d;}
   100%{stroke: #ff005d;}
-}
+} */
 
-@keyframes flicker2{
+/* @keyframes flicker2{
   0%  {stroke: #ff005d;}
   50% {stroke: #ff005d;}
   51% {stroke: transparent;}
   61% {stroke: transparent;}
   62% {stroke: #ff005d;}
   100%{stroke: #ff005d;}
-}
+} */
 
-@keyframes flicker3{
+/* @keyframes flicker3{
   0%  {stroke: #ff005d;}
   1%  {stroke: transparent;}
   10% {stroke: transparent;}
@@ -139,20 +139,26 @@ div{
   45% {stroke: transparent;}
   46% {stroke: #ff005d;}
   100%{stroke: #ff005d;}
-}
+} */
 
-@keyframes flicker4{
+/* @keyframes flicker4{
   0%  {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
   30% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
+  31% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
   32% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
   36% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
+  37% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
+  41% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
   42% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
   85% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
+  86% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
+  95% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
   96% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
   100%{color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-}
+} */
 
 @keyframes fadeInText{
+/*   1%  {color: #12000a;text-shadow:0px 0px 4px #12000a;} */
   70% {color: #ff005d;text-shadow:0px 0px 14px #ff005d;}
   100%{color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
 }
@@ -168,15 +174,13 @@ div{
     filter: hue-rotate(0deg);
   }
 }
+
 .slideshow-container {
   min-width: 100%;
   max-width: 100%;
   position: absolute;
   margin: auto;
   text-align: center;
-
-
-
 }
 
 .mySlides{
@@ -185,9 +189,9 @@ div{
   opacity:0;
   position: absolute;
   padding-top: 80px;
-  color: #ff005d;
+  color: #3267EB;
   font-family: Audiowide;
-  font-size: 20px;
-  text-shadow: 0px 0px 4px #ff005d;
-  animation: fadeInText 3s ease-in 3.5s forwards, flicker4 15s linear 21s infinite, hueRotate 0s ease-in-out 3s infinite;
+  font-size : 20px;
+  text-shadow: 0px 0px 4px #12000a;
+/*   animation: fadeInText 3s ease-in 3.5s forwards, flicker4 15s linear 21s infinite, hueRotate 0s ease-in-out 3s infinite; */
 }
