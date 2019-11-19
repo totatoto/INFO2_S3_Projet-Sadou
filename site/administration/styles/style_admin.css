@@ -109,7 +109,7 @@ input {
     overflow-y: auto;
     height: 50%;
     width: 75%;
-    position: relative;
+    position: absolute;
     left: 50%;
     transform: translate(-50%,0);
     border: 1px solid #004159;
