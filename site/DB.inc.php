@@ -119,6 +119,8 @@ class DB {
        * Fonctions qui peuvent �tre utilis�es dans les scripts PHP - 50 items au max - voir si on r�cup�re par lien ou si on mix les flux etc
        *************************************************************************/
       public function getRSSItem($link) {
+			$link = pg_escape_string($link);
+		  
       	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
                               FROM RSS_ITEM AS A
                               JOIN ITEM_OF_FLUX_RSS AS B
@@ -131,18 +133,34 @@ class DB {
       }
 
       public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
-                $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
-                              FROM RSS_ITEM AS A
-                              JOIN ITEM_OF_FLUX_RSS AS B
-                              ON A.id = B.id_rss_item
-                              WHERE B.link_flux_rss in '.$links.'
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)
-                              ORDER BY A.importance DESC, A.pub_date DESC
-                              LIMIT 50';
+			/*for ($i=0 ; $i < sizeof($links) ; $i++)
+			{
+				$links[$i] = pg_escape_string($links[$i]);
+			}*/
+			
+			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
+						  FROM RSS_ITEM AS A
+						  JOIN ITEM_OF_FLUX_RSS AS B
+						  ON A.id = B.id_rss_item
+						  WHERE B.link_flux_rss in (';
+						  
+			foreach ($links as $link)
+			{
+				$requete .= "'".$link."',";
+			}
+			$requete = substr($requete,0,-1);
+						  
+			$requete .=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
+						  ORDER BY A.importance DESC, A.pub_date DESC
+						  LIMIT 50';
+						  
+		  error_log ($requete);
           return $this->execQuery($requete,null,'RSSItem');
       }
 
       public function getAccount($username) {
+			$username = pg_escape_string($username);
+			
   		$requete = 'SELECT A.id, A.username, A.password, A.status
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
@@ -158,6 +176,8 @@ class DB {
 	}
 
     public function getTheFluxRss($link) {
+		$link = pg_escape_string($link);
+			
 		$requete = 'SELECT A.link, A.id_last_rss
 				    FROM FLUX_RSS AS A
                     WHERE A.link = '."'".$link."'";
@@ -173,6 +193,8 @@ class DB {
     }
 
     public function deleteFluxRss($link) {
+		$link = pg_escape_string($link);
+		
          $requete = 'delete from FLUX_RSS where link = ?';
          $tparam = array($link);
          return $this->execMaj($requete,$tparam);

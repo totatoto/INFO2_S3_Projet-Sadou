@@ -114,14 +114,14 @@ public class RSSParser {
 		        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 				HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
 
-				HttpsURLConnection conn1 = (HttpsURLConnection) url.openConnection();
+				conn = (HttpsURLConnection) url.openConnection();
 
-				stream = conn1.getInputStream();
+				
 			}
-			else
-			{
-				stream = url.openStream();
-			}
+			
+			conn.addRequestProperty("User-Agent", "");
+			
+			stream = conn.getInputStream();
 		} catch (MalformedURLException e) {
 		   e.printStackTrace();
 		} catch (IOException e) {
@@ -239,7 +239,9 @@ public class RSSParser {
 				}
 				
 				title = title.trim();
-				description = description.trim();
+				
+				if (description != null)
+					description = description.trim();
 				
 				listRssItem.add(new RSSItem(title, link, pubDate,description));
 

@@ -101,7 +101,7 @@
 
 	session_start();
 	if (!isConnected(false))
-		if(isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
+		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']) && isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$_POST['password_user']))
 		{
 			$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
 			$_SESSION['password_user'] = $_POST['password_user'];
