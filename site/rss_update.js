@@ -30,8 +30,8 @@ function f2(req)
                 s += "</div>\n\n<div class=\"mySlides\">\n";
                 i=0;
             }
-             s += '<p class="RSSTitle">' + element["title"] + "</p>";
-             s += '<p class="RSSDesc">' + element["description"] + "</p>\n";
+             s += '<p class="RSSTitle">\n' + element["title"] + "</p>\n";
+             s += '<p class="RSSDesc">\n' + element["description"] + "</p>\n";
              i++;
          });
 
