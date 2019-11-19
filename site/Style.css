@@ -57,6 +57,7 @@ div{
   animation: hueRotate 20s ease-in-out 3s infinite;
 }
 
+/*
 #id1_1,
 #id2_1,
 #id3_1{
@@ -168,6 +169,8 @@ div{
     filter: hue-rotate(0deg);
   }
 }
+*/
+
 .slideshow-container {
   min-width: 100%;
   max-width: 100%;
