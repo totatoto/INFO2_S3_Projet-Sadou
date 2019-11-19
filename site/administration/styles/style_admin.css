@@ -118,7 +118,10 @@ input {
 #insertLink {
     margin: 20px;
     width: 75%;
-    position: relative;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,0);
 
 }
 
