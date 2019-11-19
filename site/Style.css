@@ -13,7 +13,7 @@ div{
   height: 100%;
   width: 100%;
   margin: 0px;
-  background: radial-gradient(circle, #240015 0%, #12000b 100%);
+  background: black; /* radial-gradient(circle, #240015 0%, #12000b 100%); */
   overflow: hidden;
 }
 
