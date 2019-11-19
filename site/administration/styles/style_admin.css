@@ -117,6 +117,10 @@ input {
 
 #insertLink {
     margin: 20px;
+    width: 75%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 .divLinks  {
