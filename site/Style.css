@@ -186,7 +186,6 @@ div{
   position: absolute;
   color: #27A5FF;
   font-family: Audiowide;
-  text-decoration:none;
   font-size: 22pt;
   top : 50%;
   left: 50%;
@@ -210,4 +209,9 @@ div{
 
 .RSSDate {
   font-size: 15pt;
+}
+
+link
+{
+text-decoration:none;
 }
