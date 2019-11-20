@@ -36,6 +36,19 @@
         echo '</footer>';
 		echo "\t".'</body>'."\n".'</html>';
 	}
+	
+	function getLinksOfFluxRss()
+	{
+		$db = DB::getInstance();
+		if ($db == null)
+			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
+		else
+		{
+			error_log($db->getFluxRss());
+			return array_map(function($fluxRss) {return $fluxRSS->getLink();},$db->getFluxRss());
+		}
+		return null;
+	}
 
 	function isPseudoOK($pseudo)
 	{
