@@ -31,6 +31,7 @@ function f2(req)
                 i=0;
             }
              s += '<p class="RSSTitle">\n' + element["title"] + "\n</p>\n";
+             s += '<p class="RSSDate">\n' + element["pub_date"] + "\n</p>\n";
              s += element["description"];
              i++;
          });
