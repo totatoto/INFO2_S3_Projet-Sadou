@@ -44,7 +44,10 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
 		else
 		{
-			error_log($db->getFluxRss());
+			foreach ($db->getFluxRss() as $fluxRss)
+			{
+				error_log($fluxRss->getLink());
+			}
 			return array_map(function($fluxRss) {return $fluxRSS->getLink();},$db->getFluxRss());
 		}
 		return null;
