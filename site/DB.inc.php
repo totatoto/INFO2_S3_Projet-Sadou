@@ -154,7 +154,6 @@ class DB {
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
-		  error_log ($requete);
           return $this->execQuery($requete,null,'RSSItem');
       }
 
