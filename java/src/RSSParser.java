@@ -84,8 +84,8 @@ public class RSSParser {
 		List<String> listCategory = new ArrayList<>();
 		listCategory.add("category");
 		MAP_CORRESP.put("category",listCategory);
-		
-		
+
+
 		MAP_CORRESP_CATEGORY = new HashMap<>();
 
 		List<String> listCategoryCybersecurity = new ArrayList<>();
@@ -104,7 +104,7 @@ public class RSSParser {
 		listCategoryCybersecurity.add("Firewall");
 		listCategoryCybersecurity.add("Antivirus");
 		MAP_CORRESP_CATEGORY.put("cybersecurity",listCategoryCybersecurity);
-		
+
 
 
 		factory = DocumentBuilderFactory.newInstance();
@@ -142,11 +142,11 @@ public class RSSParser {
 
 				conn = (HttpsURLConnection) url.openConnection();
 
-				
+
 			}
-			
+
 			conn.addRequestProperty("User-Agent", "");
-			
+
 			stream = conn.getInputStream();
 		} catch (MalformedURLException e) {
 		   e.printStackTrace();
@@ -180,6 +180,9 @@ public class RSSParser {
 	private static List<RSSItem> parseDocumentToRSSItemList(Document document) throws SQLException
 	{
 		List<RSSItem> listRssItem = new ArrayList<RSSItem>();
+
+		if (document == null)
+			return null;
 
 		NodeList nodeList = document.getChildNodes();
 
@@ -267,17 +270,17 @@ public class RSSParser {
 					{
 						if (category == null)
 							category = new ArrayList<>();
-						
+
 						category.add(itemInformation.getTextContent());
 					}
 
 				}
-				
+
 				title = title.trim();
-				
+
 				if (description != null)
 					description = description.trim();
-				
+
 				listRssItem.add(new RSSItem(title, link, pubDate, description, (String[])(category == null ? null : category.toArray(new String[0]))));
 
 			}
@@ -318,10 +321,12 @@ public class RSSParser {
 				if (i != rssItems.size())
 					rssItems = rssItems.subList(0,i);
 			}
-		} catch (SQLException e) {e.printStackTrace();}
 
 
-		RSSItem.sort(rssItems, RSSItem.SORT_RISING);
+			RSSItem.sort(rssItems, RSSItem.SORT_RISING);
+		}
+		catch (SQLException e) {e.printStackTrace();}
+		catch (Exception e) {e.printStackTrace();}
 
 		return rssItems;
 	}

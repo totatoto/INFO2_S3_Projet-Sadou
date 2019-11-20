@@ -34,9 +34,12 @@ public class RSSController
     public static List<RSSItem> updateRss(FluxRSS fluxRss) throws SQLException, URISyntaxException
     {
         List<RSSItem> listNewRssItem = RSSParser.getNewRssItems(fluxRss);
-        RSSItem.calcImportance(listNewRssItem);
+        if (listNewRssItem != null)
+        {
+            RSSItem.calcImportance(listNewRssItem);
 
-        Database.getInstance().insertFluxRSSItem(listNewRssItem, fluxRss);
+            Database.getInstance().insertFluxRSSItem(listNewRssItem, fluxRss);
+        }
 
 		return listNewRssItem;
     }
@@ -83,7 +86,7 @@ public class RSSController
         System.out.println("updated");
 		for (FluxRSS fluxRss : updates.keySet())
 		{
-			System.out.println("\t" + fluxRss.getLink() + " : " + updates.get(fluxRss).size());
+			System.out.println("\t" + fluxRss.getLink() + " : " + (updates.get(fluxRss) == null ? "error" : updates.get(fluxRss).size()));
 		}
 
         if (this.stop > 0)
