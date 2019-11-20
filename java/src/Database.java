@@ -27,7 +27,7 @@ public class Database {
 			psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 			psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM_WITH_CATEG WHERE id = ?");
 			psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-			psInsertFluxRssItem = connec.prepareStatement("SELECT insertRssItem(?,?,?,?,?,?) AS 'id'");
+			psInsertFluxRssItem = connec.prepareStatement("SELECT insertRssItem(?,?,?,?,?,?) AS id");
 			psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 		}
 		catch (SQLException e) {
@@ -37,7 +37,7 @@ public class Database {
 				psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 				psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM_WITH_CATEG WHERE id = ?");
 				psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-				psInsertFluxRssItem = connec.prepareStatement("SELECT insertRssItem(?,?,?,?,?,?) AS 'id'");
+				psInsertFluxRssItem = connec.prepareStatement("SELECT insertRssItem(?,?,?,?,?,?) AS id");
 				psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 			}
 			catch (SQLException e2)
@@ -122,14 +122,7 @@ public class Database {
 
 	public void insertFluxRSSItem(RSSItem rssItem, FluxRSS fluxRSS) throws SQLException
 	{
-		System.out.println(rssItem.getTitle());
-		System.out.println("\t" + rssItem.getLink());
-		System.out.println("\t" + rssItem.getPubDate());
-		System.out.println("\t" + rssItem.getDescription());
-		System.out.println("\t" + rssItem.getCategory());
-		System.out.println("\t" + rssItem.getImportance());
-		
-		/*this.psInsertFluxRssItem.setString(1,rssItem.getTitle());
+		this.psInsertFluxRssItem.setString(1,rssItem.getTitle());
 		this.psInsertFluxRssItem.setString(2,rssItem.getLink());
 		this.psInsertFluxRssItem.setTimestamp(3,rssItem.getPubDate());
 		this.psInsertFluxRssItem.setString(4,rssItem.getDescription());
@@ -139,14 +132,14 @@ public class Database {
 		this.requested();
 
 		int lastId = -1;
-		
-		if(rsRssItemAddedId.next())
-			lastId = rsRSSItem.getInt("id")
-		
 
-		
-		//this.insertItemOfFluxRss(new ItemOfFluxRss(fluxRSS.getLink(),lastId));
-		this.updateFluxRss(fluxRSS.getLink(), lastId);*/
+		if(rsRssItemAddedId.next())
+			lastId = rsRssItemAddedId.getInt("id");
+
+
+
+		this.insertItemOfFluxRss(new ItemOfFluxRss(fluxRSS.getLink(),lastId));
+		this.updateFluxRss(fluxRSS.getLink(), lastId);
 	}
 
 	public void insertFluxRSSItem(List<RSSItem> rssItems, FluxRSS fluxRSS) throws SQLException
