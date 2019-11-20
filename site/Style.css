@@ -177,9 +177,6 @@ div{
   position: absolute;
   margin: auto;
   text-align: center;
-
-
-
 }
 
 .mySlides{
@@ -187,8 +184,6 @@ div{
   height: 95%;
   opacity:0;
   position: absolute;
-  padding-top: 3%;
-  padding-bottom: 3%;
   color: #27A5FF;
   font-family: Audiowide;
   font-size: 22pt;
@@ -202,9 +197,14 @@ div{
 .RSSTitle {
     font-size: 35pt;
     font-weight: bolder;
+    margin: 2%;
 }
 
 .RSSDesc {
     font-size: 15pt;
     font-weight:lighter;
+}
+
+.RSSDate {
+  font-size: 10pt;
 }
