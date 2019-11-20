@@ -1,6 +1,10 @@
 DROP TRIGGER IF EXISTS deleteOldRssItem ON ITEM_OF_FLUX_RSS;
 DROP FUNCTION deleteRSSITEM();
 
+DROP TRIGGER IF EXISTS deleteOldCateg ON RSS_ITEM;
+DROP FUNCTION deleteCateg();
+
+
 DROP TABLE ITEM_OF_FLUX_RSS;
 
 DROP TABLE FLUX_RSS;
@@ -43,7 +47,6 @@ $emp_stamp$ LANGUAGE plpgsql;
 CREATE TRIGGER deleteOldRssItem AFTER DELETE ON ITEM_OF_FLUX_RSS
     FOR EACH ROW EXECUTE PROCEDURE deleteRSSITEM();
 
-
 CREATE TABLE CATEGORY (
 	name VARCHAR NOT NULL PRIMARY KEY
 );
@@ -68,17 +71,27 @@ CREATE TABLE CATEGORY_OF_RSS_ITEM (
 	ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE FUNCTION deleteCateg() RETURNS trigger AS $emp_stamp$
+    BEGIN
+		DELETE FROM CATEGORY as A WHERE NOT EXISTS (SELECT name_category FROM CATEGORY_OF_RSS_ITEM WHERE A.name = name_category);
+		RETURN NEW;
+    END;
+$emp_stamp$ LANGUAGE plpgsql;
+
+CREATE TRIGGER deleteOldCateg AFTER DELETE ON RSS_ITEM
+    FOR EACH ROW EXECUTE PROCEDURE deleteCateg();
+
 CREATE OR REPLACE FUNCTION getCategory(category_name Category.name%TYPE) RETURNS Category.name%TYPE AS
 $$
 	DECLARE
 		current_category_name Category.name%TYPE;
-		
+
 		current_category_name_reduced Category.name%TYPE;
 		category_name_reduced Category.name%TYPE;
 	BEGIN
 		SELECT TRANSLATE ( category_name, 'éèà', 'eea' ) into category_name_reduced;
 		SELECT LOWER(category_name_reduced) into category_name_reduced;
-		
+
 		FOR current_category_name IN SELECT name FROM CATEGORY
 		LOOP
 			SELECT TRANSLATE ( current_category_name, 'éèà', 'eea' ) into current_category_name_reduced;
@@ -88,7 +101,7 @@ $$
 				RETURN current_category_name;
 			END IF;
 		END LOOP;
-		
+
 		RETURN null;
 	END
 $$ LANGUAGE PLpgSQL;
@@ -104,7 +117,7 @@ $$
 	BEGIN
 		INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(title,link,pub_date,description,importance);
 		SELECT currval('rss_item_id_seq') INTO id;
-		
+
 		FOREACH category_name IN ARRAY categories
 		LOOP
 			SELECT getCategory(category_name) INTO nom_category;
@@ -113,10 +126,10 @@ $$
 				INSERT INTO CATEGORY VALUES(category_name);
 				nom_category := category_name;
 			END IF;
-			
+
 			INSERT INTO CATEGORY_OF_RSS_ITEM VALUES(id, nom_category);
 		END LOOP;
-		
+
 		RETURN id;
 	END
 $$ LANGUAGE PLpgSQL;
@@ -135,7 +148,7 @@ $$
 				RETURN NEXT category_of_subcategory;
 			END LOOP;
 		END LOOP;
-		
+
 		RETURN;
 	END
 $$ LANGUAGE PLpgSQL;
@@ -153,7 +166,7 @@ $$
 				RETURN NEXT subcategory_rss_item;
 			END LOOP;
 		END LOOP;
-		
+
 		RETURN;
 	END
 $$ LANGUAGE PLpgSQL;
