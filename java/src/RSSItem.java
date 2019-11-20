@@ -47,7 +47,7 @@ public class RSSItem {
 	
 	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, Array category, int importance) throws SQLException
 	{
-		this(id, title, link, pubDate, description, (String[])category.getArray(), importance);
+		this(id, title, link, pubDate, description, (String[])(category == null ? null : category.getArray()), importance);
 	}
 	
 	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, String[] category, int importance) throws SQLException
