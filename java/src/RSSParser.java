@@ -256,6 +256,7 @@ public class RSSParser {
 				if (description != null)
 					description = description.trim();
 				
+				System.out.println(link  + "::" + category);
 				listRssItem.add(new RSSItem(title, link, pubDate, description, (String[])(category == null ? null : category.toArray(new String[0]))));
 
 			}
