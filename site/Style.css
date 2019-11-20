@@ -211,7 +211,8 @@ div{
   font-size: 15pt;
 }
 
-a
+a link
 {
-text-decoration:none;
+    text-decoration: none;
+    color: inherit;
 }
