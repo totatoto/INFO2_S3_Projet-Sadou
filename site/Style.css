@@ -204,6 +204,8 @@ div{
 .RSSDesc {
     font-size: 15pt;
     font-weight:lighter;
+    color: inherit;
+    text-decoration:none;
 }
 
 .RSSDate {
