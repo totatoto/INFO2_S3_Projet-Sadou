@@ -32,7 +32,10 @@ function f2(req)
             }
              s += '<p class="RSSTitle">\n' + element["title"] + "\n</p>\n";
              s += '<p class="RSSDate">\n' + element["pub_date"].substr(0,10) + "\n</p>\n";
-             s += element["description"];
+             if(element["description"] != null)
+             {
+                 s += element["description"];
+             }
              i++;
          });
 
