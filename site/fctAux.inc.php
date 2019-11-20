@@ -37,13 +37,6 @@
 		echo "\t".'</body>'."\n".'</html>';
 	}
 	
-	function getLinkOfFluxRss($fluxRss)
-	{
-		if ($fluxRss != null)
-			return $fluxRSS->getLink();
-		return null;
-	}
-	
 	function getLinksOfFluxRss()
 	{
 		$db = DB::getInstance();
@@ -51,7 +44,7 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !!";
 		else
 		{
-			return array_map('getLinkOfFluxRss',$db->getFluxRss());
+			return array_map(function($fluxRss) {return $fluxRSS->getLink();},$db->getFluxRss());
 		}
 		return null;
 	}
