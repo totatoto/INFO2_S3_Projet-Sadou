@@ -1,15 +1,26 @@
 DROP TRIGGER IF EXISTS deleteOldRssItem ON ITEM_OF_FLUX_RSS;
-DROP FUNCTION deleteRSSITEM();
+DROP FUNCTION IF EXISTS deleteRSSITEM();
+DROP FUNCTION IF EXISTS getCategory(Category.name%TYPE);
+DROP FUNCTION IF EXISTS insertRssItem(RSS_ITEM.title%TYPE, RSS_ITEM.link%TYPE, RSS_ITEM.pub_date%TYPE, RSS_ITEM.description%TYPE, varchar[], RSS_ITEM.importance%TYPE);
+DROP FUNCTION IF EXISTS getAllCategories(CATEGORY.name%TYPE);
+DROP VIEW IF EXISTS RSS_ITEM_WITH_CATEG;
+DROP FUNCTION IF EXISTS getAllCategories(RSS_ITEM.id%TYPE);
+
+
+DROP TABLE IF EXISTS ITEM_OF_FLUX_RSS;
+
+DROP TABLE IF EXISTS FLUX_RSS;
+
+DROP TABLE IF EXISTS CATEGORY_OF_RSS_ITEM;
+DROP TABLE IF EXISTS RSS_ITEM;
+
+DROP TABLE IF EXISTS CATEGORY_CONTAINS_CATEGORY;
+DROP TABLE IF EXISTS CATEGORY;
 
 DROP TRIGGER IF EXISTS deleteOldCateg ON RSS_ITEM;
 DROP FUNCTION deleteCateg();
 
 
-DROP TABLE ITEM_OF_FLUX_RSS;
-
-DROP TABLE FLUX_RSS;
-
-DROP TABLE RSS_ITEM;
 CREATE TABLE RSS_ITEM (
 	id SERIAL PRIMARY KEY NOT NULL,
 	title VARCHAR NOT NULL,
@@ -118,17 +129,24 @@ $$
 		INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(title,link,pub_date,description,importance);
 		SELECT currval('rss_item_id_seq') INTO id;
 
-		FOREACH category_name IN ARRAY categories
-		LOOP
-			SELECT getCategory(category_name) INTO nom_category;
-			IF ( nom_category IS NULL )
-			THEN
-				INSERT INTO CATEGORY VALUES(category_name);
-				nom_category := category_name;
-			END IF;
+		IF (categories IS NOT NULL)
+		THEN
+			FOREACH category_name IN ARRAY categories
+			LOOP
+				SELECT getCategory(category_name) INTO nom_category;
+				IF ( nom_category IS NULL )
+				THEN
+					INSERT INTO CATEGORY VALUES(category_name);
+					nom_category := category_name;
+				END IF;
 
-			INSERT INTO CATEGORY_OF_RSS_ITEM VALUES(id, nom_category);
-		END LOOP;
+				PERFORM * FROM CATEGORY_OF_RSS_ITEM as A WHERE A.id_rss_item=id and A.name_category=nom_category;
+				IF (NOT FOUND)
+				THEN
+					INSERT INTO CATEGORY_OF_RSS_ITEM VALUES(id, nom_category);
+				END IF;
+			END LOOP;
+		END IF;
 
 		RETURN id;
 	END
@@ -170,6 +188,7 @@ $$
 		RETURN;
 	END
 $$ LANGUAGE PLpgSQL;
+
 
 CREATE OR REPLACE VIEW RSS_ITEM_WITH_CATEG AS
 	SELECT I.*, Array(SELECT DISTINCT getAllCategories(I.id)) as category
