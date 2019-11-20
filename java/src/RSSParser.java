@@ -155,7 +155,7 @@ public class RSSParser {
 		return document;
 	}
 
-	private static List<RSSItem> parseDocumentToRSSItemList(Document document)
+	private static List<RSSItem> parseDocumentToRSSItemList(Document document) throws SQLException
 	{
 		List<RSSItem> listRssItem = new ArrayList<RSSItem>();
 
@@ -256,7 +256,7 @@ public class RSSParser {
 				if (description != null)
 					description = description.trim();
 				
-				listRssItem.add(new RSSItem(title, link, pubDate, description, category));
+				listRssItem.add(new RSSItem(title, link, pubDate, description, (String[])(category == null ? null : category.toArray(new String[0]))));
 
 			}
 		}
@@ -264,7 +264,7 @@ public class RSSParser {
 		return listRssItem;
 	}
 
-	public static List<RSSItem> getRssItems(URI uri)
+	public static List<RSSItem> getRssItems(URI uri) throws SQLException
 	{
 		return parseDocumentToRSSItemList(parseXMLInputStreamToDOM(getInputStreamFromUri(uri)));
 	}

@@ -126,7 +126,7 @@ public class Database {
 		this.psInsertFluxRssItem.setString(2,rssItem.getLink());
 		this.psInsertFluxRssItem.setTimestamp(3,rssItem.getPubDate());
 		this.psInsertFluxRssItem.setString(4,rssItem.getDescription());
-		this.psInsertFluxRssItem.setString(5,this.connec.createArrayOf("varchar[]",rssItem.getCategory()));
+		this.psInsertFluxRssItem.setArray(5,this.connec.createArrayOf("varchar",rssItem.getCategory()));
 		this.psInsertFluxRssItem.setInt(6,rssItem.getImportance());
 		this.psInsertFluxRssItem.executeUpdate();
 		this.requested();

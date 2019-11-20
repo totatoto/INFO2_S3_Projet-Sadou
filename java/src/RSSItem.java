@@ -2,6 +2,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Comparator;
 import java.sql.Array;
+import java.sql.SQLException;
 
 public class RSSItem {
 	
@@ -29,22 +30,28 @@ public class RSSItem {
 		listRssItem.sort(new RSSItemComparator(type));
 	}
 	
-	public RSSItem (String title, String link, Timestamp pubDate, String description)
+	public RSSItem (String title, String link, Timestamp pubDate, String description) throws SQLException
 	{
-		this(title, link, pubDate, description, null);
+		this(title, link, pubDate, description, (String[]) null);
 	}
 	
-	public RSSItem (String title, String link, Timestamp pubDate, String description, Array category)
+	public RSSItem (String title, String link, Timestamp pubDate, String description, Array category) throws SQLException
 	{
 		this(-1, title, link, pubDate, description, category, -1);
 	}
 	
-	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, Array category, int importance)
+	public RSSItem (String title, String link, Timestamp pubDate, String description, String[] category) throws SQLException
 	{
-		this(id, title, link, pubDate, description, (String[])category.getArray(), importance)
+		this(-1, title, link, pubDate, description, category, -1);
 	}
 	
-	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, String[] category, int importance) {
+	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, Array category, int importance) throws SQLException
+	{
+		this(id, title, link, pubDate, description, (String[])category.getArray(), importance);
+	}
+	
+	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, String[] category, int importance) throws SQLException
+	{
 		this.id = id;
 		this.title = title;
 		this.link = link;
@@ -79,7 +86,7 @@ public class RSSItem {
 		return this.description;
 	}
 	
-	public String getCategory()
+	public String[] getCategory()
 	{
 		return this.category;
 	}
