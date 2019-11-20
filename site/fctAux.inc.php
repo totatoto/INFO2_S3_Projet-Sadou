@@ -39,7 +39,9 @@
 	
 	function getLinkOfFluxRss($fluxRss)
 	{
-		return $fluxRSS->getLink();
+		if ($fluxRss != null)
+			return $fluxRSS->getLink();
+		return null;
 	}
 	
 	function getLinksOfFluxRss()
