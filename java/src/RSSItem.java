@@ -1,6 +1,7 @@
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Comparator;
+import java.sql.Array;
 
 public class RSSItem {
 	
@@ -12,6 +13,7 @@ public class RSSItem {
 	private String link;
 	private Timestamp pubDate;
 	private String description;
+	private String[] category;
 	private int importance;
 	
 	public static void calcImportance(List<RSSItem> listRssItem)
@@ -29,15 +31,26 @@ public class RSSItem {
 	
 	public RSSItem (String title, String link, Timestamp pubDate, String description)
 	{
-		this(-1, title, link, pubDate, description, -1);
+		this(title, link, pubDate, description, null);
 	}
 	
-	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, int importance) {
+	public RSSItem (String title, String link, Timestamp pubDate, String description, Array category)
+	{
+		this(-1, title, link, pubDate, description, category, -1);
+	}
+	
+	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, Array category, int importance)
+	{
+		this(id, title, link, pubDate, description, (String[])category.getArray(), importance)
+	}
+	
+	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, String[] category, int importance) {
 		this.id = id;
 		this.title = title;
 		this.link = link;
 		this.pubDate = pubDate;
 		this.description = description;
+		this.category = category;
 		this.importance = importance;
 	}
 	
@@ -64,6 +77,11 @@ public class RSSItem {
 	public String getDescription()
 	{
 		return this.description;
+	}
+	
+	public String getCategory()
+	{
+		return this.category;
 	}
 	
 	public int getImportance()

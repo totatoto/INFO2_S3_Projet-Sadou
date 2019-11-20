@@ -121,7 +121,7 @@ class DB {
       public function getRSSItem($link) {
 			$link = pg_escape_string($link);
 		  
-      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
+      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
                               FROM RSS_ITEM AS A
                               JOIN ITEM_OF_FLUX_RSS AS B
                               ON A.id = B.id_rss_item
@@ -138,7 +138,7 @@ class DB {
 				$links[$i] = pg_escape_string($links[$i]);
 			}*/
 			
-			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.importance
+			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
 						  FROM RSS_ITEM AS A
 						  JOIN ITEM_OF_FLUX_RSS AS B
 						  ON A.id = B.id_rss_item

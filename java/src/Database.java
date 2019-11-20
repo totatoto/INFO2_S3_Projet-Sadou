@@ -27,7 +27,7 @@ public class Database {
 			psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 			psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
 			psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-			psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(?,?,?,?,?)");
+			psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,category,importance) VALUES(?,?,?,?,?,?)");
 			psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 		}
 		catch (SQLException e) {
@@ -37,7 +37,7 @@ public class Database {
 				psUpdateFluxRssLastItem = connec.prepareStatement("UPDATE FLUX_RSS SET id_last_rss = ? WHERE link = ? ");
 				psSelectFluxRssItem = connec.prepareStatement("SELECT * FROM RSS_ITEM WHERE id = ?");
 				psSelectFluxRss = connec.prepareStatement("SELECT * FROM FLUX_RSS WHERE link = ?");
-				psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,importance) VALUES(?,?,?,?,?)");
+				psInsertFluxRssItem = connec.prepareStatement("INSERT INTO RSS_ITEM(title,link,pub_date,description,category,importance) VALUES(?,?,?,?,?,?)");
 				psInsertItemOfFluxRss = connec.prepareStatement("INSERT INTO ITEM_OF_FLUX_RSS VALUES(?,?)");
 			}
 			catch (SQLException e2)
@@ -86,7 +86,7 @@ public class Database {
 		this.requested();
 
 		if(rsRSSItem.next())
-			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getString("description"),rsRSSItem.getInt("importance"));
+			rssItem = new RSSItem(rsRSSItem.getInt("id"),rsRSSItem.getString("title"),rsRSSItem.getString("link"),rsRSSItem.getTimestamp("pub_date"),rsRSSItem.getString("description"),rsRSSItem.getArray("category"),rsRSSItem.getInt("importance"));
 		rsRSSItem.close();
 		return rssItem;
 	}
@@ -126,7 +126,8 @@ public class Database {
 		this.psInsertFluxRssItem.setString(2,rssItem.getLink());
 		this.psInsertFluxRssItem.setTimestamp(3,rssItem.getPubDate());
 		this.psInsertFluxRssItem.setString(4,rssItem.getDescription());
-		this.psInsertFluxRssItem.setInt(5,rssItem.getImportance());
+		this.psInsertFluxRssItem.setString(5,this.connec.createArrayOf("varchar[]",rssItem.getCategory()));
+		this.psInsertFluxRssItem.setInt(6,rssItem.getImportance());
 		this.psInsertFluxRssItem.executeUpdate();
 		this.requested();
 
