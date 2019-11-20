@@ -30,13 +30,13 @@ function f2(req)
                 s += "</div>\n\n<div class=\"mySlides\">\n";
                 i=0;
             }
-             s += '<p class="RSSTitle">\n' + element["title"] + "\n</p>\n";
-             s += '<p class="RSSDate">\n' + element["pub_date"].substr(0,10) + "\n</p>\n";
-             if(element["description"] != null)
-             {
-                 s += element["description"];
-             }
-             i++;
+            s += '<p class="RSSDate">\n' + element["pub_date"].substr(0,10) + "\n</p>\n";
+            s += '<p class="RSSTitle">\n' + element["title"] + "\n</p>\n";
+            if(element["description"] != null)
+            {
+                s += element["description"];
+            }
+            i++;
          });
 
          s += "</div>\n\n";

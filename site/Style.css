@@ -197,7 +197,8 @@ div{
 .RSSTitle {
     font-size: 35pt;
     font-weight: bolder;
-    margin: 2%;
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
 
 .RSSDesc {
@@ -206,5 +207,5 @@ div{
 }
 
 .RSSDate {
-  font-size: 12pt;
+  font-size: 15pt;
 }
