@@ -52,7 +52,6 @@ public class RSSItem {
 	
 	public RSSItem (int id, String title, String link, Timestamp pubDate, String description, String[] category, int importance) throws SQLException
 	{
-		System.out.println(link + "::" + category);
 		this.id = id;
 		this.title = title;
 		this.link = link;
