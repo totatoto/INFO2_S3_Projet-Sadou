@@ -122,7 +122,7 @@ class DB {
 			$link = pg_escape_string($link);
 		  
       	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
-                              FROM RSS_ITEM AS A
+                              FROM RSS_ITEM_WITH_CATEG AS A
                               JOIN ITEM_OF_FLUX_RSS AS B
                               ON A.id = B.id_rss_item
                               WHERE B.link_flux_rss = '."'".$link."'".'
@@ -139,7 +139,7 @@ class DB {
 			}*/
 			
 			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
-						  FROM RSS_ITEM AS A
+						  FROM RSS_ITEM_WITH_CATEG AS A
 						  JOIN ITEM_OF_FLUX_RSS AS B
 						  ON A.id = B.id_rss_item
 						  WHERE B.link_flux_rss in (';

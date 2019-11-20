@@ -36,6 +36,7 @@ public class RSSParser {
 	private static DocumentBuilder builder;
 
 	private static Map<String, List<String>> MAP_CORRESP;
+	private static Map<String, List<String>> MAP_CORRESP_CATEGORY;
 
 	private static SimpleDateFormat PARSE_DATE_FORMAT;
 
@@ -83,6 +84,27 @@ public class RSSParser {
 		List<String> listCategory = new ArrayList<>();
 		listCategory.add("category");
 		MAP_CORRESP.put("category",listCategory);
+		
+		
+		MAP_CORRESP_CATEGORY = new HashMap<>();
+
+		List<String> listCategoryCybersecurity = new ArrayList<>();
+		listCategoryCybersecurity.add("cybersecurity");
+		listCategoryCybersecurity.add("hacking");
+		listCategoryCybersecurity.add("virus");
+		listCategoryCybersecurity.add("piratage");
+		listCategoryCybersecurity.add("phishing");
+		listCategoryCybersecurity.add("securite informatique");
+		listCategoryCybersecurity.add("cyberattaque");
+		listCategoryCybersecurity.add("vulnérabilités");
+		listCategoryCybersecurity.add("rançongiciels");
+		listCategoryCybersecurity.add("rançonnage");
+		listCategoryCybersecurity.add("ransmware");
+		listCategoryCybersecurity.add("malware");
+		listCategoryCybersecurity.add("Firewall");
+		listCategoryCybersecurity.add("Antivirus");
+		MAP_CORRESP_CATEGORY.put("cybersecurity",listCategoryCybersecurity);
+		
 
 
 		factory = DocumentBuilderFactory.newInstance();
