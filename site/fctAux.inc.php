@@ -1,5 +1,5 @@
 <?php
-	require("../DB.inc.php");
+	require("DB.inc.php");
 
 	function enTete($title="Titre",$css=NULL,$js=NULL,$icon)
 	{
