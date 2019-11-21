@@ -137,7 +137,7 @@ class DB {
 			{
 				$requete .= "( B.link_flux_rss = '".$link."' AND ARRAY[";
 				
-				$value .= $categs;
+				$value .= is_array($categs);
 				if (is_array(categs))
 				{
 					foreach ($categs as $categ)
