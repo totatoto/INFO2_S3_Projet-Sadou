@@ -1,4 +1,4 @@
-var expanded = new map();
+var expanded = new Map();
 
 function showCheckboxes(link) {
 var checkboxes = document.getElementById(link);
