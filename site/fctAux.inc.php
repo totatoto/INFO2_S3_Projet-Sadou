@@ -98,13 +98,6 @@
 	
 	function myUncrypt($text,$key)
 	{
-		return $text;
-		/*$ret = "";
-		openssl_private_decrypt($text,$ret,$key);*/
-	}
-	
-	function myCrypt($text,$key)
-	{
 		openssl_private_decrypt($text,$ret,$key);
 		return $ret;
 	}
