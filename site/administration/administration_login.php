@@ -32,7 +32,7 @@
 				echo '</p>';
 			echo '</br>';
 			echo '<input id="send_button" type="submit" value="Send" />';
-			echo '<input type="hidden" name="pubKey" value="';
+			/*echo '<input type="hidden" name="pubKey" value="';
 			
 			$config = array(
 				"digest_alg" => "sha512",
@@ -53,7 +53,7 @@
 			
 			echo $pubKey;
 			
-			echo '" />';
+			echo '" />';*/
 		echo '</form>';
 	}
 
