@@ -141,7 +141,7 @@ class DB {
 				{
 					foreach ($categs as $categ)
 					{
-						$requete .= "getCategory('".$categs."'),";
+						$requete .= "getCategory('".$categ."'),";
 					}
 					$requete = substr($requete,0,-1);
 				}
