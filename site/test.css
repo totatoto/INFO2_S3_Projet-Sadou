@@ -1,5 +1,6 @@
 .multiselect {
   width: max-content;
+  padding: 5%;
 }
 
 .selectBox {
@@ -22,7 +23,6 @@
 .checkboxes {
   display: none;
   border: 1px #dadada solid;
-  padding: 5%;
 }
 
 .checkboxes > label {
