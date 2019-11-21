@@ -1,4 +1,4 @@
-var expanded = [];
+var expanded;
 
 function showCheckboxes(link) {
 var checkboxes = document.getElementById(link);
