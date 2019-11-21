@@ -140,6 +140,7 @@ class DB {
 				$value .= is_array($categs);
 				if (is_array(categs))
 				{
+					$value .= 'la';
 					foreach ($categs as $categ)
 					{
 						$requete .= "getCategory('".$categs."'),";
