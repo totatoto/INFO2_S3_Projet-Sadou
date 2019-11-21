@@ -133,7 +133,7 @@
 	
 	session_start();
 	if (!isConnected(false))
-		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']) && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
+		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']))// && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 				
