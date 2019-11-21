@@ -132,7 +132,7 @@ class DB {
 	    return $this->execQuery($requete,null,'RSSItem');
       }
 
-      public function getRSSItems($links) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
+      public function getRSSItems($linksCategs) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
 			/*for ($i=0 ; $i < sizeof($links) ; $i++)
 			{
 				$links[$i] = pg_escape_string($links[$i]);
@@ -142,19 +142,33 @@ class DB {
 						  FROM RSS_ITEM_WITH_CATEG AS A
 						  JOIN ITEM_OF_FLUX_RSS AS B
 						  ON A.id = B.id_rss_item
-						  WHERE B.link_flux_rss in (';
+						  WHERE ';
 						  
-			foreach ($links as $link)
+			foreach ($linksCategs as $link => $categs)
 			{
-				$requete .= "'".$link."',";
+				$requete .= "( B.link_flux_rss = '".$link."' AND ARRAY[";
+				if (is_array(categs))
+				{
+					foreach ($categs as $categ)
+					{
+						$requete .= "getCategory('".$categs."'),";
+					}
+					$requete = substr($requete,0,-1);
+				}
+				else
+					$requete .= "'".$categs."'";
+				
+				$requete .= "]::varchar[] && ARRAY(SELECT getAllCategories(A.id))";
+				$requete .= ") OR";
 			}
-			$requete = substr($requete,0,-1);
+			
+			$requete = substr($requete,0,-3);
 						  
-			$requete .=  ') AND A.pub_date >= (SELECT CURRENT_DATE - 7)
+			$requete .=  ' AND A.pub_date >= (SELECT CURRENT_DATE - 7)
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
-          return $this->execQuery($requete,null,'RSSItem');
+          return $requete;//$this->execQuery($requete,null,'RSSItem');
       }
 
       public function getAccount($username) {
