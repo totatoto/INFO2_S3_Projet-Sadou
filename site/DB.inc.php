@@ -160,7 +160,7 @@ class DB {
       public function getAccount($username) {
 			$username = pg_escape_string($username);
 			
-  		$requete = 'SELECT A.id, A.username, A.password, A.status
+  		$requete = 'SELECT A.id, A.username, A.password, A.status, A.salt
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
 
