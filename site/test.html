@@ -9,11 +9,23 @@
 
     <body>
         <form method="get" action="test.html">
-          <select name="test">
-            <option value="test1">Select an option</option>
-              <option value="test2">Select an option2</option>
-          </select>
-          <input type="submit" value="envoi" name="envoiName"/>
+        <div class="multiselect">
+          <div class="selectBox" onclick="showCheckboxes()">
+            <select>
+              <option>Select an option</option>
+            </select>
+            <div class="overSelect"></div>
+          </div>
+          <div id="checkboxes">
+            <label for="one">
+              <input type="checkbox" name="f1" id="one" />First checkbox</label>
+            <label for="two">
+              <input type="checkbox" name="f2" id="two" />Second checkbox</label>
+            <label for="three">
+              <input type="checkbox" name="f3" id="three" />Third checkbox</label>
+          </div>
+        </div>
+          <input type="submit" value="envoi"/>
         </form>
     </body>
 </html>
