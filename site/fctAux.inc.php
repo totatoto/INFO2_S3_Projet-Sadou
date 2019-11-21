@@ -105,8 +105,8 @@
 	
 	function crypt($text,$key)
 	{
-		$ret = "";
 		openssl_private_decrypt($text,$ret,$key);
+		return $ret;
 	}
 
 	function parse($data)
