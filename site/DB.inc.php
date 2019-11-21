@@ -118,19 +118,6 @@ class DB {
       /*************************************************************************
        * Fonctions qui peuvent �tre utilis�es dans les scripts PHP - 50 items au max - voir si on r�cup�re par lien ou si on mix les flux etc
        *************************************************************************/
-      public function getRSSItem($link) {
-			$link = pg_escape_string($link);
-		  
-      	    $requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
-                              FROM RSS_ITEM_WITH_CATEG AS A
-                              JOIN ITEM_OF_FLUX_RSS AS B
-                              ON A.id = B.id_rss_item
-                              WHERE B.link_flux_rss = '."'".$link."'".'
-                              AND A.pub_date >= (SELECT CURRENT_DATE - 7)
-                              ORDER BY A.importance DESC, A.pub_date DESC
-                              LIMIT 50';
-	    return $this->execQuery($requete,null,'RSSItem');
-      }
 
       public function getRSSItems($linksCategs) { /*links = tableau contenant des liens pour avoir plusieurs sources*/
 			/*for ($i=0 ; $i < sizeof($links) ; $i++)
