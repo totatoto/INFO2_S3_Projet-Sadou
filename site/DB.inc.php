@@ -137,10 +137,8 @@ class DB {
 			{
 				$requete .= "( B.link_flux_rss = '".$link."' AND ARRAY[";
 				
-				$value .= is_array(array('ceci'))."::".is_array($categs);
-				if (is_array($categs))//categs))
+				if (is_array($categs))
 				{
-					$value .= 'la';
 					foreach ($categs as $categ)
 					{
 						$requete .= "getCategory('".$categs."'),";
@@ -160,7 +158,6 @@ class DB {
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
-		  return $value;
           return $requete;//$this->execQuery($requete,null,'RSSItem');
       }
 
