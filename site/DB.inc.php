@@ -125,6 +125,8 @@ class DB {
 				$links[$i] = pg_escape_string($links[$i]);
 			}*/
 			
+			$value = "";
+			
 			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
 						  FROM RSS_ITEM_WITH_CATEG AS A
 						  JOIN ITEM_OF_FLUX_RSS AS B
@@ -134,6 +136,8 @@ class DB {
 			foreach ($linksCategs as $link => $categs)
 			{
 				$requete .= "( B.link_flux_rss = '".$link."' AND ARRAY[";
+				
+				$value .= json_encode($categs);
 				if (is_array(categs))
 				{
 					foreach ($categs as $categ)
@@ -155,6 +159,7 @@ class DB {
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
+		  return $value;
           return $requete;//$this->execQuery($requete,null,'RSSItem');
       }
 
