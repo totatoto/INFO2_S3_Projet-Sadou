@@ -1,12 +1,12 @@
-var expanded = false;
+var expanded = [];
 
-function showCheckboxes() {
-var checkboxes = document.getElementById("checkboxes");
-if (!expanded) {
+function showCheckboxes(link) {
+var checkboxes = document.getElementById(link);
+if (!expanded[link] || expanded[link]=false) {
 checkboxes.style.display = "block";
-expanded = true;
+expanded[link] = true;
 } else {
 checkboxes.style.display = "none";
-expanded = false;
+expanded[link] = false;
 }
 }
