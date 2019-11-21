@@ -158,7 +158,7 @@ class DB {
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
 						  
-          return $requete;//$this->execQuery($requete,null,'RSSItem');
+          return $this->execQuery($requete,null,'RSSItem');
       }
 
       public function getAccount($username) {
