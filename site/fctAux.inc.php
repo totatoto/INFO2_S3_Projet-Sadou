@@ -98,8 +98,9 @@
 	
 	function myUncrypt($text,$key)
 	{
-		openssl_private_decrypt($text,$ret,$key);
-		return $ret;
+		return $text;
+		/*openssl_private_decrypt($text,$ret,$key);
+		return $ret;*/
 	}
 
 	function parse($data)
