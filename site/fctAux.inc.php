@@ -129,7 +129,10 @@
 	   $data = htmlentities($data);
 	   return $data;
 	}
-
+	
+	$salt = bin2hex(random_bytes ( 32 ));
+	echo $salt;
+	echo myHash("adminPWD",$salt);
 	session_start();
 	if (!isConnected(false))
 		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']) && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
