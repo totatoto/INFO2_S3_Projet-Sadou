@@ -130,6 +130,9 @@
 	   return $data;
 	}
 	
+	$salt = bin2hex(random_bytes ( 32 ));
+	echo $salt;
+	echo myHash('userPWD',salt);
 	
 	session_start();
 	if (!isConnected(false))
