@@ -132,6 +132,7 @@
 	
 	$salt = bin2hex(random_bytes ( 32 ));
 	echo $salt;
+	echo '\n';
 	echo myHash("adminPWD",$salt);
 	session_start();
 	if (!isConnected(false))
