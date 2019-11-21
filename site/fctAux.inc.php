@@ -96,14 +96,14 @@
 		return hash_hmac("sha512",$text,$salt);
 	}
 	
-	function uncrypt($text,$key)
+	function myUncrypt($text,$key)
 	{
 		return $text;
 		/*$ret = "";
 		openssl_private_decrypt($text,$ret,$key);*/
 	}
 	
-	function crypt($text,$key)
+	function myCrypt($text,$key)
 	{
 		openssl_private_decrypt($text,$ret,$key);
 		return $ret;
@@ -134,7 +134,7 @@
 	if (!isConnected(false))
 		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']) && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
-			$password_user = uncrypt($_POST['password_user'],$_SESSION['privKey']);
+			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 				
 			if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$password_user))
 			{
