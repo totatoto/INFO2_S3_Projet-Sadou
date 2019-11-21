@@ -24,10 +24,14 @@
   border: 1px #dadada solid;
 }
 
-.checkboxes label {
+.checkboxes > label {
   display: block;
 }
 
-.checkboxes label:hover {
+.checkboxes > label:hover {
   background-color: #1e90ff;
+}
+
+.multiselect > .checkboxes > .multiselect {
+    margin-left: 5px;
 }
