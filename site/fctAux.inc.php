@@ -136,10 +136,11 @@
 		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']))// && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
-				
+			
 			if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$password_user))
 			{
 				$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
+				$_SESSION['password_user'] = $password_user;
 				foreach (DB::getInstance()->getAccount($_SESSION['pseudo_user']) as $account)
 					if ($account->getPassword() == myHash($_SESSION['password_user'],$account->getSalt()))
 						$_SESSION['admin'] = $account->getStatus()=="ADMIN";
