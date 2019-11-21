@@ -1,5 +1,4 @@
 <?php
-	require ("DB.inc.php");
 	include "fctAux.inc.php";
 
 	enTete("affichage flux rss","Style.css",["rss_update.js","JS.js"],"images/vignette.png");

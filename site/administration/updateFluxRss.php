@@ -1,5 +1,4 @@
 <?php
-	require("../DB.inc.php");
 	require("../fctAux.inc.php");
 
 	contenu();

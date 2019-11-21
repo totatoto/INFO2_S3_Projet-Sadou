@@ -1,5 +1,4 @@
 <?php
-	require("../DB.inc.php");
 	require("../fctAux.inc.php");
 
 	enTete("page administration","styles/style_admin.css","administration.js","styles/icon.bmp");
@@ -17,7 +16,6 @@
     		if (isConnected(false))
 			{
 
-					include("head.php");
 					echo '<header id="bandesup">';
 						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';
