@@ -32,11 +32,11 @@
 				echo '</p>';
 			echo '</br>';
 			echo '<input id="send_button" type="submit" value="Send" />';
-			echo '<input type="text" name="pubKey" value="';
+			echo '<input type="hidden" name="pubKey" value="';
 			
 			$config = array(
 				"digest_alg" => "sha512",
-				"private_key_bits" => 4096,
+				"private_key_bits" => 2048,
 				"private_key_type" => OPENSSL_KEYTYPE_RSA,
 			);
 			$keypair = openssl_pkey_new($config);
