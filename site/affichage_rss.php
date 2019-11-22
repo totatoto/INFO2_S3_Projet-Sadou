@@ -3,7 +3,7 @@
 
 	enTete("affichage flux rss","Style.css",["rss_update.js","JS.js"],"images/vignette.png");
 	//contenu(getLinksOfFluxRss());
-	contenu( array('https://www.datasecuritybreach.fr/feed/' => ['chiffrement','Android'],'https://www.silicon.fr/feed' => ['android','Logiciels','Big Data'], 'https://www.cert.ssi.gouv.fr/feed/' => null));
+	contenu( array('https://www.datasecuritybreach.fr/feed/' => ['chiffrement','Android'],'https://www.silicon.fr/feed' => ['android','Logiciels','Big Data'], 'https://www.cert.ssi.gouv.fr/feed/' => null,'https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml' => null));
 	pied();
 
 
