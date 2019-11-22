@@ -135,20 +135,26 @@ class DB {
 						  
 			foreach ($linksCategs as $link => $categs)
 			{
-				$requete .= "( B.link_flux_rss = '".$link."' AND ARRAY[";
+				$requete .= "( B.link_flux_rss = '".$link."'";
 				
-				if (is_array($categs))
+				if ($categs != null and sizeof($categs) != 0)
 				{
-					foreach ($categs as $categ)
+					$requete .= " AND ARRAY[";
+					
+					if (is_array($categs))
 					{
-						$requete .= "getCategory('".$categ."'),";
+						foreach ($categs as $categ)
+						{
+							$requete .= "getCategory('".$categ."'),";
+						}
+						$requete = substr($requete,0,-1);
 					}
-					$requete = substr($requete,0,-1);
+					else
+						$requete .= "'".$categs."'";
+					
+					$requete .= "]::varchar[] && ARRAY(SELECT getAllCategories(A.id))";
 				}
-				else
-					$requete .= "'".$categs."'";
 				
-				$requete .= "]::varchar[] && ARRAY(SELECT getAllCategories(A.id))";
 				$requete .= ") OR";
 			}
 			

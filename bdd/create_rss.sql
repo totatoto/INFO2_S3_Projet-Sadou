@@ -100,13 +100,13 @@ $$
 		current_category_name_reduced Category.name%TYPE;
 		category_name_reduced Category.name%TYPE;
 	BEGIN
-		SELECT TRANSLATE ( category_name, 'éèà', 'eea' ) into category_name_reduced;
-		SELECT LOWER(category_name_reduced) into category_name_reduced;
+		SELECT LOWER(category_name) into category_name_reduced;
+		SELECT TRANSLATE ( category_name_reduced, 'éèà', 'eea' ) into category_name_reduced;
 
 		FOR current_category_name IN SELECT name FROM CATEGORY
 		LOOP
-			SELECT TRANSLATE ( current_category_name, 'éèà', 'eea' ) into current_category_name_reduced;
-			SELECT LOWER(current_category_name_reduced) into current_category_name_reduced;
+			SELECT LOWER(current_category_name) into current_category_name_reduced;
+			SELECT TRANSLATE (current_category_name_reduced, 'éèà', 'eea' ) into current_category_name_reduced;
 			IF ( FOUND AND category_name_reduced=current_category_name_reduced )
 			THEN
 				RETURN current_category_name;
