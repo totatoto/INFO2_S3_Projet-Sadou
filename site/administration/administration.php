@@ -17,7 +17,7 @@
             echo '</div>';
         echo '</header>';
 
-        echo '<div id="admin_choice_wrapper">';
+        echo '<div class="central_wrapper">';
             echo '<p id="admin_pages" class="choix_type_admin">';
                 echo '<a title="Administration des pages" href="administration_pages.php">Administration des pages</a>';
             echo '</p>';
