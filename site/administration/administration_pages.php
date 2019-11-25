@@ -1,3 +1,3 @@
-<<?php
-    echo "Ceci est la page administration des pages"
+<?php
+    echo "Ceci est la page administration des pages";
 ?>
