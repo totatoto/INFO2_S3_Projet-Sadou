@@ -39,7 +39,7 @@
 				}
 				else if (isset($_GET['insertUsername']) && isset($_GET['insertPassword']) && isset($_GET['insertStatus']))
 				{
-					if (($db->getAccount($_GET['insertUsername']) !== null))// || ($_GET['insertStatus'] != "ADMIN" && $_GET['insertStatus'] != "USER") )
+					if (($db->getAccount($_GET['insertUsername']) != null))// || ($_GET['insertStatus'] != "ADMIN" && $_GET['insertStatus'] != "USER") )
 					{
 						echo "account to insert not valide";
 					}
