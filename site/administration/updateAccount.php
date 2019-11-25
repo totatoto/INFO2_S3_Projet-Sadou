@@ -49,7 +49,7 @@
 						$db->insertAccount($_GET['insertUsername'], myHash($_GET['insertPassword'],$salt), $_GET['insertStatus'], $salt);
 						echo "done";
 					}
-				}*/
+				}
 				else
 				{
 					echo "no parametre";
