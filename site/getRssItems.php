@@ -6,6 +6,7 @@
         echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
     else
     {
-		echo json_encode($db->getRSSItems(json_decode($_GET["linksCategs"])));
+		if (isset($_GET["linksCategs"]))
+			echo json_encode($db->getRSSItems(json_decode($_GET["linksCategs"])));
     }
 ?>

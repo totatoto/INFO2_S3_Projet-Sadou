@@ -137,7 +137,7 @@ class DB {
 			{
 				$requete .= "( B.link_flux_rss = '".$link."'";
 				
-				if ($categs != null and sizeof($categs) != 0)
+				if ($categs != null && sizeof($categs) != 0)
 				{
 					$requete .= " AND ARRAY[";
 					
