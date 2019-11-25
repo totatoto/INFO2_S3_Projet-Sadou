@@ -18,8 +18,8 @@ header, footer {
     position: absolute;
     left: 0px;
     width: 100%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: 0.75%;
+    padding-bottom: 0.75%;
     height: 3%;
 	font-family: 'Quicksand-Regular', Arial, Serif;
     font-size: 15px;
@@ -74,7 +74,7 @@ input {
 }
 
 .choix_type_admin {
-    
+
 }
 
 .divLinks  {

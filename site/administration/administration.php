@@ -1,13 +1,13 @@
 <?php
     require("../fctAux.inc.php");
 
-    enTete("page administration","styles/style_admin.css","administration.js","styles/icon.bmp");
+    enTete("page administration","styles/style_admin.css",NULL,"styles/icon.bmp");
     contenu();
     pied();
 
     function contenu()
     {
-        echo '<header id="bandesup">';
+        echo '<header>';
             echo '<div>';
                 echo '<span style="float: right; text-align: right;">';
                 echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';

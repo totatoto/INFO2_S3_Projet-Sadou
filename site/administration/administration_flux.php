@@ -1,7 +1,7 @@
 <?php
 	require("../fctAux.inc.php");
 
-	enTete("page administration","styles/style_admin.css","administration.js","styles/icon.bmp");
+	enTete("page administration des flux","styles/style_admin.css","administration.js","styles/icon.bmp");
 	contenu();
 	pied();
 
