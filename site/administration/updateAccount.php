@@ -27,7 +27,7 @@
 				}
 				else if (isset($_GET['deleteUsername']))
 				{
-					if (isset($db->getAccount($_GET['deleteUsername'])))
+					if (($db->getAccount($_GET['deleteUsername']) !== null))
 					{
 						$db->deleteAccount($_GET['deleteUsername']);
 						echo "done";
