@@ -55,6 +55,9 @@
 					echo "no parametre";
 				}
 			}
+			else {
+				echo "not connected !";
+			}
 		}
 	}
 
