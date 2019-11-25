@@ -1,3 +1,3 @@
 <<?php
-    echo "Ceci est la page administration des catégories"
+    echo "Ceci est la page administration des catégories";
 ?>

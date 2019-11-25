@@ -1,3 +1,3 @@
 <<?php
-    echo "Ceci est la page administration des comptes"
+    echo "Ceci est la page administration des comptes";
 ?>
