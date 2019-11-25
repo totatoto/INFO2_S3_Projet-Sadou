@@ -32,7 +32,7 @@ class DB {
       		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
       		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
           }
-          catch (PDOException $e) {            
+          catch (PDOException $e) {
             echo "probleme de connexion :".$e->getMessage();
             return null;
           }
@@ -234,7 +234,7 @@ class DB {
 
      public function updateAccount($oldUsername,$newUsername) {
  		    $oldUsername = pg_escape_string($oldUsername);
- 		    $newUsername = pg_escape_string($newUsername);
+ 		    $newUsername = pg_escape_identifier($newUsername);
 
          $requete = 'update ACCOUNT set username = ? where link = ?';
          $tparam = array($newUsername,$oldUsername);
