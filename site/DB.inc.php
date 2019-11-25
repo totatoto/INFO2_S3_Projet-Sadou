@@ -236,7 +236,7 @@ class DB {
  		    $oldUsername = pg_escape_string($oldUsername);
  		    $newUsername = pg_escape_string($newUsername);
 
-         $requete = 'update ACCOUNT set username = ? where link = ?';
+         $requete = 'update ACCOUNT set username = ? where username = ?';
          $tparam = array($newUsername,$oldUsername);
          return $this->execMaj($requete,$tparam);
      }
