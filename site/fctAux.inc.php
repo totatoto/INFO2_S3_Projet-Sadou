@@ -37,7 +37,7 @@
         echo '</footer>';
 		echo "\t".'</body>'."\n".'</html>';
 	}
-	
+
 	function getLinksOfFluxRss()
 	{
 		$db = DB::getInstance();
@@ -90,12 +90,17 @@
 
 		return isset($_SESSION['admin']);
 	}
-	
+
+	function generateSalt()
+	{
+			return bin2hex(random_bytes('32'));
+	}
+
 	function myHash($text,$salt)
 	{
 		return hash_hmac("sha512",$text,$salt);
 	}
-	
+
 	function myUncrypt($text,$key)
 	{
 		return $text;
@@ -123,13 +128,13 @@
 	   $data = htmlentities($data);
 	   return $data;
 	}
-	
+
 	session_start();
 	if (!isConnected(false))
 		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']))// && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
-			
+
 			if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$password_user))
 			{
 				$_SESSION['pseudo_user'] = $_POST['pseudo_user'];

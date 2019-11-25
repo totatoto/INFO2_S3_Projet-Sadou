@@ -23,8 +23,19 @@ class DB {
 		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
 	      }
 	      catch (PDOException $e) {
-      	      	    echo "probleme de connexion :".$e->getMessage();
-		    return null;
+          try
+          {
+            $connStr = 'pgsql:host=5.50.179.242 port=5432 dbname=info2_s3_projet_sadou';
+    		  // Connexion � la base
+    	      	  $this->connect = new PDO($connStr, 'pi', 'Martin123');
+      		  // Configuration facultative de la connexion
+      		  $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+      		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+          }
+          catch (PDOException $e) {            
+            echo "probleme de connexion :".$e->getMessage();
+            return null;
+          }
 	      }
       }
 
@@ -124,23 +135,23 @@ class DB {
 			{
 				$links[$i] = pg_escape_string($links[$i]);
 			}*/
-			
+
 			$value = "";
-			
+
 			$requete =   'SELECT A.id,A.title,A.link,A.pub_date,A.description,A.category,A.importance
 						  FROM RSS_ITEM_WITH_CATEG AS A
 						  JOIN ITEM_OF_FLUX_RSS AS B
 						  ON A.id = B.id_rss_item
 						  WHERE ';
-						  
+
 			foreach ($linksCategs as $link => $categs)
 			{
 				$requete .= "( B.link_flux_rss = '".$link."'";
-				
+
 				if ($categs != null && sizeof($categs) != 0)
 				{
 					$requete .= " AND ARRAY[";
-					
+
 					if (is_array($categs))
 					{
 						foreach ($categs as $categ)
@@ -151,25 +162,25 @@ class DB {
 					}
 					else
 						$requete .= "'".$categs."'";
-					
+
 					$requete .= "]::varchar[] && ARRAY(SELECT getAllCategories(A.id))";
 				}
-				
+
 				$requete .= ") OR";
 			}
-			
+
 			$requete = substr($requete,0,-3);
-						  
+
 			$requete .=  ' AND A.pub_date >= (SELECT CURRENT_DATE - 7)
 						  ORDER BY A.importance DESC, A.pub_date DESC
 						  LIMIT 50';
-						  
+
           return $this->execQuery($requete,null,'RSSItem');
       }
 
       public function getAccount($username) {
 			$username = pg_escape_string($username);
-			
+
   		$requete = 'SELECT A.id, A.username, A.password, A.status, A.salt
   					FROM account AS A
   					WHERE A.username = '."'".$username."'";
@@ -186,7 +197,7 @@ class DB {
 
     public function getTheFluxRss($link) {
 		$link = pg_escape_string($link);
-			
+
 		$requete = 'SELECT A.link, A.id_last_rss
 				    FROM FLUX_RSS AS A
                     WHERE A.link = '."'".$link."'";
@@ -196,24 +207,57 @@ class DB {
 
 
     public function updateFluxRss($oldLink,$newLink) {
+		    $oldLink = pg_escape_string($oldLink);
+		    $newLink = pg_escape_string($newLink);
+
         $requete = 'update FLUX_RSS set link = ? where link = ?';
         $tparam = array($newLink,$oldLink);
         return $this->execMaj($requete,$tparam);
     }
 
     public function deleteFluxRss($link) {
-		$link = pg_escape_string($link);
-		
+		    $link = pg_escape_string($link);
+
          $requete = 'delete from FLUX_RSS where link = ?';
          $tparam = array($link);
          return $this->execMaj($requete,$tparam);
      }
 
      public function insertFluxRss($link) {
+ 		      $link = pg_escape_string($link);
+
           $requete = 'insert into FLUX_RSS(link) values(?)';
           $tparam = array($link);
           return $this->execMaj($requete,$tparam);
      }
+
+
+     public function updateAccount($oldUsername,$newUsername) {
+ 		    $oldUsername = pg_escape_string($oldUsername);
+ 		    $newUsername = pg_escape_string($newUsername);
+
+         $requete = 'update ACCOUNT set username = ? where link = ?';
+         $tparam = array($newUsername,$oldUsername);
+         return $this->execMaj($requete,$tparam);
+     }
+
+     public function insertAccount($username, $password, $status, $salt) {
+ 		      $username = pg_escape_string($username);
+		      $password = pg_escape_string($password);
+		      $status = pg_escape_string($status);
+
+          $requete = 'insert into Account(username, password, status,salt) values(?,?,?,?)';
+          $tparam = array($username, $password, $status, $salt);
+          return $this->execMaj($requete,$tparam);
+     }
+
+     public function deleteAccount($username) {
+ 		    $link = pg_escape_string($link);
+
+          $requete = 'delete from ACCOUNT where username = ?';
+          $tparam = array($username);
+          return $this->execMaj($requete,$tparam);
+      }
 
 
 
