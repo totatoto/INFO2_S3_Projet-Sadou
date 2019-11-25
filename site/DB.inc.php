@@ -234,7 +234,7 @@ class DB {
 
      public function updateAccount($oldUsername,$newUsername) {
  		    $oldUsername = pg_escape_string($oldUsername);
- 		    $newUsername = pg_escape_identifier($newUsername);
+ 		    $newUsername = pg_escape_string($newUsername);
 
          $requete = 'update ACCOUNT set username = ? where link = ?';
          $tparam = array($newUsername,$oldUsername);
