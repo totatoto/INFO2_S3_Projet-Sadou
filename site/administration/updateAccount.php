@@ -15,7 +15,7 @@
 			{
 				if (isset($_GET['oldUsername']) && isset($_GET['newUsername']))
 				{
-					if (isset($db->getAccount($_GET['newUsername'])) || ! isset($db->getAccount($_GET['oldUsername'])))
+					if (($db->getAccount($_GET['newUsername']) !== null) || ($db->getAccount($_GET['oldUsername']) === null))
 					{
 							echo "new username or old username not valide";
 					}
