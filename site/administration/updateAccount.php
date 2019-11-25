@@ -15,7 +15,7 @@
 			{
 				if (isset($_GET['oldUsername']) && isset($_GET['newUsername']))
 				{
-					if (($db->getAccount($_GET['newUsername']) !== null) || ($db->getAccount($_GET['oldUsername']) === null))
+					if (($db->getAccount($_GET['newUsername']) != null) || ($db->getAccount($_GET['oldUsername']) == null))
 					{
 							echo "new username or old username not valide";
 					}
@@ -27,7 +27,7 @@
 				}
 				else if (isset($_GET['deleteUsername']))
 				{
-					if (($db->getAccount($_GET['deleteUsername']) !== null))
+					if (($db->getAccount($_GET['deleteUsername']) != null))
 					{
 						$db->deleteAccount($_GET['deleteUsername']);
 						echo "done";
@@ -39,14 +39,14 @@
 				}
 				else if (isset($_GET['insertUsername']) && isset($_GET['insertPassword']) && isset($_GET['insertStatus']))
 				{
-					if (($db->getAccount($_GET['insertUsername']) != null))// || ($_GET['insertStatus'] != "ADMIN" && $_GET['insertStatus'] != "USER") )
+					if (($db->getAccount($_GET['insertUsername']) != null) || ($_GET['insertStatus'] != "ADMIN" && $_GET['insertStatus'] != "USER") )
 					{
 						echo "account to insert not valide";
 					}
 					else
 					{
 						$salt = generateSalt();
-						//$db->insertAccount($_GET['insertUsername'], myHash($_GET['insertPassword'],$salt), $_GET['insertStatus'], $salt);
+						$db->insertAccount($_GET['insertUsername'], myHash($_GET['insertPassword'],$salt), $_GET['insertStatus'], $salt);
 						echo "done";
 					}
 				}
