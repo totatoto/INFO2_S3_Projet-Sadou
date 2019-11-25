@@ -1,7 +1,7 @@
 <?php
     require("../fctAux.inc.php");
 
-    enTete("page administration des comptes","styles/style_admin.css",NULL,"styles/icon.bmp");
+    enTete("page administration des comptes","styles/style_admin.css","administration.js","styles/icon.bmp");
     contenu();
     pied();
 
