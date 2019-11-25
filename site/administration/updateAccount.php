@@ -21,7 +21,7 @@
 					}
 					else
 					{
-						$db->updateAccount($_GET['oldUsername'],$_GET['newUsername']);
+						$db->updateAccountUsername($_GET['oldUsername'],$_GET['newUsername']);
 						echo "done";
 					}
 				}
@@ -47,6 +47,19 @@
 					{
 						$salt = generateSalt();
 						$db->insertAccount($_GET['insertUsername'], myHash($_GET['insertPassword'],$salt), $_GET['insertStatus'], $salt);
+						echo "done";
+					}
+				}
+				else if (isset($_GET['username']) && isset($_GET['newPassword']))
+				{
+					if ($db->getAccount($_GET['username']) == null)
+					{
+							echo "username not valide";
+					}
+					else
+					{
+						$salt = generateSalt();
+						$db->updateAccountPassword($_GET['username'],myHash($_GET['newPassword'],$salt),$salt);
 						echo "done";
 					}
 				}

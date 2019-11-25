@@ -232,6 +232,26 @@ class DB {
      }
 
 
+     public function updateAccountUsername($oldUsername,$newUsername) {
+ 		    $oldUsername = pg_escape_string($oldUsername);
+ 		    $newUsername = pg_escape_string($newUsername);
+
+         $requete = 'update ACCOUNT set username = ? where username = ?';
+         $tparam = array($newUsername,$oldUsername);
+         return $this->execMaj($requete,$tparam);
+     }
+
+
+     public function updateAccountPassword($Username,$newPassword,$salt) {
+ 		    $Username = pg_escape_string($Username);
+ 		    $newPassword = pg_escape_string($newPassword);
+ 		    $salt = pg_escape_string($salt);
+
+         $requete = 'update ACCOUNT set (password,salt) = (?,?) where username = ?';
+         $tparam = array($newPassword,$salt,$Username);
+         return $this->execMaj($requete,$tparam);
+     }
+
      public function updateAccount($oldUsername,$newUsername) {
  		    $oldUsername = pg_escape_string($oldUsername);
  		    $newUsername = pg_escape_string($newUsername);
