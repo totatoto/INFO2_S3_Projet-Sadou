@@ -32,7 +32,7 @@
 				{
 					if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
 						$linksCategs[$linkCateg->getLinkFluxRss()] = [];
-					$linksCategs[$linkCateg->getLinkFluxRss()].push($linkCateg->getNameCategory());
+					$linksCategs[$linkCateg->getLinkFluxRss()]->push($linkCateg->getNameCategory());
 				}
 				
 				print_r($linksCategs);
