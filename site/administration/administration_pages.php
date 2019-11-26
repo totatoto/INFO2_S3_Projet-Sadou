@@ -19,7 +19,13 @@
             echo '</div>';
         echo '</header>';
 
-        echo "Ceci est la page administration des pages";
+        echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
+            echo 'Administration des pages';
+        echo '</button>';
+
+        echo '<div class="central_wrapper">';
+            echo "Ceci est la page administration des pages";
+        echo '</div>';
         }
         else
         {
