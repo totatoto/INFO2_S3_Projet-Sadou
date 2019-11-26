@@ -178,7 +178,7 @@ function logOut()
 	
 function redirect(link)
 {
-	if ($link)
+	if (link)
 		document.location.href = link;
 }
 
