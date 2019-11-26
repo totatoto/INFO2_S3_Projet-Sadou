@@ -300,7 +300,6 @@ class DB {
           $tparam = array($username);
           return $this->execMaj($requete,$tparam);
       }
-	}
 
     public function getlinksCategsOfPage($numPage) {
 		$numPage = pg_escape_string($numPage);
@@ -310,6 +309,7 @@ class DB {
                     WHERE A.numPage = '.$numPage;
 
 		return $this->execQuery($requete,null,'PageLinksCategs');
+	}
 	}
 
 
