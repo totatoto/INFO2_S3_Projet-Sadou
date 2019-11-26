@@ -30,7 +30,7 @@
 				$linksCategs = getLinksCategsOfPage($numPage);
 				
 				//print_r($linksCategs);
-				echo '<div class="slideshow-container" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
+				echo '<div class="slideshow-container" numpage="'.$numPage.'" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
 				echo '</div>';
 			}
     		
