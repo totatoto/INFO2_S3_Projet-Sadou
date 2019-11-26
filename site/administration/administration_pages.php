@@ -42,32 +42,34 @@
                 echo '</ul>';
             echo '</div>';
 
-            echo '<div id="divCurrentLinks">';
+            echo '<div id="wrapper_droit">';
+                echo '<div id="divCurrentLinks">';
+                    if (isConnected(true))
+                    {
+                        echo '<span style="float: right; text-align: right;">';
+                        echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
+                        echo '&nbsp;&nbsp;&nbsp;';
+                        echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
+                        echo '&nbsp;&nbsp;&nbsp;';
+                        echo '</span>';
+                        echo '<input type="text" class="inputRSS" value="'.$link.'"/>';
+                    }
+                    else
+                    {
+                        echo '<p>'.$link.'</p>';
+                    }
+                echo '</div>';
+
                 if (isConnected(true))
                 {
+                    echo '<div id="insertLink">';
                     echo '<span style="float: right; text-align: right;">';
-                    echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLink('."'".$link."'".')">';
-                    echo '&nbsp;&nbsp;&nbsp;';
-                    echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLink('."'".$link."'".')">';
-                    echo '&nbsp;&nbsp;&nbsp;';
+                    echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
                     echo '</span>';
-                    echo '<input type="text" class="inputRSS" value="'.$link.'"/>';
-                }
-                else
-                {
-                    echo '<p>'.$link.'</p>';
+                    echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
+                    echo '</div>';
                 }
             echo '</div>';
-
-            if (isConnected(true))
-            {
-                echo '<div id="insertLink">';
-                echo '<span style="float: right; text-align: right;">';
-                echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
-                echo '</span>';
-                echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
-                echo '</div>';
-            }
         echo '</div>';
         }
         else
