@@ -16,7 +16,7 @@
 				if (isset($_GET['oldUsername']) && (isset($_GET['newUsername']) || isset($_GET['newPassword']) || isset($_GET['newStatus'])))
 				{
 					if ( ($db->getAccount($_GET['oldUsername']) == null) ||
-								(isset($_GET['newUsername']) && ($db->getAccount($_GET['newUsername']) != null)) ||
+								//(isset($_GET['newUsername']) && ($db->getAccount($_GET['newUsername']) != null)) ||
 								(isset($_GET['newStatus']) && $_GET['newStatus'] != "ADMIN" && $_GET['newStatus'] != "USER")
 						)
 					{
