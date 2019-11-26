@@ -232,7 +232,7 @@ class DB {
      }
 
 
-     public function updateAccountUsername($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
+     public function updateAccount($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
  		    $oldUsername = pg_escape_string($oldUsername);
  		    $newUsername = pg_escape_string($newUsername);
 

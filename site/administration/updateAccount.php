@@ -24,7 +24,7 @@
 					}
 					else
 					{
-						if (isset())
+						if (isset($_GET['newPassword']))
 						{
 							$salt = generateSalt();
 							$db->updateAccount($_GET['oldUsername'],$_GET['newUsername'],myHash($_GET['newPassword'],$salt),$salt,$_GET['newStatus']);
