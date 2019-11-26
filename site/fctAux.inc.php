@@ -128,6 +128,16 @@
 	   $data = htmlentities($data);
 	   return $data;
 	}
+	
+	function existAffichageRssPage($numPage)
+	{
+		if (!isset($numPage))
+			return false;
+		if (DB::getInstance()->getlinksCategsOfPage($numPage) != null)
+			return false;
+		
+		return true;
+	}
 
 	session_start();
 	if (!isConnected(false))
