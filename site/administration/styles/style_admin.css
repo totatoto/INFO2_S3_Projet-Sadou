@@ -65,6 +65,10 @@ input {
     border: 1px solid #004159;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .central_wrapper {
   position: absolute;
   top: 50%;
@@ -140,6 +144,11 @@ button.choix_type_admin {
     left: 50%;
     transform: translate(-50%,0);
     width: 50%;
+}
+
+#choix_page {
+  border: 1px solid #004159;
+
 }
 
 #divCurrentLinks {
