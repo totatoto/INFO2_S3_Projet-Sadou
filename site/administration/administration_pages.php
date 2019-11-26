@@ -43,7 +43,7 @@
             echo '</div>';
 
             echo '<div id="wrapper_droit">';
-                echo '<div id="divCurrentLinks">';
+                echo '<div id="divLinks">';
                     if (isConnected(true))
                     {
                         echo '<span style="float: right; text-align: right;">';
