@@ -7,6 +7,8 @@
 
     function contenu()
     {
+        if (isConnected(false))
+        {
         echo '<header>';
             echo '<div>';
                 echo '<span style="float: right; text-align: right;">';
@@ -18,5 +20,10 @@
         echo '</header>';
 
         echo "Ceci est la page administration des comptes";
+        }
+        else
+        {
+        echo '<script>document.location.href = "administration_login.php";</script>';
+        }
     }
 ?>
