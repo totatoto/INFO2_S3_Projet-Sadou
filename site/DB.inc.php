@@ -259,13 +259,7 @@ class DB {
 		
 		  array_push($tparam,$oldUsername);
 		  
-		  echo $requete.'<br/>';
-		  echo $oldUsername.'<br/>';
-		  echo $newPassword.'<br/>';
-		  echo $newSalt.'<br/>';
-		  print_r($tparam);
-		  return null;
-         //return $this->execMaj($requete,$tparam);
+		  return $this->execMaj($requete,$tparam);
      }
 
      public function insertAccount($username, $password, $status, $salt) {
