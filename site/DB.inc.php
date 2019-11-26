@@ -240,7 +240,7 @@ class DB {
          substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
          ') where username = ?';
 		 
-         $tparam = array()
+         $tparam = array();
 		 if (isset($newUsername))
 			array_push($tparam,$newUsername);
 		 if (isset($newPassword))
