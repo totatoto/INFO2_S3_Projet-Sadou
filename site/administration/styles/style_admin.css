@@ -42,9 +42,9 @@ h1
 }
 
 form {
-  position: absolute; /* postulat de départ */
-  top: 50%; left: 50%; /* à 50%/50% du parent référent */
-  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+  position: absolute; /* postulat de dÃ©part */
+  top: 50%; left: 50%; /* Ã  50%/50% du parent rÃ©fÃ©rent */
+  transform: translate(-50%, -50%); /* dÃ©calage de 50% de sa propre taille */
   padding: 30px;
   border: 1px solid #004159;
 }
@@ -67,6 +67,7 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 50%;
 }
 
 .titre
@@ -82,6 +83,12 @@ input {
 
 .choix_type_admin {
 
+  padding: 5%;
+  border: 1px solid #004159;
+  margin: 3%;
+  text-decoration: none;
+  color: #004159;
+  text-align: center;
 }
 
 .divLinks  {
@@ -128,7 +135,6 @@ input {
     top: 75%;
     left: 50%;
     transform: translate(-50%,0);
-
 }
 
 /*----------------------------------------------------------------*/
