@@ -42,9 +42,9 @@ h1
 }
 
 form {
-  position: absolute; /* postulat de dÃ©part */
-  top: 50%; left: 50%; /* Ã  50%/50% du parent rÃ©fÃ©rent */
-  transform: translate(-50%, -50%); /* dÃ©calage de 50% de sa propre taille */
+  position: absolute; /* postulat de dÃƒÂ©part */
+  top: 50%; left: 50%; /* ÃƒÂ  50%/50% du parent rÃƒÂ©fÃƒÂ©rent */
+  transform: translate(-50%, -50%); /* dÃƒÂ©calage de 50% de sa propre taille */
   padding: 30px;
   border: 1px solid #004159;
 }
@@ -90,6 +90,14 @@ input {
   color: #004159;
   text-align: center;
   color: white;
+  font-size: auto;
+}
+
+button.choix_type_admin {
+    position: relative;
+    width: 40%;
+    margin: 5%;
+    background-color: #004159;
 }
 
 .divLinks  {
@@ -139,39 +147,23 @@ input {
 }
 
 #admin_pages {
-    position: relative;
     left: 0px;
     top: 0px;
-    width: 40%;
-    margin: 5%;
-    background-color: #004159;
 }
 
 #admin_flux {
-    position: relative;
     right: 0px;
     top: 0px;
-    width: 40%;
-    margin: 5%;
-    background-color: #004159;
 }
 
 #admin_comptes {
-    position: relative;
     right: 0px;
     bottom: 0px;
-    width: 40%;
-    margin: 5%;
-    background-color: #004159;
 }
 
 #admin_categories {
-    position: relative;
     left: 0px;
     bottom: 0px;
-    width: 40%;
-    margin: 5%;
-    background-color: #004159;
 }
 
 
