@@ -137,7 +137,7 @@ input {
     transform: translate(-50%,0);
 }
 
-#admin_pages {
+#admin_pages #admin_categories{
     position: relative;
     left: 0px;
     top: 0px;
@@ -145,13 +145,15 @@ input {
     margin: 5%;
 }
 
-#admin_flux {
+#admin_flux #admin_comptes{
     position: relative;
     right: 0px;
     top: 0px;
     width: 40%;
     margin: 5%;
 }
+
+
 
 /*----------------------------------------------------------------*/
 .styledred {
