@@ -148,7 +148,14 @@ button.choix_type_admin {
 
 #choix_page {
   border: 1px solid #004159;
-  display: inline-block;
+  display: block;
+  float: left;
+  width: 40%;
+}
+
+#wrapper_droit {
+  float:right;
+  width: 59%;
 }
 
 #divCurrentLinks {
