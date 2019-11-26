@@ -93,7 +93,7 @@
 
 	function generateSalt()
 	{
-			return bin2hex(random_bytes('32'));
+		return bin2hex(random_bytes('32'));
 	}
 
 	function myHash($text,$salt)
