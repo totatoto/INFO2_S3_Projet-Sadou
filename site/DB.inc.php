@@ -232,32 +232,14 @@ class DB {
      }
 
 
-     public function updateAccountUsername($oldUsername,$newUsername) {
+     public function updateAccountUsername($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
  		    $oldUsername = pg_escape_string($oldUsername);
  		    $newUsername = pg_escape_string($newUsername);
 
-         $requete = 'update ACCOUNT set username = ? where username = ?';
-         $tparam = array($newUsername,$oldUsername);
-         return $this->execMaj($requete,$tparam);
-     }
-
-
-     public function updateAccountPassword($Username,$newPassword,$salt) {
- 		    $Username = pg_escape_string($Username);
- 		    $newPassword = pg_escape_string($newPassword);
- 		    $salt = pg_escape_string($salt);
-
-         $requete = 'update ACCOUNT set (password,salt) = (?,?) where username = ?';
-         $tparam = array($newPassword,$salt,$Username);
-         return $this->execMaj($requete,$tparam);
-     }
-
-     public function updateAccount($oldUsername,$newUsername) {
- 		    $oldUsername = pg_escape_string($oldUsername);
- 		    $newUsername = pg_escape_string($newUsername);
-
-         $requete = 'update ACCOUNT set username = ? where username = ?';
-         $tparam = array($newUsername,$oldUsername);
+         $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
+         substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
+         ') where username = ?';
+         $tparam = array(,$oldUsername); //TODO
          return $this->execMaj($requete,$tparam);
      }
 

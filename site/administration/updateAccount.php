@@ -13,15 +13,37 @@
 		{
     		if (isConnected(true))
 			{
-				if (isset($_GET['oldUsername']) && isset($_GET['newUsername']))
+				if (isset($_GET['oldUsername']) && (isset($_GET['newUsername']) || isset($_GET['newPassword']) || isset($_GET['newStatus'])))
 				{
-					if (($db->getAccount($_GET['newUsername']) != null) || ($db->getAccount($_GET['oldUsername']) == null))
+					if ( ($db->getAccount($_GET['oldUsername']) == null) ||
+								(isset($_GET['newUsername']) && ($db->getAccount($_GET['newUsername']) != null)) ||
+								(isset($_GET['newStatus']) && $_GET['newStatus'] != "ADMIN" && $_GET['newStatus'] != "USER")
+						)
 					{
-							echo "new username or old username not valide";
+							echo "invalide Parametre";
 					}
 					else
 					{
-						$db->updateAccountUsername($_GET['oldUsername'],$_GET['newUsername']);
+						if (isset())
+						{
+							$salt = generateSalt();
+							$db->updateAccount($_GET['oldUsername'],$_GET['newUsername'],myHash($_GET['newPassword'],$salt),$salt,$_GET['newStatus']);
+						}
+						else
+							$db->updateAccount($_GET['oldUsername'],$_GET['newUsername'],null,null,$_GET['newStatus']);
+						echo "done";
+					}
+				}
+				else if (isset($_GET['username']) && (isset($_GET['newPassword'])))
+				{
+					if ($db->getAccount($_GET['username']) == null)
+					{
+							echo "username not valide";
+					}
+					else
+					{
+						$salt = generateSalt();
+						$db->updateAccountPassword($_GET['username'],myHash($_GET['newPassword'],$salt),$salt);
 						echo "done";
 					}
 				}
@@ -47,19 +69,6 @@
 					{
 						$salt = generateSalt();
 						$db->insertAccount($_GET['insertUsername'], myHash($_GET['insertPassword'],$salt), $_GET['insertStatus'], $salt);
-						echo "done";
-					}
-				}
-				else if (isset($_GET['username']) && isset($_GET['newPassword']))
-				{
-					if ($db->getAccount($_GET['username']) == null)
-					{
-							echo "username not valide";
-					}
-					else
-					{
-						$salt = generateSalt();
-						$db->updateAccountPassword($_GET['username'],myHash($_GET['newPassword'],$salt),$salt);
 						echo "done";
 					}
 				}
