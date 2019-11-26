@@ -16,11 +16,13 @@
 		{
 			if (!isset($numPage))
 			{
-				contenu404();
+				echo "moi";
+				//contenu404();
 			}
 			else if (!existAffichageRssPage($numPage))
 			{
-				affichageRssPageNotFound($numPage);
+				echo "test";
+				//affichageRssPageNotFound($numPage);
 			}
 			else
 			{
