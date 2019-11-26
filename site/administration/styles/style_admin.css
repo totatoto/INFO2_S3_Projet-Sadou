@@ -137,7 +137,7 @@ input {
     transform: translate(-50%,0);
 }
 
-#admin_pages #admin_categories{
+#admin_pages {
     position: relative;
     left: 0px;
     top: 0px;
@@ -145,10 +145,26 @@ input {
     margin: 5%;
 }
 
-#admin_flux #admin_comptes{
+#admin_flux {
     position: relative;
     right: 0px;
     top: 0px;
+    width: 40%;
+    margin: 5%;
+}
+
+#admin_comptes {
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    width: 40%;
+    margin: 5%;
+}
+
+#admin_categories {
+    position: relative;
+    left: 0px;
+    bottom: 0px;
     width: 40%;
     margin: 5%;
 }
