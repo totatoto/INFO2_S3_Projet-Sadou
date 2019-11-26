@@ -14,7 +14,7 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-			if (!isset($numPage) || $numPage == null)
+			if (!myIsset($numPage))
 			{
 				echo "moi";
 				//contenu404();

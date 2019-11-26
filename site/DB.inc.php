@@ -235,19 +235,19 @@ class DB {
 
      public function updateAccount($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
 		 $nb = 0;
-		if (isset($oldUsername))
+		if (myIsset($oldUsername))
 			$oldUsername = pg_escape_string($oldUsername);
-		if (isset($newUsername))
+		if (myIsset($newUsername))
 		{
 			$newUsername = pg_escape_string($newUsername);
 			$nb++;
 		}
-		if (isset($newPassword))
+		if (myIsset($newPassword))
 		{
 			$newPassword = pg_escape_string($newPassword);
 			$nb += 2;
 		}
-		if (isset($newStatus))
+		if (myIsset($newStatus))
 		{
 			$newStatus = pg_escape_string($newStatus);
 			$nb++;
@@ -255,31 +255,31 @@ class DB {
 
 		 if ($nb == 1)
 		 {
-			 $requete = 'update ACCOUNT set '.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).' = '.
-         substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
+			 $requete = 'update ACCOUNT set '.substr((myIsset($newUsername) ? 'username,' : '').(myIsset($newPassword) ? 'password,salt,' : '').(myIsset($newStatus) ? 'status,' : ''),0,-1).' = '.
+         substr((myIsset($newUsername) ? '?,' : '').(myIsset($newPassword) ? '?,?,' : '').(myIsset($newStatus) ? '?,' : ''),0,-1).
          ' where username = ?';
 		 }
 		 else
 		 {
-			 $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
-         substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
+			 $requete = 'update ACCOUNT set ('.substr((myIsset($newUsername) ? 'username,' : '').(myIsset($newPassword) ? 'password,salt,' : '').(myIsset($newStatus) ? 'status,' : ''),0,-1).') = ('.
+         substr((myIsset($newUsername) ? '?,' : '').(myIsset($newPassword) ? '?,?,' : '').(myIsset($newStatus) ? '?,' : ''),0,-1).
          ') where username = ?';
 		 }
-         
-		 
+
+
          $tparam = array();
-		 if (isset($newUsername))
+		 if (myIsset($newUsername))
 			array_push($tparam,$newUsername);
-		 if (isset($newPassword))
+		 if (myIsset($newPassword))
 		 {
 			array_push($tparam,$newPassword);
 			array_push($tparam,$newSalt);
 		 }
-		 if (isset($newStatus))
+		 if (myIsset($newStatus))
 			array_push($tparam,$newStatus);
-		
+
 		  array_push($tparam,$oldUsername);
-		  
+
 		  return $this->execMaj($requete,$tparam);
      }
 
