@@ -89,6 +89,7 @@ input {
   text-decoration: none;
   color: #004159;
   text-align: center;
+  color: white;
 }
 
 .divLinks  {
@@ -143,6 +144,7 @@ input {
     top: 0px;
     width: 40%;
     margin: 5%;
+    background-color: #004159;
 }
 
 #admin_flux {
@@ -151,6 +153,7 @@ input {
     top: 0px;
     width: 40%;
     margin: 5%;
+    background-color: #004159;
 }
 
 #admin_comptes {
@@ -159,6 +162,7 @@ input {
     bottom: 0px;
     width: 40%;
     margin: 5%;
+    background-color: #004159;
 }
 
 #admin_categories {
@@ -167,6 +171,7 @@ input {
     bottom: 0px;
     width: 40%;
     margin: 5%;
+    background-color: #004159;
 }
 
 
