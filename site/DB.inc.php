@@ -259,10 +259,10 @@ class DB {
 		
 		  array_push($tparam,$oldUsername);
 		  
-		  echo $requete;
-		  echo $oldUsername;
-		  echo $newPassword;
-		  echo $oldUsername;
+		  echo $requete.'\n';
+		  echo $oldUsername.'\n';
+		  echo $newPassword.'\n';
+		  echo $oldUsername.'\n';
 		  print_r($newSalt);
 		  return null;
          //return $this->execMaj($requete,$tparam);
