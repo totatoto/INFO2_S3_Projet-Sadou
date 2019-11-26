@@ -148,7 +148,7 @@ button.choix_type_admin {
 
 #choix_page {
   border: 1px solid #004159;
-
+  display: inline-block;
 }
 
 #divCurrentLinks {

@@ -25,6 +25,7 @@
 
         echo '<div class="central_wrapper">';
             echo '<div id="choix_page">';
+                echo '<h1>Choix de la page</h1>';
                 echo '<ul>';
                     echo '<li>';
                         echo '<input type="radio" name="page_selector" value="page1" checked="checked"> Page 1';
