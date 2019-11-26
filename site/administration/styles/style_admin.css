@@ -137,6 +137,22 @@ input {
     transform: translate(-50%,0);
 }
 
+#admin_pages {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 40%;
+    margin: 5%;
+}
+
+#admin_flux {
+    position: relative;
+    right: 0px;
+    top: 0px;
+    width: 40%;
+    margin: 5%;
+}
+
 /*----------------------------------------------------------------*/
 .styledred {
     border: 0;
