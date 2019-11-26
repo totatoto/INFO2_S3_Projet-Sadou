@@ -20,18 +20,25 @@
         echo '</header>';
 
         echo '<div class="central_wrapper">';
-            echo '<button id="admin_pages" class="choix_type_admin" onclick=redirect('."'".'administration_pages.php'."'".')>';
-                echo 'Administration des pages';
-            echo '</button>';
-            echo '<button id="admin_flux" class="choix_type_admin" onclick=redirect('."'".'administration_flux.php'."'".')>';
-                echo 'Administration des flux RSS';
-            echo '</button>';
-            echo '<button id="admin_categories" class="choix_type_admin" onclick=redirect('."'".'administration_categories.php'."'".')>';
-                echo 'Administration des catégories';
-            echo '</button>';
-            echo '<button id="admin_comptes" class="choix_type_admin" onclick="redirect('."'".'administration_users.php'."'".')">';
-                echo 'Administration des comptes';
-            echo '</button>';
+
+            echo '<div id="boutonsHaut">';
+                echo '<button id="admin_pages" class="choix_type_admin" onclick=redirect('."'".'administration_pages.php'."'".')>';
+                    echo 'Administration des pages';
+                echo '</button>';
+                echo '<button id="admin_flux" class="choix_type_admin" onclick=redirect('."'".'administration_flux.php'."'".')>';
+                    echo 'Administration des flux RSS';
+                echo '</button>';
+            echo '</div>';
+
+            echo '<div id="boutonsBas">';
+                echo '<button id="admin_categories" class="choix_type_admin" onclick=redirect('."'".'administration_categories.php'."'".')>';
+                    echo 'Administration des catégories';
+                echo '</button>';
+                echo '<button id="admin_comptes" class="choix_type_admin" onclick="redirect('."'".'administration_users.php'."'".')">';
+                    echo 'Administration des comptes';
+                echo '</button>';
+            echo '</div>';
+
         echo '</div>';
         }
         else
