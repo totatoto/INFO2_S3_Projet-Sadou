@@ -239,8 +239,23 @@ class DB {
          $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
          substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
          ') where username = ?';
-         $tparam = array($newUsername,$oldUsername); //TODO
-         return $this->execMaj($requete,$tparam);
+		 
+         $tparam = array()
+		 if (isset($newUsername))
+			array_push($tparam,$newUsername);
+		 if (isset($newPassword))
+		 {
+			array_push($tparam,$newPassword);
+			array_push($tparam,$newSalt);
+		 }
+		 if (isset($newStatus))
+			array_push($tparam,$newStatus);
+		
+		  array_push($tparam,$oldUsername);
+		  
+		  echo $requete;
+		  return null;
+         //return $this->execMaj($requete,$tparam);
      }
 
      public function insertAccount($username, $password, $status, $salt) {
