@@ -20,18 +20,18 @@
         echo '</header>';
 
         echo '<div class="central_wrapper">';
-            echo '<p id="admin_pages" class="choix_type_admin">';
-                echo '<a title="Administration des pages" href="administration_pages.php">Administration des pages</a>';
-            echo '</p>';
-            echo '<p id="admin_flux" class="choix_type_admin">';
-                echo '<a title="Administration des flux RSS" href="administration_flux.php">Administration des flux RSS</a>';
-            echo '</p>';
-            echo '<p id="admin_categories" class="choix_type_admin">';
-                echo '<a title="Administration des catégories" href="administration_categories.php">Administration des catégories</a>';
-            echo '</p>';
-            echo '<p id="admin_comptes" class="choix_type_admin">';
-                echo '<a title="Administration des comptes" href="administration_users.php">Administration des comptes</a>';
-            echo '</p>';
+            echo '<button id="admin_pages" class="choix_type_admin" onclick=redirect('."'".'administration_pages.php'."'".')>';
+                echo 'Administration des pages';
+            echo '</button>';
+            echo '<button id="admin_flux" class="choix_type_admin" onclick=redirect('."'".'administration_flux.php'."'".')>';
+                echo 'Administration des flux RSS';
+            echo '</button>';
+            echo '<button id="admin_categories" class="choix_type_admin" onclick=redirect('."'".'administration_categories.php'."'".')>';
+                echo 'Administration des catégories';
+            echo '</button>';
+            echo '<button id="admin_comptes" class="choix_type_admin" onclick="redirect('."'".'administration_users.php'."'".')">';
+                echo 'Administration des comptes';
+            echo '</button>';
         echo '</div>';
         }
         else
