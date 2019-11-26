@@ -135,7 +135,7 @@
 			return array();
 		
 		$linksCategs = array();
-		$tabLinkCateg = $db->getlinksCategsOfPage($numPage);
+		$tabLinkCateg = DB::getInstance()->getlinksCategsOfPage($numPage);
 		foreach ($tabLinkCateg as $linkCateg)
 		{
 			if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
