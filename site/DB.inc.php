@@ -310,7 +310,6 @@ class DB {
 
 		return $this->execQuery($requete,null,'PageLinksCategs');
 	}
-	}
 
 
 
