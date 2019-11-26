@@ -133,7 +133,7 @@
 	{
 		if (!isset($numPage))
 			return false;
-		if (DB::getInstance()->getlinksCategsOfPage($numPage) != null)
+		if (DB::getInstance()->getlinksCategsOfPage($numPage) == null)
 			return false;
 		
 		return true;
