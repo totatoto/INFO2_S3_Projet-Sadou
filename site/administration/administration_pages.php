@@ -24,7 +24,22 @@
         echo '</button>';
 
         echo '<div class="central_wrapper">';
-            echo "Ceci est la page administration des pages";
+            echo '<div id="choix_page">';
+                echo '<ul>';
+                    echo '<li>';
+                        echo '<input type="radio" name="page_selector" value="page1">';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<input type="radio" name="page_selector" value="page2">';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<input type="radio" name="page_selector" value="page3">';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<input type="radio" name="page_selector" value="page4">';
+                    echo '</li>';
+                echo '</ul>';
+            echo '</div>';
         echo '</div>';
         }
         else
