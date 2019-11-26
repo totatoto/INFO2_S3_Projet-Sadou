@@ -35,9 +35,9 @@
 					$linksCategs[$linkCateg->getLinkFluxRss()][] = $linkCateg->getNameCategory();
 				}
 				
-				//print_r($linksCategs);
-				echo '<div class="slideshow-container" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
-				echo '</div>';
+				print_r($linksCategs);
+				//echo '<div class="slideshow-container" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
+				//echo '</div>';
 			}
     		
 			//echo "<h1>Items RSS de la dernière semaine</h1>\n";
