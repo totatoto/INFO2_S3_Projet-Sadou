@@ -233,8 +233,14 @@ class DB {
 
 
      public function updateAccount($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
- 		    $oldUsername = pg_escape_string($oldUsername);
- 		    $newUsername = pg_escape_string($newUsername);
+		if (isset($oldUsername))
+			$oldUsername = pg_escape_string($oldUsername);
+		if (isset($newUsername))
+			$oldUsername = pg_escape_string($newUsername);
+		if (isset($newPassword))
+			$oldUsername = pg_escape_string($newPassword);
+		if (isset($newStatus))
+			$oldUsername = pg_escape_string($newStatus);
 
          $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
          substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
