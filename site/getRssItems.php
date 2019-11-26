@@ -11,8 +11,7 @@
 			echo json_encode($db->getRSSItems(json_decode($_GET["linksCategs"])));
 		else if (isset($_GET["numPage"]))
 		{
-			echo $numPage;
-			echo json_encode(getLinksCategsOfPage($numPage));
+			echo json_encode(getLinksCategsOfPage($_GET["numPage"]));
 		}
     }
 ?>
