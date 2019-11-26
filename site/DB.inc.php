@@ -3,6 +3,7 @@
 require 'rssItem.inc.php';
 require 'account.inc.php';
 require 'fluxRss.inc.php';
+require 'pageLinksCategs.inc.php';
 
 class DB {
       private static $instance = null; //m�morisation de l'instance de DB pour appliquer le pattern Singleton
@@ -299,6 +300,17 @@ class DB {
           $tparam = array($username);
           return $this->execMaj($requete,$tparam);
       }
+
+    public function getlinksCategsOfPage($numPage) {
+		$numPage = pg_escape_string($numPage);
+
+		$requete = 'SELECT A.numPage, A.link_flux_rss, A.name_category
+				    FROM PAGE_LINKS_CATEGS AS A
+                    WHERE A.numPage = '.$numPage;
+
+		return $this->execQuery($requete,null,'PageLinksCategs');
+	}
+	}
 
 
 
