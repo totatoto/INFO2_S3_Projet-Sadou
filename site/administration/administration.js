@@ -174,6 +174,14 @@ function logOut()
 	xhttp.send();
 }
 
+
+	
+function redirect(link)
+{
+	if ($link)
+		document.location.href = link;
+}
+
 function resultLogOutRequest(req)
 {
 	if (req.readyState == 4 && req.status == 200)
