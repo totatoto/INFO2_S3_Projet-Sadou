@@ -57,7 +57,7 @@
                 {
                     echo '<p>'.$link.'</p>';
                 }
-            echo '</div>'
+            echo '</div>';
 
             if (isConnected(true))
             {
