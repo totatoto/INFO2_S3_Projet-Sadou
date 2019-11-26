@@ -259,7 +259,9 @@ class DB {
 		
 		  array_push($tparam,$oldUsername);
 		  
-         return $this->execMaj($requete,$tparam);
+		  print_r($tparam);
+		  return null;
+         //return $this->execMaj($requete,$tparam);
      }
 
      public function insertAccount($username, $password, $status, $salt) {
