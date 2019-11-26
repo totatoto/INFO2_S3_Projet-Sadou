@@ -74,9 +74,7 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
-  width: 75%;
-  border: 1px solid #004159;
+  width: 50%;
 }
 
 .titre
@@ -151,24 +149,6 @@ button.choix_type_admin {
 #choix_page {
   border: 1px solid #004159;
   display: inline-block;
-  text-align: center;
-  height:100%;
-  width: 30%;
-  float:left;
-}
-
-#wrapper_droit {
-  border: 1px solid #004159;
-  display: inline-block;
-  text-align: center;
-  height:100%;
-  width: 69%;
-  float:right;
-}
-
-#divLinks {
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
 
 #divCurrentLinks {
