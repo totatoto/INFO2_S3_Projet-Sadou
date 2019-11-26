@@ -26,6 +26,10 @@
 						echo '</div>';
 					echo '</header>';
 
+					echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
+			            echo 'Retour';
+			        echo '</button>';
+					
 						echo '<p class="titre"> '.(isConnected(true) ? "Administration" : "Visualisation").'</p>';
 
 						// echo '<p>'."Flux RSS integres".'</p>'
