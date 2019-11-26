@@ -20,7 +20,7 @@
         echo '</header>';
 
         echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
-            echo 'Administration des catégories';
+            echo 'Retour';
         echo '</button>';
 
         echo '<div class="central_wrapper">';
