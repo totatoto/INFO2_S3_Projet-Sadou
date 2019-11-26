@@ -193,5 +193,19 @@ $$ LANGUAGE PLpgSQL;
 CREATE OR REPLACE VIEW RSS_ITEM_WITH_CATEG AS
 	SELECT I.*, Array(SELECT DISTINCT getAllCategories(I.id)) as category
 	FROM RSS_ITEM as I;
+	
+	
+	
+	
+CREATE TABLE PAGE_LINKS_CATEGS (
+	numPage INTEGER NOT NULL,
+	link_flux_rss VARCHAR NOT NULL,
+	name_category VARCHAR NOT NULL,
+	PRIMARY KEY (numPage, link_flux_rss, name_category),
+	CONSTRAINT PAGE_LINKS_CATEGS_link_flux_rss FOREIGN KEY (link_flux_rss) REFERENCES FLUX_RSS(link)
+	ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT PAGE_LINKS_CATEGS_name_category FOREIGN KEY (name_category) REFERENCES CATEGORY(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 -- SELECT insertrssitem('test'::varchar,'lienn'::varchar,'2019-11-20'::timestamp,'description'::varchar,ARRAY['cyber','secu','hack']::varchar[],0) AS id;
