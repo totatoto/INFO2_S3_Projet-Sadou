@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
   console.log("load fini");
-  setInterval(fUpdateRssItems,20000);//120000); // update rss items every 2 minutes
-  setInterval(fUpdateLinksCategs,20000);//120000); // update rssLinksCategs every 5 minutes
+  setInterval(fUpdateRssItems,120000);//120000); // update rss items every 2 minutes
+  setInterval(fUpdateLinksCategs,300000);//120000); // update rssLinksCategs every 5 minutes
   fUpdateRssItems();
 },false);
 
