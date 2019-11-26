@@ -111,10 +111,6 @@ button.choix_type_admin {
     background-color: #004159;
 }
 
-.divLinks  {
-    padding-bottom: 40px;
-}
-
 .inputRSS {
     width: 30%;
 }
@@ -179,6 +175,11 @@ button.choix_type_admin {
     top: 75%;
     left: 50%;
     transform: translate(-50%,0);
+}
+
+#insertLink2 {
+  position: absolute;
+  bottom: 0px;
 }
 
 #admin_pages {
