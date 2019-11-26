@@ -129,6 +129,12 @@
 	   return $data;
 	}
 	
+	function redirect($link)
+	{
+		if (isset($link))
+			echo '<script>document.location.href = "'.$link.'";</script>';
+	}
+	
 	function existAffichageRssPage($numPage)
 	{
 		if (!isset($numPage))
