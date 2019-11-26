@@ -1,6 +1,6 @@
 <?php
 	include "fctAux.inc.php";
-	
+
 
     $db = DB::getInstance();
     if ($db == null)
@@ -9,7 +9,7 @@
     {
 		if (isset($_GET["linksCategs"]))
 			echo json_encode($db->getRSSItems(json_decode($_GET["linksCategs"])));
-		else if (isset($_GET["numPage"]))
+		else if (isset($_GET["numPage"]) && $_GET["numPage"] != null)
 		{
 			echo json_encode(getLinksCategsOfPage($_GET["numPage"]));
 		}
