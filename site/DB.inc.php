@@ -304,7 +304,7 @@ class DB {
     public function getlinksCategsOfPage($numPage) {
 		$numPage = pg_escape_string($numPage);
 
-		$requete = 'SELECT A.numPage, A.link_flux_rss, A.name_category
+		$requete = 'SELECT A.id, A.numPage, A.link_flux_rss, A.name_category
 				    FROM PAGE_LINKS_CATEGS AS A
                     WHERE A.numPage = '.$numPage;
 
