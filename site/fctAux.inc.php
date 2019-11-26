@@ -129,6 +129,25 @@
 	   return $data;
 	}
 	
+	function getLinksCategsOfPage($numPage)
+	{
+		if (!isset($numPage))
+			return array();
+		
+		$linksCategs = array();
+		$tabLinkCateg = $db->getlinksCategsOfPage($numPage);
+		foreach ($tabLinkCateg as $linkCateg)
+		{
+			if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
+				$linksCategs[$linkCateg->getLinkFluxRss()] = [];
+			
+			if ($linkCateg->getNameCategory() != null)
+				$linksCategs[$linkCateg->getLinkFluxRss()][] = $linkCateg->getNameCategory();
+		}
+		
+		return $linksCategs;
+	}
+	
 	function existAffichageRssPage($numPage)
 	{
 		if (!isset($numPage))

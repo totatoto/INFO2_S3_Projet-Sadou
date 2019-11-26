@@ -26,16 +26,8 @@
 			}
 			else
 			{
-				$linksCategs = array();
-				$tabLinkCateg = $db->getlinksCategsOfPage($numPage);
-				foreach ($tabLinkCateg as $linkCateg)
-				{
-					if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
-						$linksCategs[$linkCateg->getLinkFluxRss()] = [];
-					
-					if ($linkCateg->getNameCategory() != null)
-						$linksCategs[$linkCateg->getLinkFluxRss()][] = $linkCateg->getNameCategory();
-				}
+				
+				$linksCategs = getLinksCategsOfPage($numPage);
 				
 				//print_r($linksCategs);
 				echo '<div class="slideshow-container" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
