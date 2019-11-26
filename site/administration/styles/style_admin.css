@@ -42,9 +42,9 @@ h1
 }
 
 form {
-  position: absolute; /* postulat de dÃƒÂ©part */
-  top: 50%; left: 50%; /* ÃƒÂ  50%/50% du parent rÃƒÂ©fÃƒÂ©rent */
-  transform: translate(-50%, -50%); /* dÃƒÂ©calage de 50% de sa propre taille */
+  position: absolute; /* postulat de dÃƒÆ’Ã‚Â©part */
+  top: 50%; left: 50%; /* ÃƒÆ’Ã‚Â  50%/50% du parent rÃƒÆ’Ã‚Â©fÃƒÆ’Ã‚Â©rent */
+  transform: translate(-50%, -50%); /* dÃƒÆ’Ã‚Â©calage de 50% de sa propre taille */
   padding: 30px;
   border: 1px solid #004159;
 }
@@ -79,6 +79,10 @@ input {
     margin-top: 30px;
     margin-bottom: 30px;
     text-decoration: Bold;
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 .choix_type_admin {
@@ -145,7 +149,7 @@ button.choix_type_admin {
     position: absolute;
     left: 50%;
     transform: translate(-50%,0);
-    bottom : 30%;
+    bottom : 25%;
     border: 1px solid #004159;
 }
 
