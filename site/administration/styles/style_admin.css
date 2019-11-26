@@ -5,8 +5,8 @@
 
 *
 {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 html {
@@ -35,6 +35,7 @@ header
 
 footer {
     bottom: 0px;
+    text-align: center;
 }
 
 h1
