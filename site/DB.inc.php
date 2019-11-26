@@ -239,7 +239,7 @@ class DB {
          $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
          substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
          ') where username = ?';
-         $tparam = array(,$oldUsername); //TODO
+         $tparam = array($newUsername,$oldUsername); //TODO
          return $this->execMaj($requete,$tparam);
      }
 
