@@ -233,18 +233,38 @@ class DB {
 
 
      public function updateAccount($oldUsername,$newUsername,$newPassword,$newSalt,$newStatus) {
+		 $nb = 0;
 		if (isset($oldUsername))
 			$oldUsername = pg_escape_string($oldUsername);
 		if (isset($newUsername))
+		{
 			$newUsername = pg_escape_string($newUsername);
+			$nb++;
+		}
 		if (isset($newPassword))
+		{
 			$newPassword = pg_escape_string($newPassword);
+			$nb += 2;
+		}
 		if (isset($newStatus))
+		{
 			$newStatus = pg_escape_string($newStatus);
+			$nb++;
+		}
 
-         $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
+		 if ($nb == 1)
+		 {
+			 $requete = 'update ACCOUNT set '.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).' = '.
+         substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
+         ' where username = ?';
+		 }
+		 else
+		 {
+			 $requete = 'update ACCOUNT set ('.substr((isset($newUsername) ? 'username,' : '').(isset($newPassword) ? 'password,salt,' : '').(isset($newStatus) ? 'status,' : ''),0,-1).') = ('.
          substr((isset($newUsername) ? '?,' : '').(isset($newPassword) ? '?,?,' : '').(isset($newStatus) ? '?,' : ''),0,-1).
          ') where username = ?';
+		 }
+         
 		 
          $tparam = array();
 		 if (isset($newUsername))
