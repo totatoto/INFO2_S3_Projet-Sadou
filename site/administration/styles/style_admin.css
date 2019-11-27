@@ -152,6 +152,10 @@ button.choix_type_admin {
   float: left;
 }
 
+#central_pages {
+  width : 80%;
+}
+
 #wrapper_droit {
   border: 1px solid #004159;
   display: inline-block;
