@@ -86,7 +86,7 @@
 					echo '</span>';
 				}
 
-				echo '</div>'
+				echo '</div>';
 			}
 
 			echo '</div>';
