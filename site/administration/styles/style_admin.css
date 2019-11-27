@@ -153,13 +153,16 @@ button.choix_type_admin {
   text-align: center;
 }
 
+#divLinks {
+    border: 1px solid #004159;
+}
+
 #central_pages {
   width : 60%;
   height: 60%
 }
 
 #wrapper_droit {
-  border: 1px solid #004159;
   display: inline-block;
   float: right;
   height: 100%;
@@ -168,6 +171,7 @@ button.choix_type_admin {
 #insertLink_pages {
   right: 0px;
   padding-top: 20px;
+  bottom: 0px;
 }
 
 
