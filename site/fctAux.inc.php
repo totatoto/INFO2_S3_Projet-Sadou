@@ -85,13 +85,10 @@
 
 	function isConnected($admin)
 	{
-		echo $_SESSION['admin'];
-		echo $_SESSION['admin'];
-		echo "<br/>";
 		if ($admin == true)
-			return myIsset($_SESSION['admin']) && ($_SESSION['admin'] == true);
+			return isset($_SESSION['admin']) && ($_SESSION['admin'] == true);
 
-		return myIsset($_SESSION['admin']);
+		return isset($_SESSION['admin']);
 	}
 
 	function generateSalt()
@@ -193,7 +190,7 @@
 
 	session_start();
 	if (!isConnected(false))
-		if(true)//myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
+		if(myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 
@@ -203,12 +200,6 @@
 				$_SESSION['password_user'] = $password_user;
 				foreach (DB::getInstance()->getAccount($_SESSION['pseudo_user']) as $account)
 				{
-					echo "1";
-					echo "<br/>";
-					echo $account->getPassword();
-					echo "<br/>";
-					echo myHash($_SESSION['password_user'],$account->getSalt());
-					echo "<br/>";
 					if ($account->getPassword() == myHash($_SESSION['password_user'],$account->getSalt()))
 					{
 						echo "2";
