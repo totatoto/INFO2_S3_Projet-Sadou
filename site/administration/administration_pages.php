@@ -75,8 +75,8 @@
 					$categsOfLinksOfPage = getCategsOfLinksOfPage($selectedPage,$link);
 					foreach(DB::getInstance()->getAllCategoriesOfFluxRss($link) as $categ)
 					{
-						echo '<label for="'.$categ.'">';
-						echo '<input type="checkbox" id="'.$categ.'" />'.$categ.'</label>';
+						echo '<label for="'.$categ->getName().'">';
+						echo '<input type="checkbox" id="'.$categ->getName().'" />'.$categ->getName().'</label>';
 					}
 					
 				  echo '</div>';
