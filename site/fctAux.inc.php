@@ -154,7 +154,7 @@
 
 
 		$tabPageLinksCategs = DB::getInstance()->getRawPageLinksCategs();
-		for($tabPageLinksCategs as $PageLinkCateg)
+		foreach($tabPageLinksCategs as $PageLinkCateg)
 		{
 			if (!in_array($PageLinkCateg->getNumPage(),$pages))
 				$pages[] = $PageLinkCateg->getNumPage();
