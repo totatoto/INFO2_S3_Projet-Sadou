@@ -167,6 +167,11 @@
 	{
 		return array_keys(getLinksCategsOfPage($numPage));
 	}
+	
+	function getCategsOfLinksOfPage($numPage, $link)
+	{
+		return getLinksCategsOfPage($numPage)[$link];
+	}
 
 	function existAffichageRssPage($numPage)
 	{
@@ -189,7 +194,7 @@
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 
-			if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$password_user))
+			if (isPseudoOK($_POST['pseudo_user']) )//&& isAccountOk($_POST['pseudo_user'],$password_user))
 			{
 				$_SESSION['pseudo_user'] = $_POST['pseudo_user'];
 				$_SESSION['password_user'] = $password_user;

@@ -26,9 +26,23 @@
         echo '<div class="central_wrapper">';
 
         // creation de la sélection de la page
-        echo '<div>';
-
-        echo '</div>';
+		echo '<div id="choix_page">';
+			echo '<h1>Sélection Pages</h1>';
+			echo '<ul>';
+			
+				$pages = getPages();
+				
+				$selectedPage = -1;
+				
+				foreach($pages as $page)
+				{
+					echo '<li>';
+					echo '<input type="radio" name="page_selector" value="page'.$page.'" '.($selectedPage == -1 ? 'checked="checked"' : '').'> Page 1';
+					echo '</li>';
+				}
+			
+			echo '</ul>';
+		echo '</div>';
 
         // creation de la gestion lien-categ
         echo '<div>';
@@ -40,7 +54,10 @@
             // création d'une divLink
             echo '<div id="'.$link.'">';
             // création de l'inputLink
-            echo '<input type="text" value="'.$link.'"/>';
+			if (isConnected(true))
+				echo '<input type="text" value="'.$link.'"/>';
+			else
+				echo '<p>'.$link.'</p>';
 
             // création du dropDown
             echo ''
