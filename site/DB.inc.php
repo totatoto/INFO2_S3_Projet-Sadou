@@ -3,6 +3,7 @@
 require 'rssItem.inc.php';
 require 'account.inc.php';
 require 'fluxRss.inc.php';
+require 'category.inc.php';
 require 'pageLinksCategs.inc.php';
 
 class DB {
@@ -317,6 +318,14 @@ class DB {
 				    FROM PAGE_LINKS_CATEGS AS A';
 
 		return $this->execQuery($requete,null,'PageLinksCategs');
+	}
+
+    public function getAllCategoriesOfFluxRss($link) {
+        $link = pg_escape_string($link);
+
+		$requete = 'SELECT distinct getAllCategoriesOfFluxRss('."'".$link."'".')';
+
+		return $this->execQuery($requete,null,'Category');
 	}
 
 

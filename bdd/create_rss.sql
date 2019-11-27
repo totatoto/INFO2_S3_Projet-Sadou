@@ -189,6 +189,24 @@ $$
 	END
 $$ LANGUAGE PLpgSQL;
 
+CREATE OR REPLACE FUNCTION getAllCategoriesOfFluxRss(link FLUX_RSS.link%TYPE) RETURNS SETOF CATEGORY.name%TYPE AS
+$$
+	DECLARE
+		id_item_of_flux RECORD;
+		categ_of_item RECORD;
+	BEGIN
+		FOR id_item_of_flux IN SELECT id_rss_item FROM ITEM_OF_FLUX_RSS WHERE link_flux_rss=link
+		LOOP
+			FOR categ_of_item IN SELECT getAllCategories(id_item_of_flux.id_rss_item) AS name
+			LOOP
+				RETURN NEXT categ_of_item.name;
+			END LOOP;
+		END LOOP;
+
+		RETURN;
+	END
+$$ LANGUAGE PLpgSQL;
+
 
 CREATE OR REPLACE VIEW RSS_ITEM_WITH_CATEG AS
 	SELECT I.*, Array(SELECT DISTINCT getAllCategories(I.id)) as category
