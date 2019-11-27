@@ -339,6 +339,7 @@ button.choix_type_admin {
 }
 
 .checkboxes {
+  overflow-y: auto;
   display: none;
   border: 1px #dadada solid;
 }
