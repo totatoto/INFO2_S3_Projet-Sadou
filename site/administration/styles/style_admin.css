@@ -151,7 +151,7 @@ button.choix_type_admin {
   display: inline-block;
   float: left;
   text-align: center;
-  width: 20%;
+  width: 10%;
 }
 
 #central_pages {
@@ -162,7 +162,7 @@ button.choix_type_admin {
   border: 1px solid #004159;
   display: inline-block;
   float: right;
-  width: 75%;
+  width: 78%;
   height: 100%;
 }
 
