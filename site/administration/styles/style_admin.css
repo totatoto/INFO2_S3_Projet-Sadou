@@ -160,7 +160,15 @@ button.choix_type_admin {
   border: 1px solid #004159;
   display: inline-block;
   float: right;
+  width: 75%;
+  height: 100%;
 }
+
+#insertLink_pages {
+  right: 0px;
+  padding-top: 20px;
+}
+
 
 #divCurrentLinks {
     margin: 20px;
