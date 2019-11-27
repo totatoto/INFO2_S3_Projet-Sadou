@@ -39,6 +39,9 @@
 						echo '<li>';
 						echo '<input type="radio" name="page_selector" value="page'.$page.'" '.($selectedPage == -1 ? 'checked="checked"' : '').'> Page 1';
 						echo '</li>';
+						
+						if ($selectedPage == -1)
+							$selectedPage = $page;
 					}
 				
 				echo '</ul>';
