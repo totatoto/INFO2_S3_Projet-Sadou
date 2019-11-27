@@ -24,7 +24,7 @@
         echo '</button>';
 
         echo '<div class="central_wrapper">';
-            echo "Ceci est la page administration des comptes";
+        echo "Ceci est la page administration des users";
         echo '</div>';
         }
         else
