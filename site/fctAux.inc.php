@@ -198,6 +198,9 @@
 		if(myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
+			
+			echo $password_user;
+			echo "<br/>";
 
 			if (isPseudoOK($_POST['pseudo_user']) && isAccountOk($_POST['pseudo_user'],$password_user))
 			{
