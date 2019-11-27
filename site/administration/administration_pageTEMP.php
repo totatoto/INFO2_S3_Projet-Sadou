@@ -55,7 +55,7 @@
 			foreach(getLinksOfPage($selectedPage) as $link)
 			{
 				// création d'une divLink
-				echo '<div id="'.$link.'">';
+				echo '<div id="Link:'.$link.'">';
 				// création de l'inputLink
 				if (isConnected(true))
 					echo '<input type="text" class="inputRSS" value="'.$link.'"/>';
@@ -64,7 +64,7 @@
 
 				// création du dropDown
 				echo '<div class="multiselect">';
-				  echo '<div class="selectBox" onclick='."'".'showCheckboxes("link1")'."'".'>';
+				  echo '<div class="selectBox" onclick='."'".'showCheckboxes('.$link.')'."'".'>';
 					echo '<select>';
 					  echo '<option>Select categories</option>';
 					echo '</select>';
