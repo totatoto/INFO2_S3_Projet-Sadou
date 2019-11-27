@@ -177,7 +177,7 @@
 	{
 		if (!myIsset($numPage))
 			return false;
-		if (DB::getInstance()->getLinksCategsOfPage($numPage) == null)
+		if (DB::getInstance()->getRawLinksCategsOfPage($numPage) == null)
 			return false;
 
 		return true;

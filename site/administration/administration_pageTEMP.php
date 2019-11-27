@@ -9,80 +9,110 @@
     {
         if (isConnected(false))
 		{
-        echo '<header>';
-            echo '<div>';
-                echo '<span style="float: right; text-align: right;">';
-                echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
-                    echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
-                echo '</span>';
-                echo "&nbsp;&nbsp;" . date("d/m/Y");
-            echo '</div>';
-        echo '</header>';
+			echo '<header>';
+				echo '<div>';
+					echo '<span style="float: right; text-align: right;">';
+					echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
+						echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
+					echo '</span>';
+					echo "&nbsp;&nbsp;" . date("d/m/Y");
+				echo '</div>';
+			echo '</header>';
 
-        echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
-            echo 'Retour';
-        echo '</button>';
+			echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
+				echo 'Retour';
+			echo '</button>';
 
-        echo '<div class="central_wrapper">';
+			echo '<div class="central_wrapper">';
 
-        // creation de la sélection de la page
-		echo '<div id="choix_page">';
-			echo '<h1>Sélection Pages</h1>';
-			echo '<ul>';
-			
-				$pages = getPages();
+			// creation de la sélection de la page
+			echo '<div id="choix_page">';
+				echo '<h1>Sélection Pages</h1>';
+				echo '<ul>';
 				
-				$selectedPage = -1;
+					$pages = getPages();
+					
+					$selectedPage = -1;
+					
+					foreach($pages as $page)
+					{
+						echo '<li>';
+						echo '<input type="radio" name="page_selector" value="page'.$page.'" '.($selectedPage == -1 ? 'checked="checked"' : '').'> Page 1';
+						echo '</li>';
+					}
 				
-				foreach($pages as $page)
+				echo '</ul>';
+			echo '</div>';
+
+			// creation de la gestion lien-categ
+			echo '<div>';
+			// creation de la div currentLinks
+			echo '<div id="currentLinks">';
+
+			foreach(getLinksOfPage($selectedPage) as $link)
+			{
+				// création d'une divLink
+				echo '<div id="'.$link.'">';
+				// création de l'inputLink
+				if (isConnected(true))
+					echo '<input type="text" class="inputRSS" value="'.$link.'"/>';
+				else
+					echo '<p>'.$link.'</p>';
+
+				// création du dropDown
+				echo '<div class="multiselect">';
+				  echo '<div class="selectBox" onclick='."'".'showCheckboxes("link1")'."'".'>';
+					echo '<select>';
+					  echo '<option>Select categories</option>';
+					echo '</select>';
+				  echo '</div>';
+				  echo '<div class="checkboxes" id="'.$link.'">';
+				  
+					foreach(getCategsOfLinksOfPage($selectedPage,$link))
+					{
+						echo //TODO
+					}
+					<label for="two">
+					  <input type="checkbox" name="f2" id="two" />Second checkbox</label>
+					<label for="three">
+					  <input type="checkbox" name="f3" id="three" />Third checkbox</label>
+				  </div>
+				</div>
+
+				// création du span
+				if (isCoonected(true))
 				{
-					echo '<li>';
-					echo '<input type="radio" name="page_selector" value="page'.$page.'" '.($selectedPage == -1 ? 'checked="checked"' : '').'> Page 1';
-					echo '</li>';
+					echo '<span style="float: right; text-align: right;">';
+					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLinkOfPage('."'".$link."'".')">';
+					echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLinkOfPage('."'".$link."'".')">';
+					echo '</span>';
 				}
+
+				echo '</div>'
+			}
+
+			echo '</div>';
+
+			// creation de la div InsertLink
 			
-			echo '</ul>';
-		echo '</div>';
-
-        // creation de la gestion lien-categ
-        echo '<div>';
-        // creation de la div currentLinks
-        echo '<div id="currentLinks">';
-
-        foreach(getLinksOfPage($selectedPage) as $link)
-        {
-            // création d'une divLink
-            echo '<div id="'.$link.'">';
-            // création de l'inputLink
 			if (isConnected(true))
-				echo '<input type="text" value="'.$link.'"/>';
-			else
-				echo '<p>'.$link.'</p>';
+			{
+				echo '<div>';
+				
+				echo '<span style="float: right; text-align: right;">';
+				echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLinkOfPage('."'".$selectedPage."'".')">';
+				echo '</span>';
+				echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
+				
+				echo '</div>';
+			}
 
-            // création du dropDown
-            echo ''
 
-            // création du span
-            echo '<span style="float: right; text-align: right;">';
-            echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLinkOfPage('."'".$link."'".')">';
-            echo '<input class="favorite styledred" type="button" value="Delete" onclick="deleteLinkOfPage('."'".$link."'".')">';
-            echo '</span>';
+			// FIN creation de la div InsertLink
+			echo '</div>';
 
-            echo '</div>'
-        }
-
-        echo '</div>';
-
-        // creation de la div InsertLink
-        echo '<div>';
-
-        echo '</div>';
-
-        // FIN creation de la div InsertLink
-        echo '</div>';
-
-        // FIN creation de la gestion lien-categ
-        echo '</div>';
+			// FIN creation de la gestion lien-categ
+			echo '</div>';
         }
         else
         {
