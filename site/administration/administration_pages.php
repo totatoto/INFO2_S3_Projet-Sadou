@@ -72,7 +72,7 @@
 				  echo '</div>';
 				  echo '<div class="checkboxes" id="'.$link.'">';
 				  
-					$categsOfLinksOfPage = getCategsOfLinksOfPage($selectedPage,$link)
+					$categsOfLinksOfPage = getCategsOfLinksOfPage($selectedPage,$link);
 					foreach(DB::getInstance()->getAllCategoriesOfFluxRss($link) as $categ)
 					{
 						echo '<label for="'.$categ.'">';
