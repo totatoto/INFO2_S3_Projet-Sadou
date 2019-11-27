@@ -68,6 +68,7 @@
 					echo '<select>';
 					  echo '<option>Select categories</option>';
 					echo '</select>';
+					echo '<div class="overSelect"></div>';
 				  echo '</div>';
 				  echo '<div class="checkboxes" id="'.$link.'">';
 				  
