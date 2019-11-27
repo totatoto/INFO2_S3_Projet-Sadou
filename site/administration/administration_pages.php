@@ -27,31 +27,31 @@
 			echo '<div id="choix_page">';
 				echo '<h1>Sélection Pages</h1>';
 				echo '<ul>';
-				
+
 					$pages = getPages();
-					
+
 					$selectedPage = -1;
-					
+
 					foreach($pages as $page)
 					{
 						echo '<li>';
 						echo '<input type="radio" name="page_selector" value="page'.$page.'" '.($selectedPage == -1 ? 'checked="checked"' : '').'> Page 1';
 						echo '</li>';
-						
+
 						if ($selectedPage == -1)
 							$selectedPage = $page;
 					}
-				
+
 				echo '</ul>';
 			echo '</div>';
 
 			// creation de la gestion lien-categ
 			echo '<div class="central_wrapper" id="central_pages">';
 			 echo '<div id="wrapper_droit">';
-			
+
 			// creation de la div currentLinks
 			echo '<div id="divCurrentLinks">';
-			
+
 			foreach(getLinksOfPage($selectedPage) as $link)
 			{
 				// création d'une divLink
@@ -71,14 +71,14 @@
 					echo '<div class="overSelect"></div>';
 				  echo '</div>';
 				  echo '<div class="checkboxes" id="'.$link.'">';
-				  
+
 					$categsOfLinksOfPage = getCategsOfLinksOfPage($selectedPage,$link);
 					foreach(DB::getInstance()->getAllCategoriesOfFluxRss($link) as $categ)
 					{
 						echo '<label for="'.$categ->getName().'">';
-						echo '<input type="checkbox" id="'.$categ->getName().'" />'.$categ->getName().'</label>';
+						echo '<input type="checkbox" id="'.$categ->getName().'" '.(in_array($categ->getName(),$categsOfLinksOfPage) ? "checked " : "").'/>'.$categ->getName().'</label>';
 					}
-					
+
 				  echo '</div>';
 				echo '</div>';
 
@@ -97,16 +97,16 @@
 			echo '</div>';
 
 			// creation de la div InsertLink
-			
+
 			if (isConnected(true))
 			{
 				echo '<div id="insertLink_pages">';
-				
+
 				echo '<span style="float: right; text-align: right;">';
 				echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLinkOfPage('."'".$selectedPage."'".')">';
 				echo '</span>';
 				echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
-				
+
 				echo '</div>';
 			}
 
