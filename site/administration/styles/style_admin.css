@@ -317,6 +317,8 @@ button.choix_type_admin {
 .multiselect {
   width: max-content;
   padding: 5px;
+  display: inline-block;
+  margin-top:10px; 
 }
 
 .selectBox {
