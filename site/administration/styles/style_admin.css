@@ -151,6 +151,10 @@ button.choix_type_admin {
   display: inline-block;
   float: left;
   text-align: center;
+  position: absolute;
+  transform: translate(0,-50%);
+  top: 45%;
+  left: 5%;
 }
 
 #divLinks {
