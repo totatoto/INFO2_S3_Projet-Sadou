@@ -61,7 +61,7 @@
 
                     if (isConnected(true))
                     {
-                        echo '<div id="insertLink2">';
+                        echo '<div id="insertLink">';
                         echo '<span style="float: right; text-align: right;">';
                         echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
                         echo '</span>';
