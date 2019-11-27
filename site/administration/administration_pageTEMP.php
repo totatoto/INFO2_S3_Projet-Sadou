@@ -48,7 +48,8 @@
 			echo '<div>';
 			// creation de la div currentLinks
 			echo '<div id="currentLinks">';
-
+			
+			print_r(getLinksOfPage($selectedPage));
 			foreach(getLinksOfPage($selectedPage) as $link)
 			{
 				// création d'une divLink
