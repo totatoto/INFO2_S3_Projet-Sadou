@@ -59,10 +59,6 @@
 
 						// echo '<p>'."Ajouter un flux RSS".'</p>'
 
-						echo '<button class="bouton_retour" onclick=redirect('."'".'administration.php'."'".')>';
-				            echo 'Retour';
-				        echo '</button>';
-
 						if (isConnected(true))
 						{
 							echo '<div id="insertLink">';

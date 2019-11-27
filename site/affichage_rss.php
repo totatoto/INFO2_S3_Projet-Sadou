@@ -14,7 +14,7 @@
 			echo "Impossible de se connecter &agrave; la base de donn&eacute;es !";
 		else
 		{
-			if (!isset($numPage))
+			if (!myIsset($numPage))
 			{
 				echo "moi";
 				//contenu404();
@@ -26,14 +26,14 @@
 			}
 			else
 			{
-				
+
 				$linksCategs = getLinksCategsOfPage($numPage);
-				
+
 				//print_r($linksCategs);
 				echo '<div class="slideshow-container" numpage="'.$numPage.'" linksCategs='."'".json_encode($linksCategs)."'".' id="conteneurItem">';
 				echo '</div>';
 			}
-    		
+
 			//echo "<h1>Items RSS de la dernière semaine</h1>\n";
 			//try {
 			//	echo '<table link="https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" id="tableItem"></table>';

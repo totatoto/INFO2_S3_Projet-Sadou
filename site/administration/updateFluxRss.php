@@ -13,7 +13,7 @@
 		{
     		if (isConnected(true))
 			{
-				if (isset($_GET['oldLink']) && isset($_GET['newLink']))
+				if (myIsset($_GET['oldLink']) && myIsset($_GET['newLink']))
 				{
 					if (sizeof($db->getTheFluxRss($_GET['newLink'])) != 0 || sizeof($db->getTheFluxRss($_GET['oldLink'])) == 0)
 					{
@@ -25,7 +25,7 @@
 						echo "done";
 					}
 				}
-				else if (isset($_GET['deleteLink']))
+				else if (myIsset($_GET['deleteLink']))
 				{
 					if (sizeof($db->getTheFluxRss($_GET['deleteLink'])) != 0)
 					{
@@ -37,7 +37,7 @@
 						echo "link to delete not valide";
 					}
 				}
-				else if (isset($_GET['insertLink']))
+				else if (myIsset($_GET['insertLink']))
 				{
 					if (sizeof($db->getTheFluxRss($_GET['insertLink'])) != 0)
 					{

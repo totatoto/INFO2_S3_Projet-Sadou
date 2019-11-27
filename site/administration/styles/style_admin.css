@@ -5,12 +5,14 @@
 
 *
 {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 html {
     overflow :hidden;
+    height: 100%;
+    width: 100%;
 }
 
 header, footer {
@@ -22,7 +24,7 @@ header, footer {
     padding-bottom: 0.75%;
     height: 3%;
 	font-family: 'Quicksand-Regular', Arial, Serif;
-    font-size: 15px;
+    font-size: 100%;
     color: white;
 }
 
@@ -33,6 +35,7 @@ header
 
 footer {
     bottom: 0px;
+    text-align: center;
 }
 
 h1
@@ -42,9 +45,9 @@ h1
 }
 
 form {
-  position: absolute; /* postulat de dÃƒÂ©part */
-  top: 50%; left: 50%; /* ÃƒÂ  50%/50% du parent rÃƒÂ©fÃƒÂ©rent */
-  transform: translate(-50%, -50%); /* dÃƒÂ©calage de 50% de sa propre taille */
+  position: absolute; /* postulat de dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©part */
+  top: 50%; left: 50%; /* ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  50%/50% du parent rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©rent */
+  transform: translate(-50%, -50%); /* dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©calage de 50% de sa propre taille */
   padding: 30px;
   border: 1px solid #004159;
 }
@@ -62,6 +65,10 @@ input {
     border: 1px solid #004159;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .central_wrapper {
   position: absolute;
   top: 50%;
@@ -75,10 +82,14 @@ input {
 	color: #004159;
 	font-family: 'Quicksand-Regular', Arial, Serif;
     text-align: center;
-	font-size: 65px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+	font-size: 300%;
+    margin-top: 4%;
+    margin-bottom: 94%;
     text-decoration: Bold;
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 .choix_type_admin {
@@ -135,6 +146,18 @@ button.choix_type_admin {
     width: 50%;
 }
 
+#choix_page {
+  border: 1px solid #004159;
+  display: inline-block;
+  float: left;
+}
+
+#wrapper_droit {
+  border: 1px solid #004159;
+  display: inline-block;
+  float: right;
+}
+
 #divCurrentLinks {
     margin: 20px;
     padding: 10px;
@@ -145,7 +168,7 @@ button.choix_type_admin {
     position: absolute;
     left: 50%;
     transform: translate(-50%,0);
-    bottom : 30%;
+    bottom : 25%;
     border: 1px solid #004159;
 }
 
@@ -183,8 +206,8 @@ button.choix_type_admin {
 /*----------------------------------------------------------------*/
 .styledred {
     border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
+    line-height: 2;
+    padding: 0 7px;
     font-size: 1rem;
     text-align: center;
     color: white;
@@ -210,8 +233,8 @@ button.choix_type_admin {
 
 .styledgreen {
     border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
+    line-height: 2;
+    padding: 0 7px;
     font-size: 1rem;
     text-align: center;
     color: white;
@@ -238,7 +261,7 @@ button.choix_type_admin {
 .styledwhite {
     border: 0;
     line-height: 1.5;
-    padding: 0 20px;
+    padding: 0 7px;
     font-size: 1rem;
     text-align: center;
     color: white;

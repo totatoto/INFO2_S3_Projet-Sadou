@@ -13,18 +13,18 @@
 		{
     		if (isConnected(true))
 			{
-				if (isset($_GET['oldUsername']) && (isset($_GET['newUsername']) || isset($_GET['newPassword']) || isset($_GET['newStatus'])))
+				if (myIsset($_GET['oldUsername']) && (myIsset($_GET['newUsername']) || myIsset($_GET['newPassword']) || myIsset($_GET['newStatus'])))
 				{
 					if ( ($db->getAccount($_GET['oldUsername']) == null) ||
-								(isset($_GET['newUsername']) && ($db->getAccount($_GET['newUsername']) != null)) ||
-								(isset($_GET['newStatus']) && $_GET['newStatus'] != "ADMIN" && $_GET['newStatus'] != "USER")
+								(myIsset($_GET['newUsername']) && ($db->getAccount($_GET['newUsername']) != null)) ||
+								(myIsset($_GET['newStatus']) && $_GET['newStatus'] != "ADMIN" && $_GET['newStatus'] != "USER")
 						)
 					{
 							echo "invalide Parametre";
 					}
 					else
 					{
-						if (isset($_GET['newPassword']))
+						if (myIsset($_GET['newPassword']))
 						{
 							$salt = generateSalt();
 							$db->updateAccount($_GET['oldUsername'],$_GET['newUsername'],myHash($_GET['newPassword'],$salt),$salt,$_GET['newStatus']);
@@ -34,7 +34,7 @@
 						echo "done";
 					}
 				}
-				else if (isset($_GET['username']) && (isset($_GET['newPassword'])))
+				else if (myIsset($_GET['username']) && (myIsset($_GET['newPassword'])))
 				{
 					if ($db->getAccount($_GET['username']) == null)
 					{
@@ -47,7 +47,7 @@
 						echo "done";
 					}
 				}
-				else if (isset($_GET['deleteUsername']))
+				else if (myIsset($_GET['deleteUsername']))
 				{
 					if (($db->getAccount($_GET['deleteUsername']) != null))
 					{
@@ -59,7 +59,7 @@
 						echo "username to delete not valide";
 					}
 				}
-				else if (isset($_GET['insertUsername']) && isset($_GET['insertPassword']) && isset($_GET['insertStatus']))
+				else if (myIsset($_GET['insertUsername']) && myIsset($_GET['insertPassword']) && myIsset($_GET['insertStatus']))
 				{
 					if (($db->getAccount($_GET['insertUsername']) != null) || ($_GET['insertStatus'] != "ADMIN" && $_GET['insertStatus'] != "USER") )
 					{

@@ -58,7 +58,7 @@
 		else
 		{
 			$accounts = $db->getAccount($pseudo);
-			if (isset($accounts))
+			if (myIsset($accounts))
 				return true;
 		}
 		return false;
@@ -86,9 +86,9 @@
 	function isConnected($admin)
 	{
 		if ($admin == true)
-			return isset($_SESSION['admin']) && ($_SESSION['admin'] == true);
+			return myIsset($_SESSION['admin']) && ($_SESSION['admin'] == true);
 
-		return isset($_SESSION['admin']);
+		return myIsset($_SESSION['admin']);
 	}
 
 	function generateSalt()
@@ -128,39 +128,64 @@
 	   $data = htmlentities($data);
 	   return $data;
 	}
-	
+
 	function getLinksCategsOfPage($numPage)
 	{
-		if (!isset($numPage))
+		if (!myIsset($numPage))
 			return array();
-		
+
 		$linksCategs = array();
-		$tabLinkCateg = DB::getInstance()->getlinksCategsOfPage($numPage);
+		$tabLinkCateg = DB::getInstance()->getRawLinksCategsOfPage($numPage);
 		foreach ($tabLinkCateg as $linkCateg)
 		{
 			if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
 				$linksCategs[$linkCateg->getLinkFluxRss()] = [];
-			
+
 			if ($linkCateg->getNameCategory() != null)
 				$linksCategs[$linkCateg->getLinkFluxRss()][] = $linkCateg->getNameCategory();
 		}
-		
+
 		return $linksCategs;
 	}
-	
+
+	function getPages()
+	{
+		$pages = array();
+
+
+		$tabPageLinksCategs = DB::getInstance()->getRawPageLinksCategs();
+		for($tabPageLinksCategs as $PageLinkCateg)
+		{
+			if (!in_array($PageLinkCateg->getNumPage(),$pages))
+				$pages[] = $PageLinkCateg->getNumPage();
+		}
+
+		return $pages;
+	}
+
+	function getLinksOfPage($numPage)
+	{
+		return array_keys(getLinksCategsOfPage($numPage));
+	}
+
 	function existAffichageRssPage($numPage)
 	{
-		if (!isset($numPage))
+		if (!myIsset($numPage))
 			return false;
-		if (DB::getInstance()->getlinksCategsOfPage($numPage) == null)
+		if (DB::getInstance()->getLinksCategsOfPage($numPage) == null)
 			return false;
-		
+
 		return true;
+	}
+
+	function myIsset($variable)
+	{
+		return isset($variable) && ($variable != null);
 	}
 
 	session_start();
 	if (!isConnected(false))
-		if(isset($_POST['pseudo_user']) && isset($_POST['password_user']))// && isset($_POST['pubKey']) && isset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
+		if(myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 
