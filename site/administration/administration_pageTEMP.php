@@ -50,7 +50,7 @@
 			 echo '<div id="wrapper_droit">';
 			
 			// creation de la div currentLinks
-			echo '<div id="currentLinks">';
+			echo '<div id="divCurrentLinks">';
 			
 			foreach(getLinksOfPage($selectedPage) as $link)
 			{
@@ -98,7 +98,7 @@
 			
 			if (isConnected(true))
 			{
-				echo '<div>';
+				echo '<div id="insertLink_pages">';
 				
 				echo '<span style="float: right; text-align: right;">';
 				echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLinkOfPage('."'".$selectedPage."'".')">';
