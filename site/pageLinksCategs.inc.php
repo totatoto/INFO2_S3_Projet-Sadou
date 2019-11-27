@@ -15,7 +15,7 @@ class PageLinksCategs {
       	 il y aura une erreur lorsqu'il sera appelé automatiquement par PDO
        */
 
-      public function __construct($d=-1,$i=0,$t="",$n="") {
+      public function __construct($d=-1,$i=1,$t="",$n="") {
 			$this->id = $d;
             $this->numPage = $i;
             $this->link_flux_rss = $t;
