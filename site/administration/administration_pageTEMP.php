@@ -81,7 +81,7 @@
 				echo '</div>';
 
 				// création du span
-				if (isCoonected(true))
+				if (isConnected(true))
 				{
 					echo '<span style="float: right; text-align: right;">';
 					echo '<input class="favorite styledgreen" type="button" value="Modify" onclick="modifyLinkOfPage('."'".$link."'".')">';
