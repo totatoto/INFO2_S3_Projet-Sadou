@@ -24,7 +24,7 @@
         echo '</button>';
 
         echo '<div class="central_wrapper" id="central_pages">';
-            echo '<div id="choix_page">';
+            echo '<span id="choix_page">';
                 echo '<h1>Sélection</h1>';
                 echo '<ul>';
                     echo '<li>';
@@ -40,7 +40,7 @@
                         echo '<input type="radio" name="page_selector" value="page4"> Page 4';
                     echo '</li>';
                 echo '</ul>';
-            echo '</div>';
+            echo '</span>';
 
             echo '<div id="wrapper_droit">';
                 echo '<div id="divLinks">';
