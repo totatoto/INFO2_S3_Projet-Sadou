@@ -23,25 +23,25 @@
             echo 'Retour';
         echo '</button>';
 
-        echo '<div class="central_wrapper" id="central_pages">';
-            echo '<div id="choix_page">';
-                echo '<h1>Sélection</h1>';
-                echo '<ul>';
-                    echo '<li>';
-                        echo '<input type="radio" name="page_selector" value="page1" checked="checked"> Page 1';
-                    echo '</li>';
-                    echo '<li>';
-                        echo '<input type="radio" name="page_selector" value="page2"> Page 2';
-                    echo '</li>';
-                    echo '<li>';
-                        echo '<input type="radio" name="page_selector" value="page3"> Page 3';
-                    echo '</li>';
-                    echo '<li>';
-                        echo '<input type="radio" name="page_selector" value="page4"> Page 4';
-                    echo '</li>';
-                echo '</ul>';
-            echo '</div>';
+        echo '<div id="choix_page">';
+            echo '<h1>Sélection</h1>';
+            echo '<ul>';
+                echo '<li>';
+                    echo '<input type="radio" name="page_selector" value="page1" checked="checked"> Page 1';
+                echo '</li>';
+                echo '<li>';
+                    echo '<input type="radio" name="page_selector" value="page2"> Page 2';
+                echo '</li>';
+                echo '<li>';
+                    echo '<input type="radio" name="page_selector" value="page3"> Page 3';
+                echo '</li>';
+                echo '<li>';
+                    echo '<input type="radio" name="page_selector" value="page4"> Page 4';
+                echo '</li>';
+            echo '</ul>';
+        echo '</div>';
 
+        echo '<div class="central_wrapper" id="central_pages">';
             echo '<div id="wrapper_droit">';
                 echo '<div id="divLinks">';
                     if (isConnected(true))
