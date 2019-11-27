@@ -323,7 +323,7 @@ class DB {
     public function getAllCategoriesOfFluxRss($link) {
         $link = pg_escape_string($link);
 
-		$requete = 'SELECT distinct getAllCategoriesOfFluxRss('."'".$link."'".')';
+		$requete = 'SELECT distinct getAllCategoriesOfFluxRss('."'".$link."'".') as name';
 
 		return $this->execQuery($requete,null,'Category');
 	}
