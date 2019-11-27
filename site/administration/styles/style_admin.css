@@ -150,6 +150,8 @@ button.choix_type_admin {
   border: 1px solid #004159;
   display: inline-block;
   float: left;
+  text-align: center;
+  width: 20%;
 }
 
 #central_pages {
