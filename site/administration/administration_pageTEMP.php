@@ -44,9 +44,9 @@
 							$selectedPage = $page;
 					}
 					
-					echo <br/>;
+					echo '<br/>';
 					echo $selectedPage;
-					echo <br/>;
+					echo '<br/>';
 				
 				echo '</ul>';
 			echo '</div>';
