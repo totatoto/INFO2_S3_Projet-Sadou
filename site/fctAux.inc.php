@@ -190,7 +190,12 @@
 
 	session_start();
 	if (!isConnected(false))
-		if(true)//myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
+		echo "<br/>";
+		echo $_POST['pseudo_user'];
+		echo "<br/>";
+		echo $_POST['password_user'];
+		echo "<br/>";
+		if(myIsset($_POST['pseudo_user']) && myIsset($_POST['password_user']))// && myIsset($_POST['pubKey']) && myIsset($_SESSION['pubKey']) && $_POST['pubKey'] == $_SESSION['pubKey'])
 		{
 			$password_user = myUncrypt($_POST['password_user'],$_SESSION['privKey']);
 
