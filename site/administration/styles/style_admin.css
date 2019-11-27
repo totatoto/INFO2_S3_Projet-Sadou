@@ -169,9 +169,12 @@ button.choix_type_admin {
 }
 
 #insertLink_pages {
-  right: 0px;
-  padding-top: 20px;
-  bottom: 0px;
+    margin: 20px;
+    width: 75%;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 
