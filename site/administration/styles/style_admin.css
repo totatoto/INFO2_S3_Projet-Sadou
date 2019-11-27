@@ -45,9 +45,9 @@ h1
 }
 
 form {
-  position: absolute; /* postulat de dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©part */
-  top: 50%; left: 50%; /* ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  50%/50% du parent rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©rent */
-  transform: translate(-50%, -50%); /* dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©calage de 50% de sa propre taille */
+  position: absolute; /* postulat de dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©part */
+  top: 50%; left: 50%; /* ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  50%/50% du parent rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©rent */
+  transform: translate(-50%, -50%); /* dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©calage de 50% de sa propre taille */
   padding: 30px;
   border: 1px solid #004159;
 }
@@ -151,7 +151,6 @@ button.choix_type_admin {
   display: inline-block;
   float: left;
   text-align: center;
-  width: 10%;
 }
 
 #central_pages {
@@ -163,7 +162,6 @@ button.choix_type_admin {
   border: 1px solid #004159;
   display: inline-block;
   float: right;
-  width: 78%;
   height: 100%;
 }
 
