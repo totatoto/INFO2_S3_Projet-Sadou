@@ -43,6 +43,10 @@
 						if ($selectedPage == -1)
 							$selectedPage = $page;
 					}
+					
+					echo <br/>;
+					echo $selectedPage;
+					echo <br/>;
 				
 				echo '</ul>';
 			echo '</div>';
