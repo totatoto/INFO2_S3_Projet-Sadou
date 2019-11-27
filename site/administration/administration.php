@@ -43,7 +43,7 @@
         }
         else
         {
-            //echo '<script>document.location.href = "administration_login.php";</script>';
+            echo '<script>document.location.href = "administration_login.php";</script>';
         }
     }
 ?>
