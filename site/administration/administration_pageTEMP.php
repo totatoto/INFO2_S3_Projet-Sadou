@@ -71,7 +71,7 @@
 					foreach(getCategsOfLinksOfPage($selectedPage,$link) as $categ)
 					{
 						echo '<label for="'.$categ.'">';
-						echo '<input type="checkbox" name="f2" id="'$categ'" />'.$categ.'</label>';
+						echo '<input type="checkbox" name="f2" id="'.$categ.'" />'.$categ.'</label>';
 					}
 					
 				  </div>
