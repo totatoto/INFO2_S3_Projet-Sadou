@@ -158,7 +158,10 @@
 		{
 			echo "test";
 			if (!in_array($PageLinkCateg->getNumPage(),$pages))
+			{
+				echo $PageLinkCateg->getNumPage();
 				$pages[] = $PageLinkCateg->getNumPage();
+			}
 		}
 
 		return $pages;
