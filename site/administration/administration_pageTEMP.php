@@ -74,8 +74,8 @@
 						echo '<input type="checkbox" name="f2" id="'.$categ.'" />'.$categ.'</label>';
 					}
 					
-				  </div>
-				</div>
+				  echo '</div>';
+				echo '</div>';
 
 				// création du span
 				if (isCoonected(true))
