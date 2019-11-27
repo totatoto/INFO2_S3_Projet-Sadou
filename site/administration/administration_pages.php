@@ -23,7 +23,7 @@
             echo 'Retour';
         echo '</button>';
 
-        echo '<div class="central_wrapper">';
+        echo '<div class="central_wrapper" id="central_pages">';
             echo '<div id="choix_page">';
                 echo '<h1>Sélection</h1>';
                 echo '<ul>';
