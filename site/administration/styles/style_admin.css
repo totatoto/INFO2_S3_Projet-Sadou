@@ -155,7 +155,7 @@ button.choix_type_admin {
   transform: translate(0,-50%);
   top: 45%;
   left: 5%;
-  padding: 5px;
+  margin: 5px;
 }
 
 #divLinks {
