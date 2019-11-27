@@ -43,12 +43,6 @@
 						if ($selectedPage == -1)
 							$selectedPage = $page;
 					}
-					
-					echo '<br/>';
-					echo $selectedPage;
-					echo '<br/>';
-					print_r($pages);
-					echo '<br/>';
 				
 				echo '</ul>';
 			echo '</div>';

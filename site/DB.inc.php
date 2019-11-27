@@ -316,8 +316,6 @@ class DB {
 		$requete = 'SELECT A.id, A.numpage, A.link_flux_rss, A.name_category
 				    FROM PAGE_LINKS_CATEGS AS A';
 
-		//return $this->execQuery($requete,null,'PageLinksCategs');
-		print_r($this->execQuery($requete,null,'PageLinksCategs'));
 		return $this->execQuery($requete,null,'PageLinksCategs');
 	}
 

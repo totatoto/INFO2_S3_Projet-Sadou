@@ -156,10 +156,8 @@
 		$tabPageLinksCategs = DB::getInstance()->getRawPageLinksCategs();
 		foreach($tabPageLinksCategs as $PageLinkCateg)
 		{
-			echo "test";
 			if (!in_array($PageLinkCateg->getNumPage(),$pages))
 			{
-				echo $PageLinkCateg->getNumPage();
 				$pages[] = $PageLinkCateg->getNumPage();
 			}
 		}
@@ -206,8 +204,6 @@
 				{
 					if ($account->getPassword() == myHash($_SESSION['password_user'],$account->getSalt()))
 					{
-						echo "2";
-						echo "<br/>";
 						$_SESSION['admin'] = $account->getStatus()=="ADMIN";
 					}
 				}
