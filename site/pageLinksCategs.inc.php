@@ -4,7 +4,7 @@
 class PageLinksCategs {
       /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
       public $id;
-      public $numPage;
+      public $numpage;
       public $link_flux_rss;
       public $name_category;
 
@@ -17,20 +17,20 @@ class PageLinksCategs {
 
       public function __construct($d=-1,$i=1,$t="",$n="") {
 			$this->id = $d;
-            $this->numPage = $i;
+            $this->numpage = $i;
             $this->link_flux_rss = $t;
             $this->name_category = $n;
       }
 
       public function getId() { return $this->id; }
-      public function getNumPage() { return $this->numPage; }
+      public function getNumPage() { return $this->numpage; }
       public function getLinkFluxRss() { return $this->link_flux_rss; }
       public function getNameCategory() { return $this->name_category; }
 
 
       public function __toString() {
             $res = "id:".$this->id."\n";
-            $res = $res ."numPage:".$this->numPage."\n";
+            $res = $res ."numPage:".$this->numpage."\n";
             $res = $res ."link flux rss:".$this->link_flux_rss."\n";
             $res = $res ."name category:".$this->name_category."\n";
             $res = $res ."<br/>";

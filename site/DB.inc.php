@@ -313,7 +313,7 @@ class DB {
 
     public function getRawPageLinksCategs() {
 
-		$requete = 'SELECT A.id, A.numPage, A.link_flux_rss, A.name_category
+		$requete = 'SELECT A.id, A.numpage, A.link_flux_rss, A.name_category
 				    FROM PAGE_LINKS_CATEGS AS A';
 
 		//return $this->execQuery($requete,null,'PageLinksCategs');
