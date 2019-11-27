@@ -58,17 +58,17 @@
                     {
                         echo '<p>'.$link.'</p>';
                     }
-
-                    if (isConnected(true))
-                    {
-                        echo '<div id="insertLink_pages">';
-                        echo '<span style="float: right; text-align: right;">';
-                        echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
-                        echo '</span>';
-                        echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
-                        echo '</div>';
-                    }
                 echo '</div>';
+
+                if (isConnected(true))
+                {
+                    echo '<div id="insertLink_pages">';
+                    echo '<span style="float: right; text-align: right;">';
+                    echo '<input class="favorite styledgreen" type="button" value="Insert" onclick="insertLink()">';
+                    echo '</span>';
+                    echo '<input type="text" class="inputRSS" value="" hint="insert the Link to add here"/>';
+                    echo '</div>';
+                }
             echo '</div>';
         echo '</div>';
         }
