@@ -317,7 +317,7 @@ class DB {
 				    FROM PAGE_LINKS_CATEGS AS A';
 
 		//return $this->execQuery($requete,null,'PageLinksCategs');
-		echo $this->execQuery($requete,null,'PageLinksCategs');
+		print_r($this->execQuery($requete,null,'PageLinksCategs'));
 		return $this->execQuery($requete,null,'PageLinksCategs');
 	}
 
