@@ -212,6 +212,10 @@
 				{
 					echo "1";
 					echo "<br/>";
+					echo $account->getPassword();
+					echo "<br/>";
+					echo myHash($_SESSION['password_user'],$account->getSalt());
+					echo "<br/>";
 					if ($account->getPassword() == myHash($_SESSION['password_user'],$account->getSalt()))
 					{
 						echo "2";
