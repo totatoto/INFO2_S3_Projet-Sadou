@@ -23,8 +23,6 @@
 				echo 'Retour';
 			echo '</button>';
 
-			echo '<div class="central_wrapper">';
-
 			// creation de la sélection de la page
 			echo '<div id="choix_page">';
 				echo '<h1>Sélection Pages</h1>';
@@ -48,7 +46,9 @@
 			echo '</div>';
 
 			// creation de la gestion lien-categ
-			echo '<div>';
+			echo '<div class="central_wrapper" id="central_pages">';
+			 echo '<div id="wrapper_droit">';
+			
 			// creation de la div currentLinks
 			echo '<div id="currentLinks">';
 			
@@ -108,11 +108,7 @@
 				echo '</div>';
 			}
 
-
-			// FIN creation de la div InsertLink
 			echo '</div>';
-
-			// FIN creation de la gestion lien-categ
 			echo '</div>';
         }
         else
