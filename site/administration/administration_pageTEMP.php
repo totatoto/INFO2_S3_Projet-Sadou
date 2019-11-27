@@ -68,14 +68,12 @@
 				  echo '</div>';
 				  echo '<div class="checkboxes" id="'.$link.'">';
 				  
-					foreach(getCategsOfLinksOfPage($selectedPage,$link))
+					foreach(getCategsOfLinksOfPage($selectedPage,$link) as $categ)
 					{
-						echo //TODO
+						echo '<label for="'.$categ.'">';
+						echo '<input type="checkbox" name="f2" id="'$categ'" />'.$categ.'</label>'
 					}
-					<label for="two">
-					  <input type="checkbox" name="f2" id="two" />Second checkbox</label>
-					<label for="three">
-					  <input type="checkbox" name="f3" id="three" />Third checkbox</label>
+					
 				  </div>
 				</div>
 
