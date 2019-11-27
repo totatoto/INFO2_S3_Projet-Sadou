@@ -64,7 +64,7 @@
 
 				// création du dropDown
 				echo '<div class="multiselect">';
-				  echo '<div class="selectBox" onclick='."'".'showCheckboxes('.$link.')'."'".'>';
+				  echo '<div class="selectBox" onclick='."'".'showCheckboxes("'.$link.'")'."'".'>';
 					echo '<select>';
 					  echo '<option>Select categories</option>';
 					echo '</select>';
@@ -74,7 +74,7 @@
 					foreach(getCategsOfLinksOfPage($selectedPage,$link) as $categ)
 					{
 						echo '<label for="'.$categ.'">';
-						echo '<input type="checkbox" name="f2" id="'.$categ.'" />'.$categ.'</label>';
+						echo '<input type="checkbox" id="'.$categ.'" />'.$categ.'</label>';
 					}
 					
 				  echo '</div>';
