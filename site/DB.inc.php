@@ -301,12 +301,20 @@ class DB {
           return $this->execMaj($requete,$tparam);
       }
 
-    public function getlinksCategsOfPage($numPage) {
-		$numPage = pg_escape_string($numPage);
+    public function getRawLinksCategsOfPage($numPage) {
+        $numPage = pg_escape_string($numPage);
+
+        $requete = 'SELECT A.id, A.numPage, A.link_flux_rss, A.name_category
+                    FROM PAGE_LINKS_CATEGS AS A
+                    WHERE A.numPage = '.$numPage;
+
+        return $this->execQuery($requete,null,'PageLinksCategs');
+    }
+
+    public function getRawPageLinksCategs() {
 
 		$requete = 'SELECT A.id, A.numPage, A.link_flux_rss, A.name_category
-				    FROM PAGE_LINKS_CATEGS AS A
-                    WHERE A.numPage = '.$numPage;
+				    FROM PAGE_LINKS_CATEGS AS A';
 
 		return $this->execQuery($requete,null,'PageLinksCategs');
 	}

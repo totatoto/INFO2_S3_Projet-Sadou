@@ -135,7 +135,7 @@
 			return array();
 
 		$linksCategs = array();
-		$tabLinkCateg = DB::getInstance()->getlinksCategsOfPage($numPage);
+		$tabLinkCateg = DB::getInstance()->getRawLinksCategsOfPage($numPage);
 		foreach ($tabLinkCateg as $linkCateg)
 		{
 			if (!array_key_exists($linkCateg->getLinkFluxRss(),$linksCategs))
@@ -148,11 +148,31 @@
 		return $linksCategs;
 	}
 
+	function getPages()
+	{
+		$pages = array();
+
+
+		$tabPageLinksCategs = DB::getInstance()->getRawPageLinksCategs();
+		for($tabPageLinksCategs as $PageLinkCateg)
+		{
+			if (!in_array($PageLinkCateg->getNumPage(),$pages))
+				$pages[] = $PageLinkCateg->getNumPage();
+		}
+
+		return $pages;
+	}
+
+	function getLinksOfPage($numPage)
+	{
+		return array_keys(getLinksCategsOfPage($numPage));
+	}
+
 	function existAffichageRssPage($numPage)
 	{
 		if (!myIsset($numPage))
 			return false;
-		if (DB::getInstance()->getlinksCategsOfPage($numPage) == null)
+		if (DB::getInstance()->getLinksCategsOfPage($numPage) == null)
 			return false;
 
 		return true;
