@@ -85,6 +85,8 @@
 
 	function isConnected($admin)
 	{
+		echo $_SESSION['admin'];
+		echo "<br/>";
 		if ($admin == true)
 			return myIsset($_SESSION['admin']) && ($_SESSION['admin'] == true);
 
