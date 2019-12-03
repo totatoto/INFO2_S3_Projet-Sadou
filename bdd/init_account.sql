@@ -1,2 +1,2 @@
-insert into ACCOUNT(username, password, status) VALUES ('admin','adminPWD','ADMIN');
-insert into ACCOUNT(username, password, status) VALUES ('user','userPWD','USER');
+insert into ACCOUNT(username, password, status,salt) VALUES ('admin','bfd2edd8cad7924f8de5fdb9ccd3750acdf13fa7090be1e66dd94b4d3adae891751ed16fec3725562d7275d97a76ac748f4e2f161fafc1eed658313835339b71','ADMIN','cf4164501eab5b664c05ecb50f7f550cef4d047d9e2085a9f5c33644f863c8c3');
+insert into ACCOUNT(username, password, status) VALUES ('user','3b430c0face3bc16a7eec0d57ee3d0d6ec794d8a3bf1751e601b8b6a995f71c4c2cda2f27255caa6fbaca7e3c81bc71f2504bb8a5eba7280b99bd3c88664c231','USER','1820ec5704274ece482baae49e9774950515cb5e27b9607fbdb7f88c9404af60');
