@@ -35,7 +35,7 @@ class DB {
       		  $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
           }
           catch (PDOException $e) {
-            echo "probleme de connexion :".$e->getMessage();
+            //echo "probleme de connexion :".$e->getMessage();
             return null;
           }
 	      }
@@ -52,7 +52,7 @@ class DB {
 		      self::$instance = new DB();
 			}
 			catch (PDOException $e) {
-				echo $e;
+				//echo $e;
 			}
         } //fin IF
  	    $obj = self::$instance;
