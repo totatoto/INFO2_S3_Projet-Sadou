@@ -148,7 +148,7 @@ class DB {
 
 			foreach ($linksCategs as $link => $categs)
 			{
-				$requete .= "( B.link_flux_rss = '".$link."'";
+				$requete .= "( B.link_flux_rss = '".pg_escape_string($link)."'";
 
 				if ($categs != null && sizeof($categs) != 0)
 				{
@@ -158,12 +158,12 @@ class DB {
 					{
 						foreach ($categs as $categ)
 						{
-							$requete .= "getCategory('".$categ."'),";
+							$requete .= "getCategory('".pg_escape_string($categ)."'),";
 						}
 						$requete = substr($requete,0,-1);
 					}
 					else
-						$requete .= "'".$categs."'";
+						$requete .= "'".pg_escape_string($categs)."'";
 
 					$requete .= "]::varchar[] && ARRAY(SELECT getAllCategories(A.id))";
 				}
@@ -295,7 +295,7 @@ class DB {
      }
 
      public function deleteAccount($username) {
- 		    $link = pg_escape_string($link);
+ 		    $username = pg_escape_string($username);
 
           $requete = 'delete from ACCOUNT where username = ?';
           $tparam = array($username);

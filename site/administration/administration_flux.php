@@ -20,7 +20,7 @@
 						echo '<div>';
 							echo '<span style="float: right; text-align: right;">';
 							echo '<input class="favorite styledwhite" type="button" value="Log Out" onclick="logOut()">';
-								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . $_SESSION['pseudo_user'] . "&nbsp;&nbsp;";
+								echo "&nbsp;&nbsp;" . "User :" . "&nbsp" . test_input($_SESSION['pseudo_user']) . "&nbsp;&nbsp;";
 							echo '</span>';
 							echo "&nbsp;&nbsp;" . date("d/m/Y");
 						echo '</div>';
@@ -37,7 +37,7 @@
 						echo '<div id="divCurrentLinks">';
 						foreach($db->getFluxRss() as $fluxRss)
 						{
-							$link = $fluxRss->getLink();
+							$link = test_input($fluxRss->getLink());
 							echo '<div id="'.$link.'" class="divLinks">';
 								if (isConnected(true))
 								{
