@@ -5,7 +5,8 @@ body {
 .button {
     background-color: #7DC685;
     color: black;
-    padding: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
     position: absolute;
     left: 50%;
     top: 50%;
