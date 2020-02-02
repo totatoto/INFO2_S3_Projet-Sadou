@@ -7,6 +7,9 @@ body {
     color: black;
     padding-left: 5%;
     padding-right: 5%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 p {
