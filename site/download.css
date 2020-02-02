@@ -3,6 +3,10 @@ body {
 }
 
 .button {
-    color: #7DC685;
+    background-color: #7DC685;
+    color: black;
     margin: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
 }
