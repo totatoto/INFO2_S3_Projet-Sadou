@@ -24,6 +24,7 @@ function fResultUpdateRssItems(req)
          resultat = JSON.parse(req.responseText);
          // s string qui contient tous les items suivant une orga donnée à refaire suivant le php exemple
          resultat.forEach(function(element) {
+            // Nombre d'informations présentées (1 <= i <= 3)
             if (i == 3)
             {
                 s += "</div>\n\n<div class=\"mySlides\">\n";
